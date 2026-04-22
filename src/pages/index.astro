@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Parser from "rss-parser";
 
 const projects = [
   {
@@ -13,20 +14,107 @@ const projects = [
   },
 ];
 
-const notes = [
+const SUBSTACK_URL = "https://citizenofnowhere.substack.com";
+const FEED_URL = `${SUBSTACK_URL}/feed`;
+
+const fallbackNotes = [
   {
     title: "On belonging to everywhere",
     date: "Coming soon",
     summary:
       "A short essay on why the insult 'citizen of nowhere' is the most interesting identity a person can hold in 2026.",
+    href: SUBSTACK_URL,
   },
   {
     title: "The fallacy of the global city index",
     date: "Coming soon",
     summary:
       "Why every major city ranking is quietly optimized for the viewpoint of a single type of reader, and what a more honest instrument would look like.",
+    href: SUBSTACK_URL,
   },
 ];
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&rsquo;/g, "\u2019")
+    .replace(/&lsquo;/g, "\u2018")
+    .replace(/&rdquo;/g, "\u201D")
+    .replace(/&ldquo;/g, "\u201C")
+    .replace(/&mdash;/g, "\u2014")
+    .replace(/&ndash;/g, "\u2013")
+    .replace(/&hellip;/g, "\u2026")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function formatMonthYear(input?: string): string {
+  if (!input) return "";
+  const d = new Date(input);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
+// Known default Substack welcome-post slugs to suppress.
+const SUPPRESSED_SLUGS = new Set(["/p/coming-soon"]);
+
+type Note = {
+  title: string;
+  date: string;
+  summary: string;
+  href: string;
+};
+
+let notes: Note[] = fallbackNotes;
+let feedAvailable = false;
+
+try {
+  const parser = new Parser({
+    timeout: 8000,
+    headers: {
+      "User-Agent":
+        "citizenofnowhere.org (build-time RSS fetch)",
+    },
+    customFields: {
+      item: [["content:encoded", "contentEncoded"]],
+    },
+  });
+  const feed = await parser.parseURL(FEED_URL);
+  const items = (feed.items ?? [])
+    .filter((item) => {
+      if (!item.link) return false;
+      try {
+        const path = new URL(item.link).pathname;
+        return !SUPPRESSED_SLUGS.has(path);
+      } catch {
+        return true;
+      }
+    })
+    .slice(0, 5)
+    .map<Note>((item) => ({
+      title: (item.title ?? "Untitled").trim(),
+      date: formatMonthYear(item.isoDate ?? item.pubDate),
+      summary: stripHtml(
+        item.contentSnippet ?? (item as any).description ?? ""
+      ).slice(0, 220),
+      href: item.link!,
+    }));
+  if (items.length > 0) {
+    notes = items;
+    feedAvailable = true;
+  }
+} catch (err) {
+  console.warn(
+    "[substack] failed to fetch feed, using fallback notes:",
+    (err as Error).message
+  );
+}
 ---
 
 <Layout>
@@ -170,68 +258,16 @@ const notes = [
                   class="text-xl md:text-2xl font-medium mb-2"
                   style="font-family: var(--font-serif)"
                 >
-                  {n.title}
+                  <a
+                    href={n.href}
+                    class="hover:text-[color:var(--color-accent)] transition-colors"
+                    rel="noopener"
+                  >
+                    {n.title}
+                  </a>
                 </h3>
                 <p
                   class="text-sm md:text-base text-[color:var(--color-paper)]/70"
                   style="font-family: var(--font-serif)"
                 >
-                  {n.summary}
-                </p>
-              </div>
-              <span
-                class="shrink-0 text-xs tracking-[0.2em] uppercase text-[color:var(--color-muted)]"
-                style="font-family: var(--font-display)"
-              >
-                {n.date}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="mb-28 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2
-          class="text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]"
-          style="font-family: var(--font-display)"
-        >
-          About
-        </h2>
-      </div>
-
-      <div class="space-y-6 max-w-2xl text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">
-        <p>
-          The phrase was meant as an insult. It was delivered from a podium, in
-          a political speech, to describe people who considered themselves
-          citizens of the world. The implication was that a person who belongs
-          to everywhere belongs to nowhere, and therefore, to nothing.
-        </p>
-        <p>
-          I took the label and kept it, because I think the opposite is true.
-          Someone who has lived in more than one country, who has worked across
-          more than one language, who has built things for people who do not
-          look like them, is not stateless in any diminished sense. They are
-          simply loyal to the city and the idea rather than the flag.
-        </p>
-        <p>
-          This site is where I publish the work that follows from that
-          orientation. Indices that take metros seriously as the organising
-          unit of modern life. Essays on movement, measurement, and belonging.
-          Software that makes it easier to see the world as it actually is,
-          rather than as national summaries want you to see it.
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="pt-10 border-t border-[color:var(--color-line)]">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
-        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
-        <span>citizenofnowhere.org</span>
-      </div>
-    </footer>
-  </main>
-</Layout>
+                  {n.sum
