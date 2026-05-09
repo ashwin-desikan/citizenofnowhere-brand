@@ -71,7 +71,7 @@ These cost real debugging time. Worth writing down.
 
 1. **Open Graph image**. The site currently has no `og:image`. Link previews on Twitter, LinkedIn, iMessage are plain. A single 1200x630 PNG with the hero thesis line and the wordmark would noticeably upgrade every share. A dynamic Astro OG image route is overkill for now; a static file in `/public/og.png` is enough.
 
-2. **Nightly rebuild via GitHub Action + Vercel Deploy Hook**. Fifteen-minute setup. Ensures new Substack posts appear on the homepage within a day without manual redeploys.
+2. ~~**Nightly rebuild via GitHub Action + Vercel Deploy Hook**~~. Shipped 2026-05-09. `.github/workflows/daily-rebuild.yml` runs at 13:17 UTC daily and on manual dispatch. Requires the `VERCEL_DEPLOY_HOOK_URL` repo secret (Vercel Project Settings → Git → Deploy Hooks). For ad-hoc rebuilds, run `npm run rebuild:trigger` with the same URL exported as an env var. See `scripts/trigger-rebuild.mjs`.
 
 3. **Sitemap**. Add `@astrojs/sitemap` once writing pages or project detail pages exist in-repo. Not urgent while the Writing section is an outbound link list.
 
