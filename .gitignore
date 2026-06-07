@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # astro
 .astro/
+
+.agents/
+skills-lock.json
