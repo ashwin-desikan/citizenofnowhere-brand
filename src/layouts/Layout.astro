@@ -4,12 +4,19 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  path?: string;
 }
 
 const {
   title = "Citizen of Nowhere",
   description = "A place to think about cities, countries, movement, and the people who belong to all of them and none of them.",
+  image = "/og.png",
+  path = "/",
 } = Astro.props;
+
+const canonical = new URL(path, "https://citizenofnowhere.org").href;
+const ogImage = new URL(image, "https://citizenofnowhere.org").href;
 ---
 
 <!doctype html>
@@ -24,8 +31,11 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://citizenofnowhere.org/" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

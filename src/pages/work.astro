@@ -1,0 +1,219 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const eras = [
+  {
+    label: "Independent & sports leagues",
+    jobs: [
+      {
+        co: "Citizen of Nowhere",
+        role: "AdTech / MarTech & Data Strategy Advisor",
+        date: "2025 – Present",
+        points: [
+          "Strategic advisor to founders and investors building next-generation sports, media, and AdTech/MarTech platforms, helping growth-stage companies design scalable data, identity, AI, and digital foundations across the US and Europe.",
+          "Author of the Global Metro Power Rankings, an original index of 70,000-plus parameters across 4,200-plus metros, and ongoing writing on movement, measurement, and belonging.",
+        ],
+      },
+      {
+        co: "National Football League",
+        role: "Director, Business Relationship Management & MarTech Products",
+        date: "2024 – 2025",
+        points: [
+          "Trusted advisor to all 32 clubs, scaling identity-led fan acquisition, engagement, and retention across CRM, CDP, clean rooms, and analytics.",
+          "Defined and operationalized the league's enterprise governance framework, aligning privacy, consent, data standards, and cross-club integration into a scalable league-wide operating model.",
+          "Led modernization of league-scale AI, data, and Connected Identity platforms for all 32 teams, and established club toolkits, governance, and executive readouts that accelerated adoption tied to ticketing, messaging, and fan experience.",
+        ],
+      },
+      {
+        co: "Major League Baseball",
+        role: "Director, Marketing Tech & Digital Operations",
+        date: "2023 – 2024",
+        points: [
+          "Led the enterprise marketing-technology and audience-data transformation roadmap across 30 clubs, a 10 million dollar-plus remit spanning clean room, CDP, email, SMS, push, CTV, and programmatic.",
+          "Product owner of Audience Development and Connected Identity strategy; drove the Adobe Experience Platform and Journey Optimizer rollout that lifted audience engagement 20 percent.",
+          "Built a league-wide customer data platform unifying ticketing, real-time gate scans, club CRM, and digital behavior into a single fan profile, with automated consent enforcement and activation to Facebook, Google, and LiveRamp.",
+          "Launched real-time, scan-triggered fan journeys; the Mets pilot deployed more than 12,000 push notifications in a season, with check-in click-through rising from roughly 4 percent to 9 percent and above.",
+          "Authored the clean-room roadmap to share and monetize first-party data with sponsorship and media partners, spanning a redesign of legal data-sharing terms and a platform-agnostic LiveRamp foundation.",
+          "Ran the email-platform RFP across Zeta, Iterable, and Adobe with eight scenarios and a weighted scoring framework, and the enablement program that made the internal team self-sufficient, standardizing 141 fan attributes and cross-club journey templates.",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Platforms & holding companies",
+    jobs: [
+      {
+        co: "Amazon",
+        role: "Senior Solutions Architect / AdTech Consultant",
+        date: "2021 – 2023",
+        points: [
+          "Directed more than 30 Tier 1 client partnerships architecting Connected Identity, clean-room, and advanced-measurement solutions on Amazon Marketing Cloud, driving cross-platform data collaboration and multi-million-dollar revenue growth.",
+          "Led high-value strategic data projects for Amazon's largest global advertising clients, optimizing campaign performance and commercial outcomes.",
+        ],
+      },
+      {
+        co: "Facebook",
+        role: "Technical Program Manager III (Contract)",
+        date: "2020 – 2021",
+        points: [
+          "Primary marketing-measurement strategist for Workplace, building a framework to measure ROI, LTV, and CAC across all digital and offline channels.",
+          "Restructured data sourcing and introduced multi-touch attribution and marketing-mix modeling, embedding ROI analysis into core business strategy.",
+        ],
+      },
+      {
+        co: "GroupM",
+        role: "Group Director, Data & Platform Strategy",
+        date: "2019 – 2020",
+        points: [
+          "Lead analytics and AdTech strategist and trusted advisor for Signet Jewellers, and primary data lead on five holding-company-level pitches for GroupM Data & Technology Services.",
+          "Developed the framework for and managed deployment of Signet's identity-linked customer data platform.",
+        ],
+      },
+      {
+        co: "Spotify",
+        role: "Associate Director, Global Insights & Analytics",
+        date: "2018 – 2019",
+        points: [
+          "Established global frameworks for audience measurement, monetization, and enablement across a 500-person sales organization, contributing to a 40 percent year-over-year increase in audience-targeted revenue on the Free business unit.",
+          "Partnered with 40-plus global agencies and Tier 1 advertisers on bespoke audience monetization leveraging Spotify's first-party data and music intelligence, and mentored a team of 20 insights managers and analysts.",
+        ],
+      },
+      {
+        co: "Digitas, Publicis Groupe",
+        role: "Vice President, Data Science / Data Strategy",
+        date: "2017 – 2018",
+        points: [
+          "VP of Data Strategy and Advanced Analytics across all lines of business on Publicis Groupe's Samsung US account; trusted advisor to Samsung global marketing leadership, leading a multi-capability team of 20-plus across data science, advanced analytics, data activation, and ad operations.",
+          "Product owner for Samsung's identity-linked customer data platform and Connected Identity roadmap, centralizing global marketing, audience, and BI systems into a unified Google Cloud architecture resolving 220 million-plus identities. The third-party-to-owned data shift cut spend by roughly 700,000 dollars, about 99 percent, while expanding addressable reach.",
+        ],
+      },
+      {
+        co: "Omnicom Media Group, Annalect",
+        role: "EMEA Director, Marketing Science",
+        date: "2016 – 2017",
+        points: [
+          "Led data science, digital analytics, and insight teams for Annalect EMEA, driving multi-market solution architecture and identity-linked data-product development across 58 markets.",
+          "Built and enabled the EMEA rollout of Annalect's product suite: digital attribution, custom audience creation, lookalike modeling, media-mix modeling, brand KPI attribution, and TV attribution.",
+        ],
+      },
+    ],
+  },
+  {
+    label: "AdTech foundations",
+    jobs: [
+      {
+        co: "Adform",
+        role: "Director, Business Intelligence & Data Consulting",
+        date: "2014 – 2016",
+        points: [
+          "Founded and led the Business Intelligence Consultancy team of 15 consultants and data scientists across three countries, delivering projects worth 5 percent of company revenue.",
+          "Lead product director and commercial owner of Adform's Data Management Platform, building identity-based commercial models with 200-plus partners.",
+        ],
+      },
+      {
+        co: "The Exchange Lab",
+        role: "Head of Business Intelligence",
+        date: "2013 – 2014",
+        points: [
+          "Partnered with product and engineering to rebuild database storage and ETL for the proprietary trading platform, Proteus, and worked with C-level leadership on BI solutions that grew revenue and reduced cost.",
+        ],
+      },
+      {
+        co: "Skimlinks",
+        role: "Senior Product Manager",
+        date: "2013 – 2014",
+        points: [
+          "Primary strategist for the data-product offering, driving the company toward a programmatic audience-creation and private-exchange solution across a network of 18,000 advertisers.",
+        ],
+      },
+      {
+        co: "VisualDNA",
+        role: "Media Product Manager",
+        date: "2012 – 2013",
+        points: [
+          "Head of Data Products for a third-party audience-analytics provider, owning the commercial taxonomy that drove 95 percent of revenue.",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Where it started",
+    jobs: [
+      {
+        co: "Illumina",
+        role: "Staff Bioinformatics Engineer / Project Manager",
+        date: "2007 – 2012",
+        points: [
+          "Project manager across the full software development life cycle for five major and fifteen minor releases of Illumina's market-defining bioinformatics packages: GenomeStudio, CASAVA, and OLB.",
+          "Supported a team of 10-plus developers and 20-plus scientists; four promotions in four years. Co-author of a primary scientific publication in Science (2003).",
+        ],
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="The Record of Building | Ashwin Desikan, Citizen of Nowhere"
+  description="The full record of Ashwin Desikan's work, from bioinformatics at Illumina to league-scale identity at the NFL and MLB, across the holding companies, Amazon, Spotify, and Facebook."
+  path="/work"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <!-- Masthead -->
+    <header class="flex items-center justify-between mb-20 md:mb-28 gap-6">
+      <a href="/" class="text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Citizen of Nowhere</a>
+      <a href="/practice" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">&larr; Back</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-16 md:mb-24 border-b border-[color:var(--color-line)] pb-12">
+      <p class="text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)] mb-7" style="font-family: var(--font-display)">The record of building</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.04] tracking-tight font-medium mb-6 max-w-3xl" style="font-family: var(--font-serif)">
+        Twenty years of turning data and identity into measurable growth.
+      </h1>
+      <p class="text-lg md:text-xl text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        The complete account, from genome software at Illumina to league-scale identity across the NFL and MLB. Selected highlights live on the <a href="/practice" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">main page</a>; this is the full picture.
+      </p>
+    </section>
+
+    {eras.map((era) => (
+      <section class="mb-12 md:mb-16">
+        <h2 class="text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">{era.label}</h2>
+        <div class="divide-y divide-[color:var(--color-line)]">
+          {era.jobs.map((job) => (
+            <div class="py-7 border-t border-[color:var(--color-line)]">
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-4">
+                <h3 class="text-2xl md:text-3xl font-medium tracking-tight" style="font-family: var(--font-serif)">{job.co}</h3>
+                <span class="text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{job.role}</span>
+                <span class="ml-auto text-xs text-[color:var(--color-muted)] whitespace-nowrap" style="font-family: var(--font-display)">{job.date}</span>
+              </div>
+              <ul class="space-y-2.5">
+                {job.points.map((pt) => (
+                  <li class="pl-5 relative text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/75 max-w-3xl" style="font-family: var(--font-serif)">
+                    <span class="absolute left-0 top-3 h-px w-3 bg-[color:var(--color-accent)]"></span>{pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <p class="mt-12 pt-8 border-t border-[color:var(--color-line)] text-sm text-[color:var(--color-muted)] italic" style="font-family: var(--font-serif)">
+      A studio for ideas, indices, and interfaces, and the two decades of building behind it.
+    </p>
+
+    <div class="mt-12 mb-8">
+      <a href="/practice#contact" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">Start a conversation <span aria-hidden="true">-&gt;</span></a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="pt-10 border-t border-[color:var(--color-line)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
+        <span>the independent work of Ashwin Desikan</span>
+      </div>
+    </footer>
+  </main>
+</Layout>
