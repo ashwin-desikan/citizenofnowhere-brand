@@ -93,6 +93,50 @@ const highlights = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: "https://citizenofnowhere.org/practice",
+  dateModified: new Date().toISOString().slice(0, 10),
+  mainEntity: {
+    "@type": "Person",
+    name: "Ashwin Desikan",
+    alternateName: "Citizen of Nowhere",
+    jobTitle: "Identity, Data & Marketing Technology Leader",
+    description:
+      "Identity, data, and monetization leader and operator. Two decades across the US, UK, and Europe, from the global holding companies and Amazon, Spotify, and Facebook to the NFL and MLB.",
+    image: "https://citizenofnowhere.org/ashwin-portrait-web.jpg",
+    url: "https://citizenofnowhere.org/practice",
+    worksFor: {
+      "@type": "Organization",
+      name: "Citizen of Nowhere",
+      url: "https://citizenofnowhere.org",
+    },
+    workLocation: [
+      { "@type": "Place", name: "London, United Kingdom" },
+      { "@type": "Place", name: "New York, United States" },
+    ],
+    sameAs: [
+      "https://www.linkedin.com/in/ashwindesikan/",
+      "https://www.linkedin.com/company/citizen-of-nowhere",
+      "https://citizenofnowhere.substack.com",
+    ],
+    knowsAbout: [
+      "Identity resolution",
+      "Customer data platforms",
+      "Data clean rooms",
+      "Consent and data governance",
+      "Marketing technology",
+      "AdTech",
+      "Audience activation",
+      "Marketing measurement and attribution",
+      "Commerce media",
+      "Applied AI in marketing",
+      "Sports and media business",
+    ],
+  },
+};
+
 const navLink = "hover:text-[color:var(--color-paper)] transition-colors";
 const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
 const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
@@ -104,14 +148,16 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
   description="Ashwin Desikan: identity, data, and monetization advisor and operator. Two decades across the US, UK, and Europe, from the holding companies and Amazon, Spotify, and Facebook to the NFL and MLB."
   path="/practice"
 >
+  <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
     <!-- Masthead -->
-    <header class="flex items-center justify-between mb-20 md:mb-32 gap-6">
+    <header class="sticky top-0 z-50 -mx-6 md:-mx-10 px-6 md:px-10 py-4 mb-16 md:mb-24 flex items-center justify-between gap-6 bg-[color:var(--color-ink)]/85 backdrop-blur-md border-b border-[color:var(--color-line)]/60">
       <a href="/" class={eyebrow} style="font-family: var(--font-display)">Citizen of Nowhere</a>
       <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
         <a href="/" class={navLink}>Home</a>
         <a href="#about" class={navLink}>About</a>
         <a href="#track" class={navLink}>Work</a>
+        <a href="/perspective" class={navLink}>Perspective</a>
         <a href="/readiness" class={navLink}>The Index</a>
         <a href="#contact" class={navLink}>Contact</a>
       </nav>
@@ -232,6 +278,21 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </div>
     </section>
 
+    <!-- Point of View -->
+    <section id="view" class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">A Point of View</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The business of sport</span>
+      </div>
+      <h3 class="text-2xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl leading-snug" style="font-family: var(--font-serif)">
+        A club becomes data-centric the day its leadership <span class="italic text-[color:var(--color-accent)]">decides to</span>, not the day it buys the platform.
+      </h3>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
+        Private capital is forcing the business of sport to professionalize, and the most valuable asset in the building is the one most clubs understand least: the fan. A field view on owning that relationship, drawn from league-scale work and sharpened in the London sports-business community.
+      </p>
+      <a href="/perspective" class={cta} style="font-family: var(--font-display)">Read the field view <span aria-hidden="true">-&gt;</span></a>
+    </section>
+
     <!-- The Studio -->
     <section class="mb-24 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
@@ -282,7 +343,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Currently</h2>
       </div>
       <p class="text-2xl md:text-4xl leading-snug font-medium max-w-3xl" style="font-family: var(--font-serif)">
-        Exploring senior leadership roles in data, identity, and marketing technology, and open to <span class="text-[color:var(--color-accent)]">selective advisory</span> engagements. If the problem is interesting, let's talk.
+        Open to a senior leadership mandate in data, identity, and marketing technology, the kind that <span class="text-[color:var(--color-accent)]">owns the operating model end to end</span>. Full-time, based in New York or London and fluent across US and European teams, with selective advisory alongside. If the problem is interesting, let's talk.
       </p>
     </section>
 
@@ -298,9 +359,9 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
             Whether you are building an identity and data capability, preparing a media business for the AI era, or hiring for the role that does both.
           </p>
           <form id="contactForm" action="https://formspree.io/f/maqzebor" method="POST" class="flex flex-col gap-3 max-w-md">
-            <input type="text" name="name" placeholder="Name" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
-            <input type="email" name="email" placeholder="Email" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
-            <textarea name="message" rows="4" placeholder="What are you working on?" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)] resize-y" style="font-family: var(--font-sans)"></textarea>
+            <input type="text" name="name" placeholder="Name" aria-label="Your name" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
+            <input type="email" name="email" placeholder="Email" aria-label="Your email address" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
+            <textarea name="message" rows="4" placeholder="What are you working on?" aria-label="What are you working on?" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)] resize-y" style="font-family: var(--font-sans)"></textarea>
             <button type="submit" class="self-start border border-[color:var(--color-accent)] text-[color:var(--color-accent)] hover:bg-[color:var(--color-accent)] hover:text-[color:var(--color-ink)] transition-colors px-6 py-3 text-xs tracking-[0.08em] uppercase rounded-sm" style="font-family: var(--font-display)">Send a note</button>
             <p class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Goes straight to my inbox. Prefer to talk? Book a call.</p>
           </form>

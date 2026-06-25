@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "The Data-Centric Club",
+  description:
+    "A field view on the business of sport: why becoming a data-centric club is a leadership and culture decision before a technology one, and what it takes to own the fan relationship.",
+  url: "https://citizenofnowhere.org/perspective",
+  author: {
+    "@type": "Person",
+    name: "Ashwin Desikan",
+    url: "https://citizenofnowhere.org/practice",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Citizen of Nowhere",
+    url: "https://citizenofnowhere.org",
+  },
+  about: ["Sports business", "Fan data", "Data strategy", "Customer data platforms"],
+  inLanguage: "en",
+};
+
+const principles = [
+  {
+    num: "01",
+    title: "It begins as a leadership decision, not an IT project",
+    body:
+      "The clubs that get this right do not start by buying a platform. They start with an executive who decides, out loud and with budget behind it, that the organization will be run on evidence. Everything downstream, the architecture, the governance, the hiring, follows from that decision. Treat it instead as a line item in the technology budget and it behaves like one: a tool arrives, the operating model around it does not move, and before long the organization is quietly auditioning its replacement.",
+  },
+  {
+    num: "02",
+    title: "Foundations before features",
+    body:
+      "Most organizations reach for the dashboard before they have done the plumbing, and the dashboard inherits every disconnection underneath it. The more valuable sequence is harder: define what a single view of the fan actually means for your organization, connect the systems you already own so they stop contradicting each other, and only then judge anything new, narrowly, against the specific gap it fills and how it will plug into what exists. I have run the platform selections and the integration work on both sides of this. The capability you buy is rarely the constraint. The connective tissue you did or did not build is.",
+  },
+  {
+    num: "03",
+    title: "Own the customer you have already earned",
+    body:
+      "Every club already generates the moments that matter: the seat purchase, the concourse spend, the merchandise order, the streamed minute. What most clubs do not hold is the thread that resolves those moments to one person, because the identity that would tie them together lives inside a vendor's platform. A club that lets a third party keep that identity has, in practice, rented its own supporters back. The work I led at the NFL and MLB was at bottom this: resolve the fan across ticketing, commerce, CRM, and behavior into one governed profile the club controls, then activate and measure against it. The question worth sitting with is simpler than the architecture: what is your strategy for owning the customer journey and the data it produces?",
+  },
+  {
+    num: "04",
+    title: "Data sharpens judgment, it does not replace it",
+    body:
+      "The best decisions I have watched in sport came from experienced people with strong instincts who also had good evidence in front of them, and neither half was as powerful alone. The failure mode is not too much analysis. It is a culture in which testing an assumption against the data feels like an accusation rather than a normal part of the work. Fix that, and the analytics function moves out of the back office and into the room where revenue decisions actually get made.",
+  },
+  {
+    num: "05",
+    title: "Treat fan data as an appreciating asset, governed for the long term",
+    body:
+      "An organization that thinks in campaigns collects what this quarter needs and discards the rest. An organization that thinks in assets treats each interaction as something that accrues, a position worth more every season it is held, which leads it to make different decisions about what it gathers, what it gives fans in return, and how it governs consent. Governance is not the brake here. Automated consent and clear data standards are what let you move at speed without taking on compliance risk, which is why they belong at the center of the operating model rather than bolted on at the end.",
+  },
+];
+---
+
+<Layout
+  title="The Data-Centric Club | Ashwin Desikan, Citizen of Nowhere"
+  description="A field view on the business of sport: why becoming a data-centric club is a leadership and culture decision before a technology one, and what it takes to own the fan relationship. By Ashwin Desikan."
+  path="/perspective"
+>
+  <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
+  <main class="mx-auto max-w-3xl px-6 md:px-10 py-16 md:py-28">
+    <!-- Masthead -->
+    <header class="flex items-center justify-between mb-16 md:mb-24 gap-6">
+      <a href="/" class={eyebrow} style="font-family: var(--font-display)">Citizen of Nowhere</a>
+      <a href="/practice" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">&larr; Back to the practice</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-7`} style="font-family: var(--font-display)">Field view &middot; The business of sport</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.04] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        A club becomes data-centric the day its leadership <span class="italic text-[color:var(--color-accent)]">decides to</span>, not the day it buys the platform.
+      </h1>
+      <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">
+        Private capital is pouring into sport, and new ownership audits the business operation the way it audits the balance sheet. The clubs that built a connected, owned relationship with their fans are already compounding the advantage. The ones still buying tools on top of a disconnected stack are falling further behind every season. Having done this work at league scale, here is the view from the desk.
+      </p>
+    </section>
+
+    <!-- Principles -->
+    <section class="mb-16 md:mb-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Five things the ones who get it right share</h2>
+      </div>
+      <div class="space-y-12 md:space-y-14">
+        {principles.map((p) => (
+          <article>
+            <p class="text-xs text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{p.num}</p>
+            <h3 class="text-2xl md:text-3xl font-medium tracking-tight mb-4" style="font-family: var(--font-serif)">{p.title}</h3>
+            <p class="text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- The macro -->
+    <section class="mb-16 md:mb-24 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">The forcing function</p>
+      <h2 class="text-2xl md:text-4xl font-medium tracking-tight mb-5 leading-snug" style="font-family: var(--font-serif)">
+        The capital coming into sport will not wait for the business side to catch up.
+      </h2>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+        Institutional money treats a club as a business with assets to be understood, and the most valuable asset in the building is usually the one the club understands least: the fan. Ownership that has modernized other industries will not accept a fan base scattered across six platforms that do not talk to each other. The clubs that committed early are already turning the head start into pricing power, renewal rates, and sponsorship value the rest of the market struggles to match. The ones moving now can still close the gap. The ones treating it as a someday problem are making a choice, whether or not they would describe it that way.
+      </p>
+    </section>
+
+    <!-- Acknowledgment -->
+    <section class="mb-16 md:mb-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Where this thinking gets sharpened</h2>
+      </div>
+      <div class="space-y-5 text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">
+        <p>
+          None of this is thought in isolation. A view this practical is the product of rooms full of people who run the business of sport for a living. Over the past year much of mine has been sharpened in the London sports-business community, in particular around <a href="https://www.sportspundit.co" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">Sports Pundit</a> and the work of <a href="https://www.sportspro.com" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">SportsPro</a>, where operators, founders, and investors argue these questions out in the open.
+        </p>
+        <p>
+          I owe a specific debt to my friend <a href="https://www.linkedin.com/in/scott-macintosh/" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">Scott Macintosh</a>, whose series on building a data-centric sports organization put words to convictions many of us hold and arrived at the same hard truth from the vendor and advisory side: culture and foundations come before tools, and the club should own its fan. The framing above is my own and drawn from my own work, but it rhymes with his because the field is converging on the same answer.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mb-12">
+      <p class="text-xl md:text-2xl leading-relaxed max-w-2xl mb-7" style="font-family: var(--font-serif)">
+        If you are building this inside a club, a league, or a company that sells into one, this is the work I do.
+      </p>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href="/practice#contact" class={cta}>Start a conversation <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">See the record of building <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-10 border-t border-[color:var(--color-line)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
+        <span>the independent work of Ashwin Desikan</span>
+      </div>
+    </footer>
+  </main>
+</Layout>

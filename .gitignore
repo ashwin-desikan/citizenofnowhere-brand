@@ -27,3 +27,6 @@ pnpm-debug.log*
 
 .agents/
 skills-lock.json
+
+# internal notes and backlog (never commit, never deploy)
+internal/
