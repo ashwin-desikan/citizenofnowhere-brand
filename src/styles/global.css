@@ -12,6 +12,18 @@
   --font-serif: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
 }
 
+/* Light theme: same palette, inverted. Brand paper becomes the page,
+   surfaces go white, the teal accent darkens for contrast on light. */
+html.theme-light {
+  --color-ink: #ffffff;      /* surfaces and cards */
+  --color-paper: #15151a;    /* text */
+  --color-accent: #0d9488;   /* darker teal, legible on light */
+  --color-muted: #6b6b73;
+  --color-line: #e3e1d8;     /* hairline on light */
+  background-color: #f5f4ee; /* the brand paper, now the page background */
+  color: #15151a;
+}
+
 @layer base {
   html {
     background-color: var(--color-ink);

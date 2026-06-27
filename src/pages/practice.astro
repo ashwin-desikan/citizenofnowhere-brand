@@ -46,12 +46,51 @@ const whom = [
   "Investors (technical diligence)",
 ];
 
-const how = [
-  "Fractional / interim leadership",
-  "Advisory retainer",
-  "Board & advisor seat",
-  "Investment diligence",
-  "Workshops & speaking",
+const tiers = [
+  {
+    name: "Advisory",
+    items: "Identity and data strategy, operating-model design, board and advisor seats, investment diligence.",
+  },
+  {
+    name: "Fractional & interim leadership",
+    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition.",
+  },
+  {
+    name: "Diagnostic & enablement",
+    items: "First-party readiness assessments, governance design, team enablement, workshops and speaking.",
+  },
+];
+
+const metrics = [
+  { fig: "62", label: "Clubs unified", context: "League-scale identity and customer data platforms across every NFL and MLB club." },
+  { fig: "220M+", label: "Identities resolved", context: "Product owner of Samsung's identity-linked CDP on Google Cloud." },
+  { fig: "~99%", label: "Data spend cut", context: "Shifting Samsung from third-party to owned data, roughly 700,000 dollars out, while expanding reach." },
+  { fig: "+20%", label: "Engagement lift", context: "The Adobe Experience Platform rollout across MLB's 30 clubs." },
+  { fig: "+40%", label: "YoY audience revenue", context: "Audience-targeted revenue on Spotify's free tier, across a 500-person sales organization." },
+  { fig: "58", label: "Markets activated", context: "Rolling out Annalect's identity and measurement product suite across EMEA." },
+];
+
+const heard = [
+  {
+    label: "Identity",
+    quote:
+      "We spend heavily to acquire fans and customers, but once they are in we cannot recognize the same person across ticketing, the app, and email. We are marketing to ghosts.",
+  },
+  {
+    label: "Governance",
+    quote:
+      "Every market and every team built their own data setup. Legal, marketing, and analytics each work from a different version of the truth, and our consent is a patchwork we could not defend.",
+  },
+  {
+    label: "Monetization",
+    quote:
+      "Our first-party data is obviously an asset, but when a partner asks to collaborate in a clean room we cannot say what we can offer, what to charge, or what we are allowed to share.",
+  },
+  {
+    label: "AI & operating model",
+    quote:
+      "We piloted AI in marketing and it demoed well, but nothing shipped, because the data underneath it and the operating model around it were not ready.",
+  },
 ];
 
 const highlights = [
@@ -147,6 +186,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
   title="Ashwin Desikan | Citizen of Nowhere"
   description="Ashwin Desikan: identity, data, and monetization advisor and operator. Two decades across the US, UK, and Europe, from the holding companies and Amazon, Spotify, and Facebook to the NFL and MLB."
   path="/practice"
+  theme="light"
 >
   <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
@@ -211,12 +251,34 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </div>
     </section>
 
-    <!-- What I Do -->
+    <!-- What I Hear -->
     <section class="mb-24 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I Do</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Four recurring problems</span>
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I Hear</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">In the first conversation</span>
       </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {heard.map((h) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{h.label}</p>
+            <blockquote class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{h.quote}</blockquote>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)] max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        Different words, one root cause: a business sitting on real audience value without the identity spine, the governance, and the operating model to turn it into revenue. That is the work below.
+      </p>
+    </section>
+
+    <!-- What I Do -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I Do</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The First-Party Operating Model</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
+        The framework I diagnose and build against, in sequence. Foundations first, then activation and commerce, then the applied AI and operating model that ship it, all applied to the business of sport and media.
+      </p>
       <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {pillars.map((p) => (
           <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
@@ -250,11 +312,31 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <div>
           <p class="text-xs text-[color:var(--color-accent)] mb-4 tracking-[0.18em] uppercase" style="font-family: var(--font-display)">How I work</p>
           <ul class="divide-y divide-[color:var(--color-line)]">
-            {how.map((h) => (
-              <li class="py-3 text-base md:text-lg text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">{h}</li>
+            {tiers.map((t) => (
+              <li class="py-4">
+                <p class="text-base md:text-lg text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{t.name}</p>
+                <p class="text-sm md:text-base text-[color:var(--color-paper)]/65 leading-relaxed mt-1" style="font-family: var(--font-serif)">{t.items}</p>
+              </li>
             ))}
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- Impact at Scale -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Impact at Scale</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Measured outcomes</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {metrics.map((m) => (
+          <div class="bg-[color:var(--color-ink)] p-6 md:p-7">
+            <p class="text-3xl md:text-5xl font-medium tracking-tight text-[color:var(--color-paper)] mb-2" style="font-family: var(--font-serif)">{m.fig}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{m.label}</p>
+            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{m.context}</p>
+          </div>
+        ))}
       </div>
     </section>
 
