@@ -42,7 +42,7 @@ const whom = [
   { seg: "Leagues & rights holders", promise: "One governed view of the fan across every club and channel, and the clean-room models to monetize it." },
   { seg: "Media owners & publishers", promise: "A first-party identity and measurement spine that turns audience into durable ad and subscription revenue." },
   { seg: "Holding companies & Tier 1 clients", promise: "Connected identity and commercial models that translate client strategy into measurable growth." },
-  { seg: "Sponsors, brands & agencies", promise: "Audience and clean-room infrastructure to choose markets and prove activation value, not just reach." },
+  { seg: "Sponsors, brands & agencies", promise: "Audience and clean-room infrastructure to choose markets and prove activation value partners can trust." },
   { seg: "Growth-stage AdTech / MarTech", promise: "Product and data foundations, and a go-to-market a buyer will believe." },
   { seg: "Investors", promise: "Technical diligence on AdTech, MarTech, and data targets, from a practitioner who has built the stack." },
 ];
@@ -51,7 +51,7 @@ const tiers = [
   {
     name: "Identity & Monetization Diagnostic",
     format: "Fixed scope · Starts here",
-    items: "A real audit of your six readiness dimensions, benchmarked against comparable organizations and delivered as a prioritised roadmap with revenue opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
+    items: "A real audit of your six readiness dimensions, benchmarked against comparable organizations and delivered as a prioritized roadmap with revenue opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
   },
   {
     name: "Advisory",
@@ -104,18 +104,6 @@ const heard = [
 
 const highlights = [
   {
-    co: "National Football League",
-    title: "Identity and governance for a 32-club league",
-    blurb:
-      "As trusted advisor to all 32 clubs, led the modernization of league-scale identity, data, and AI platforms and defined the enterprise governance framework, privacy, consent, data standards, and cross-club integration, that turned thirty-two independent operations into one scalable operating model.",
-  },
-  {
-    co: "Major League Baseball",
-    title: "A customer data platform across all 30 clubs",
-    blurb:
-      "Owned MLB's marketing-technology and audience-data transformation, a 10 million dollar-plus remit spanning CDP, clean rooms, email, SMS, push, and CTV, and drove the Adobe Experience Platform rollout that lifted audience engagement 20 percent.",
-  },
-  {
     co: "Amazon Ads",
     title: "Clean rooms and Connected Identity for 30+ global advertisers",
     blurb:
@@ -149,7 +137,7 @@ const approach = [
 ];
 
 const rightsHolder = [
-  { t: "Recognize the fan everywhere", d: "One identity across ticketing, the app, email, and the stadium gate, so you stop marketing to ghosts." },
+  { t: "Recognize the fan everywhere", d: "One identity resolved across ticketing, the app, email, and the stadium gate, so every message reaches a known person." },
   { t: "Make sponsorship measurable", d: "Clean-room collaboration that proves activation value to partners and lets you price inventory on data, not just reach." },
   { t: "Value rights and catchment", d: "Fan catchment, market selection, and rights valuation grounded in real audience data." },
 ];
@@ -185,7 +173,7 @@ const whyme = [
   { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
   { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
   { label: "A network across the ecosystem", body: "Two decades across leagues, holding companies, and platforms shortens every introduction and deal." },
-  { label: "I write and I teach", body: "A point of view on identity, data, and the AI era, published in the open every week." },
+  { label: "I write and I teach", body: "A public point of view on identity, data, and the AI era, carried through writing, keynotes, and board workshops." },
 ];
 
 const jsonLd = {
@@ -359,12 +347,12 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <h2 class={sectionLabel} style="font-family: var(--font-display)">How an Engagement Works</h2>
         <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Insight before assumption</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
         {approach.map((a) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <p class="text-xs text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{a.num}</p>
-            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{a.name}</h3>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
+          <div class="md:border-l border-[color:var(--color-line)] md:pl-5">
+            <p class="text-xs text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{a.num}</p>
+            <h3 class="text-lg md:text-xl font-medium mb-2" style="font-family: var(--font-serif)">{a.name}</h3>
+            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
           </div>
         ))}
       </div>
@@ -393,22 +381,13 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The most under-monetized asset in the building</span>
       </div>
       <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
-        The fan is the most valuable asset in sport and the one most organizations understand least. I have built the identity and data layer beneath that relationship at league scale, and I am building the tools that value it.
+        In sport, supporters hand over more, and more willingly, than customers in almost any other category. That signal usually sits trapped across vendor platforms and disconnected systems. I have built the identity and data layer beneath the fan relationship at league scale, and I am building the tools that put a value on it.
       </p>
       <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {rightsHolder.map((r) => (
           <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
             <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{r.t}</h3>
             <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{r.d}</p>
-          </div>
-        ))}
-      </div>
-      <p class="mt-10 mb-5 text-xs tracking-[0.18em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">What I am building for this audience</p>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {building.map((b) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{b.t}</h3>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{b.d}</p>
           </div>
         ))}
       </div>
@@ -454,26 +433,6 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
     <section id="track" class="mb-24 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Selected Work</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">A record of building</span>
-      </div>
-      <ul class="divide-y divide-[color:var(--color-line)]">
-        {highlights.map((h) => (
-          <li class="py-7">
-            <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{h.co}</p>
-            <h3 class="text-2xl md:text-3xl font-medium mb-3 tracking-tight" style="font-family: var(--font-serif)">{h.title}</h3>
-            <p class="text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/75 max-w-2xl" style="font-family: var(--font-serif)">{h.blurb}</p>
-          </li>
-        ))}
-      </ul>
-      <div class="mt-10">
-        <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
-      </div>
-    </section>
-
-    <!-- Case Studies -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Case Studies</h2>
         <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">League scale, in detail</span>
       </div>
       <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
@@ -490,6 +449,9 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
             </ul>
           </div>
         ))}
+      </div>
+      <div class="mt-10">
+        <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
       </div>
     </section>
 
@@ -518,7 +480,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         A club becomes data-centric the day its leadership <span class="italic text-[color:var(--color-accent)]">decides to</span>, not the day it buys the platform.
       </h3>
       <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
-        Private capital is forcing the business of sport to professionalize, and the most valuable asset in the building is the one most clubs understand least: the fan. A field view on owning that relationship, drawn from league-scale work and sharpened in the London sports-business community.
+        Private capital is professionalizing the business of sport, and the first thing new ownership scrutinizes is how well a club actually knows its own fans. A field view on owning that relationship, drawn from league-scale work and sharpened in the London sports-business community.
       </p>
       <a href="/perspective" class={cta} style="font-family: var(--font-display)">Read the field view <span aria-hidden="true">-&gt;</span></a>
     </section>
