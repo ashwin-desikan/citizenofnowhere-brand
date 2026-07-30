@@ -39,25 +39,34 @@ const pillars = [
 ];
 
 const whom = [
-  "Leagues & rights holders",
-  "Holding companies & Tier 1 clients",
-  "Media owners & publishers",
-  "Growth-stage AdTech / MarTech",
-  "Investors (technical diligence)",
+  { seg: "Leagues & rights holders", promise: "One governed view of the fan across every club and channel, and the clean-room models to monetize it." },
+  { seg: "Media owners & publishers", promise: "A first-party identity and measurement spine that turns audience into durable ad and subscription revenue." },
+  { seg: "Holding companies & Tier 1 clients", promise: "Connected identity and commercial models that translate client strategy into measurable growth." },
+  { seg: "Sponsors, brands & agencies", promise: "Audience and clean-room infrastructure to choose markets and prove activation value, not just reach." },
+  { seg: "Growth-stage AdTech / MarTech", promise: "Product and data foundations, and a go-to-market a buyer will believe." },
+  { seg: "Investors", promise: "Technical diligence on AdTech, MarTech, and data targets, from a practitioner who has built the stack." },
 ];
 
 const tiers = [
   {
+    name: "Identity & Monetization Diagnostic",
+    format: "Fixed scope · Starts here",
+    items: "A real audit of your six readiness dimensions, benchmarked against comparable organizations and delivered as a prioritised roadmap with revenue opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
+  },
+  {
     name: "Advisory",
-    items: "Identity and data strategy, operating-model design, board and advisor seats, investment diligence.",
+    format: "Retainer or project",
+    items: "Identity and data strategy, operating-model design, board and advisor seats, and investment diligence.",
   },
   {
     name: "Fractional & interim leadership",
-    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition.",
+    format: "Embedded",
+    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition, without the full-time overhead.",
   },
   {
-    name: "Diagnostic & enablement",
-    items: "First-party readiness assessments, governance design, team enablement, workshops and speaking.",
+    name: "Enablement & workshops",
+    format: "Fixed engagement",
+    items: "Governance design, team enablement, keynotes and board workshops that leave the capability inside the building.",
   },
 ];
 
@@ -132,6 +141,53 @@ const highlights = [
   },
 ];
 
+const approach = [
+  { num: "01", name: "Diagnose", body: "Score first-party readiness across the six dimensions and find the gap that matters most. The First-Party Index is the front door." },
+  { num: "02", name: "Architect", body: "Design the identity spine, data foundation, and governance the strategy actually needs, sequenced so each step pays for the next." },
+  { num: "03", name: "Activate", body: "Turn audiences into real-time, cross-channel action, and stand up the measurement that ties it back to revenue." },
+  { num: "04", name: "Monetize & govern", body: "Build the clean-room and partnership models that monetize first-party data, with consent enforced by default." },
+];
+
+const rightsHolder = [
+  { t: "Recognize the fan everywhere", d: "One identity across ticketing, the app, email, and the stadium gate, so you stop marketing to ghosts." },
+  { t: "Make sponsorship measurable", d: "Clean-room collaboration that proves activation value to partners and lets you price inventory on data, not just reach." },
+  { t: "Value rights and catchment", d: "Fan catchment, market selection, and rights valuation grounded in real audience data." },
+];
+
+const building = [
+  { t: "Civic Audience Intelligence", d: "Licensable datasets, scoring APIs, and dashboards for choosing markets, planning activations, and valuing rights." },
+  { t: "Sports Cartography APIs", d: "Club, venue, league, and metro data joined on a single editorial source of truth, for leagues, agencies, and rights holders." },
+];
+
+const caseStudies = [
+  {
+    co: "National Football League",
+    role: "Director, Business Relationship Management & MarTech Products",
+    points: [
+      "Unified fan identity and data across all 32 clubs into one league-scale operating model.",
+      "Authored the enterprise governance framework: privacy, consent, data standards, and cross-club integration.",
+      "Modernized the league's AI, data, and Connected Identity platforms, with club toolkits and executive readouts that accelerated adoption.",
+    ],
+  },
+  {
+    co: "Major League Baseball",
+    role: "Director, Marketing Tech & Digital Operations",
+    points: [
+      "Built a customer data platform across all 30 clubs, a 10 million dollar-plus remit spanning CDP, clean rooms, email, SMS, push, and CTV.",
+      "Drove the Adobe Experience Platform rollout that lifted audience engagement 20 percent.",
+      "Launched real-time, scan-triggered fan journeys; the Mets pilot deployed 12,000-plus push notifications in a season, with check-in click-through rising from roughly 4 to 9 percent.",
+      "Authored the clean-room roadmap to monetize first-party data with sponsorship and media partners.",
+    ],
+  },
+];
+
+const whyme = [
+  { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
+  { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
+  { label: "A network across the ecosystem", body: "Two decades across leagues, holding companies, and platforms shortens every introduction and deal." },
+  { label: "I write and I teach", body: "A point of view on identity, data, and the AI era, published in the open every week." },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -197,6 +253,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <a href="/" class={navLink}>Home</a>
         <a href="#about" class={navLink}>About</a>
         <a href="#track" class={navLink}>Work</a>
+        <a href="#engage" class={navLink}>Engage</a>
         <a href="/perspective" class={navLink}>Perspective</a>
         <a href="/readiness" class={navLink}>The Index</a>
         <a href="#contact" class={navLink}>Contact</a>
@@ -218,6 +275,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <a href="#contact" class={cta}>Start a conversation <span aria-hidden="true">-&gt;</span></a>
         <a href="#track" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Read the work <span aria-hidden="true">-&gt;</span></a>
       </div>
+      <p class="mt-8 text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Open to a senior mandate &amp; selective advisory &middot; London / New York</p>
     </section>
 
     <!-- Proof -->
@@ -295,31 +353,83 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </div>
     </section>
 
-    <!-- Who I Help / How I Work -->
+    <!-- How an Engagement Works -->
     <section class="mb-24 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who I Help &amp; How I Work</h2>
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">How an Engagement Works</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Insight before assumption</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-10 md:gap-16">
-        <div>
-          <p class="text-xs text-[color:var(--color-accent)] mb-4 tracking-[0.18em] uppercase" style="font-family: var(--font-display)">Who I work with</p>
-          <ul class="divide-y divide-[color:var(--color-line)]">
-            {whom.map((w) => (
-              <li class="py-3 text-base md:text-lg text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">{w}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs text-[color:var(--color-accent)] mb-4 tracking-[0.18em] uppercase" style="font-family: var(--font-display)">How I work</p>
-          <ul class="divide-y divide-[color:var(--color-line)]">
-            {tiers.map((t) => (
-              <li class="py-4">
-                <p class="text-base md:text-lg text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{t.name}</p>
-                <p class="text-sm md:text-base text-[color:var(--color-paper)]/65 leading-relaxed mt-1" style="font-family: var(--font-serif)">{t.items}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {approach.map((a) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-xs text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{a.num}</p>
+            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{a.name}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Who I Help -->
+    <section id="who" class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who I Help</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">And what you get</span>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)]">
+        {whom.map((w) => (
+          <li class="py-5 grid md:grid-cols-[260px_1fr] gap-2 md:gap-10">
+            <p class="text-base md:text-lg text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{w.seg}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{w.promise}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- For Leagues, Clubs & Rights Holders -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">For Leagues, Clubs &amp; Rights Holders</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The most under-monetized asset in the building</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
+        The fan is the most valuable asset in sport and the one most organizations understand least. I have built the identity and data layer beneath that relationship at league scale, and I am building the tools that value it.
+      </p>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {rightsHolder.map((r) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{r.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{r.d}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-10 mb-5 text-xs tracking-[0.18em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">What I am building for this audience</p>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {building.map((b) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{b.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Ways to Work Together -->
+    <section id="engage" class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Ways to Work Together</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Sized to the problem</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {tiers.map((t) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <div class="flex items-baseline justify-between gap-4 mb-3">
+              <h3 class="text-xl md:text-2xl font-medium" style="font-family: var(--font-serif)">{t.name}</h3>
+              <span class="shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{t.format}</span>
+            </div>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{t.items}</p>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -357,6 +467,44 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </ul>
       <div class="mt-10">
         <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Case Studies</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">League scale, in detail</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {caseStudies.map((c) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{c.co}</p>
+            <p class="text-sm text-[color:var(--color-muted)] mb-5" style="font-family: var(--font-display)">{c.role}</p>
+            <ul class="space-y-3">
+              {c.points.map((pt) => (
+                <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+                  <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{pt}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Work With Me -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Why Work With Me</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {whyme.map((w) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3 text-[color:var(--color-accent)]" style="font-family: var(--font-serif)">{w.label}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{w.body}</p>
+          </div>
+        ))}
       </div>
     </section>
 
