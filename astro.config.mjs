@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://citizenofnowhere.org',
+  site: 'https://www.citizenofnowhere.org',
   vite: {
     plugins: [tailwindcss()],
   },
