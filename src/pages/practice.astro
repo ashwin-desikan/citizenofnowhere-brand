@@ -49,19 +49,29 @@ const whom = [
 
 const tiers = [
   {
-    name: "Identity & Monetization Diagnostic",
-    format: "Fixed scope · Starts here",
-    items: "A real audit of your six readiness dimensions, benchmarked against comparable organizations and delivered as a prioritized roadmap with revenue opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
+    name: "First-Party Readiness Diagnostic",
+    format: "Three weeks \u00b7 Starts here",
+    items: "Where your fan data actually is, what it is worth, and the two things blocking it. Scored across the six readiness dimensions and delivered as a sequenced roadmap with opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
   },
   {
-    name: "Advisory",
-    format: "Retainer or project",
-    items: "Identity and data strategy, operating-model design, board and advisor seats, and investment diligence.",
+    name: "Stack Selection, RFP & Negotiation",
+    format: "Eight to twelve weeks",
+    items: "Requirements, shortlist, commercial terms, and the governance model that has to come with them. I have been on the buying side of every category on the list and I am independent of all of them.",
   },
   {
-    name: "Fractional & interim leadership",
-    format: "Embedded",
-    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition, without the full-time overhead.",
+    name: "Fractional Head of Data & Identity",
+    format: "Two days a week \u00b7 Embedded",
+    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition. For estates that need an operator, not a deck.",
+  },
+  {
+    name: "Investor Technical Diligence",
+    format: "One to two weeks per target",
+    items: "What the data asset is, what it is not, and what it will cost to fix. Written for an investment committee, with the limits of the review stated in line rather than smoothed away.",
+  },
+  {
+    name: "Clean Room & Partner Measurement",
+    format: "Project",
+    items: "The collaboration architecture that lets you prove activation value to partners and price inventory on data rather than reach alone.",
   },
   {
     name: "Enablement & workshops",
@@ -129,6 +139,29 @@ const highlights = [
   },
 ];
 
+const stack = [
+  {
+    cat: "Sports-native activation platforms",
+    good: "Speed to market, brand demand already attached, and signals built for sport.",
+    breaks: "You are activating on somebody else's graph, and the fan relationship stays theirs.",
+  },
+  {
+    cat: "Enterprise CDP suites",
+    good: "Journey orchestration, mature consent tooling, and support a board recognizes.",
+    breaks: "The cost curve at profile scale, and slow to model a federated club estate.",
+  },
+  {
+    cat: "Warehouse-native stacks",
+    good: "Full ownership, the lowest marginal cost, and no vendor lock on the data layer.",
+    breaks: "You are buying an engineering team, not a product.",
+  },
+  {
+    cat: "Commercial intelligence & agentic layers",
+    good: "Fast operational wins and strong internal demand.",
+    breaks: "An agent layer over unresolved identity produces faster wrong answers.",
+  },
+];
+
 const approach = [
   { num: "01", name: "Diagnose", body: "Score first-party readiness across the six dimensions and find the gap that matters most. The First-Party Index is the front door." },
   { num: "02", name: "Architect", body: "Design the identity spine, data foundation, and governance the strategy actually needs, sequenced so each step pays for the next." },
@@ -152,7 +185,7 @@ const caseStudies = [
     co: "National Football League",
     role: "Director, Business Relationship Management & MarTech Products",
     points: [
-      "Unified fan identity and data across all 32 clubs into one league-scale operating model.",
+      "Unified fan identity and data across all 32 clubs into one league-scale operating model. The hard part was never the technology. It was getting 32 independent commercial entities to agree what a fan is and who may act on that.",
       "Authored the enterprise governance framework: privacy, consent, data standards, and cross-club integration.",
       "Modernized the league's AI, data, and Connected Identity platforms, with club toolkits and executive readouts that accelerated adoption.",
     ],
@@ -162,7 +195,7 @@ const caseStudies = [
     role: "Director, Marketing Tech & Digital Operations",
     points: [
       "Built a customer data platform across all 30 clubs, a 10 million dollar-plus remit spanning CDP, clean rooms, email, SMS, push, and CTV.",
-      "Drove the Adobe Experience Platform rollout that lifted audience engagement 20 percent.",
+      "Drove the Adobe Experience Platform and Journey Optimizer rollout that lifted audience engagement 20 percent, alongside a warehouse-native build on Snowflake, Hightouch, and Iterable that I specified, ran the RFP for, negotiated, and then implemented.",
       "Launched real-time, scan-triggered fan journeys; the Mets pilot deployed 12,000-plus push notifications in a season, with check-in click-through rising from roughly 4 to 9 percent.",
       "Authored the clean-room roadmap to monetize first-party data with sponsorship and media partners.",
     ],
@@ -171,9 +204,11 @@ const caseStudies = [
 
 const whyme = [
   { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
+  { label: "Independent of every vendor", body: "I have written the requirements, run the RFP, negotiated the contract, and then owned the implementation. I resell nothing and I hold no referral relationships." },
   { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
-  { label: "A network across the ecosystem", body: "Two decades across leagues, holding companies, and platforms shortens every introduction and deal." },
+  { label: "A network across the ecosystem", body: "A career spent across leagues, holding companies, and platforms shortens every introduction and every deal." },
   { label: "I write and I teach", body: "A public point of view on identity, data, and the AI era, carried through writing, keynotes, and board workshops." },
+  { label: "Both sides of the trade", body: "Platforms like Genius FANHub and Elevate EPIC monetize fan identity. I built the side of the trade the rights holder owns, and the demand side at Amazon that buys from it." },
 ];
 
 const jsonLd = {
@@ -187,7 +222,7 @@ const jsonLd = {
     alternateName: "Citizen of Nowhere",
     jobTitle: "Identity, Data & Marketing Technology Leader",
     description:
-      "Identity, data, and monetization leader and operator. Two decades across the US, UK, and Europe, from the global holding companies and Amazon, Spotify, and Facebook to the NFL and MLB.",
+      "Identity, data, and monetization leader and operator across the US, UK, and Europe, from the global holding companies and Amazon, Spotify, and Facebook to the NFL and MLB.",
     image: "https://citizenofnowhere.org/ashwin-portrait-web.jpg",
     url: "https://citizenofnowhere.org/practice",
     worksFor: {
@@ -228,7 +263,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
 
 <Layout
   title="Ashwin Desikan | Citizen of Nowhere"
-  description="Ashwin Desikan: identity, data, and monetization advisor and operator. Two decades across the US, UK, and Europe, from the holding companies and Amazon, Spotify, and Facebook to the NFL and MLB."
+  description="Ashwin Desikan: identity, data, and monetization advisor and operator across the US, UK, and Europe, from the holding companies and Amazon, Spotify, and Facebook to the NFL and MLB. Independent of every platform vendor."
   path="/practice"
   theme="light"
 >
@@ -240,6 +275,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
         <a href="/" class={navLink}>Home</a>
         <a href="#about" class={navLink}>About</a>
+        <a href="#stack" class={navLink}>Stack</a>
         <a href="#track" class={navLink}>Work</a>
         <a href="#engage" class={navLink}>Engage</a>
         <a href="/perspective" class={navLink}>Perspective</a>
@@ -257,7 +293,10 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         An operator who has <span class="italic text-[color:var(--color-accent)]">run the desk</span> in sports, AdTech, and identity. Now building what comes next.
       </h1>
       <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
-        I am Ashwin Desikan. Two decades in identity, data, and monetization across the US, UK, and Europe, anchored in London and New York.
+        I am Ashwin Desikan. I build and run the data, identity, and monetization function inside sports and media businesses. Two leagues, sixty-two clubs, fifty-eight markets, anchored in London and New York.
+      </p>
+      <p class="mt-5 text-base md:text-lg leading-relaxed text-[color:var(--color-accent)] max-w-2xl" style="font-family: var(--font-serif)">
+        Resolved fan identity, governed and monetizable, without a two-year replatform.
       </p>
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
         <a href="#contact" class={cta}>Start a conversation <span aria-hidden="true">-&gt;</span></a>
@@ -285,7 +324,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <img src="/ashwin-portrait-web.jpg" alt="Ashwin Desikan" class="w-48 md:w-full rounded-sm border border-[color:var(--color-line)]" />
         <div class="space-y-5 text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
           <p>
-            I hold three passports and have spent over 20 years building the data and identity systems that organizations depend on when they live or die by their audiences. That work has run across the United States, the United Kingdom, and Europe, anchored in the two cities I call home, London and New York. <span class="text-[color:var(--color-accent)]">Citizen of Nowhere</span> is where that orientation becomes public work.
+            I hold three passports and have spent my career building the data and identity systems that organizations depend on when they live or die by their audiences. That work has run across the United States, the United Kingdom, and Europe, anchored in the two cities I call home, London and New York. <span class="text-[color:var(--color-accent)]">Citizen of Nowhere</span> is where that orientation becomes public work.
           </p>
           <p>
             The arc runs from bioinformatics at Illumina, through London's early AdTech wave, across European markets with the global holding companies, into the platforms that now define the industry at Amazon, Spotify, and Facebook, and on to the major American sports leagues out of New York. The through-line never changed: treat audiences and places as measurable systems, then build the infrastructure and the commercial model to act on them.
@@ -314,6 +353,39 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)] max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
         Different words, one root cause: a business sitting on real audience value without the identity spine, the governance, and the operating model to turn it into revenue. That is the work below.
       </p>
+    </section>
+
+    <!-- The Stack Decision -->
+    <section id="stack" class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The Stack Decision</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Independent of all of it</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
+        Every rights holder now faces the same choice. Buy a sports-native activation platform. Extend an enterprise CDP. Build warehouse-native. Or accept a vendor&rsquo;s identity graph and rent your own fans back.
+      </p>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {stack.map((st) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-5" style="font-family: var(--font-serif)">{st.cat}</h3>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">Good at</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 mb-5 leading-relaxed" style="font-family: var(--font-serif)">{st.good}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">Where it breaks</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/60 leading-relaxed" style="font-family: var(--font-serif)">{st.breaks}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 space-y-5 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+        <p>
+          I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I hold no referral relationships.
+        </p>
+        <p>
+          Most stack failures are not technology failures. They are governance failures that only surface eighteen months in, when two clubs disagree on what a fan is.
+        </p>
+        <p class="text-[color:var(--color-muted)]">
+          There is no right answer, only a right answer for your ownership model, your club autonomy, and your appetite to run engineering.
+        </p>
+      </div>
     </section>
 
     <!-- What I Do -->
