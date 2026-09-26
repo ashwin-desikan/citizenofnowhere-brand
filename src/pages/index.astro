@@ -4,6 +4,17 @@ import Parser from "rss-parser";
 
 const projects = [
   {
+    name: "Fan Attention Index",
+    meta: "770 teams. 20+ leagues. One scale.",
+    blurb:
+      "770 teams across more than twenty leagues, ranked by what people actually look at rather than what they are told to care about. Monthly Wikipedia pageviews in every language, blended with Google Trends where it adds signal, rescaled by a league revenue anchor so a WNBA team and a Premier League club can sit on one scale. The window runs September 2025 to August 2026 and refreshes monthly, with a valued-versus-attention column showing which clubs are priced above or below their audience.",
+    href: "https://rankings.citizenofnowhere.org/fans",
+    cta: "Open the index",
+    tag: "New",
+    methodHref: "https://rankings.citizenofnowhere.org/fans/methodology",
+    methodCta: "Method",
+  },
+  {
     name: "Global Metro Power Rankings",
     meta: "70,000+ parameters. 4,200+ metros. 237 countries.",
     blurb:
@@ -230,12 +241,23 @@ try {
               </p>
               <a
                 href={p.href}
+                rel="noopener"
                 class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors"
                 style="font-family: var(--font-display)"
               >
                 {p.cta}
                 <span aria-hidden="true">-&gt;</span>
               </a>
+              {p.methodHref && (
+                <a
+                  href={p.methodHref}
+                  rel="noopener"
+                  class="ml-6 text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors"
+                  style="font-family: var(--font-display)"
+                >
+                  {p.methodCta}
+                </a>
+              )}
             </article>
           ))
         }
