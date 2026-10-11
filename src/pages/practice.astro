@@ -195,7 +195,7 @@ const caseStudies = [
     role: "Director, Marketing Tech & Digital Operations",
     points: [
       "Built a customer data platform across all 30 clubs, a 10 million dollar-plus remit spanning CDP, clean rooms, email, SMS, push, and CTV.",
-      "Drove the Adobe Experience Platform and Journey Optimizer rollout that lifted audience engagement 20 percent, alongside a warehouse-native build on Snowflake, Hightouch, and Iterable that I specified, ran the RFP for, negotiated, and then implemented.",
+      "Drove the Adobe Experience Platform and Journey Optimizer rollout across all 30 clubs that lifted audience engagement 20 percent.",
       "Launched real-time, scan-triggered fan journeys; the Mets pilot deployed 12,000-plus push notifications in a season, with check-in click-through rising from roughly 4 to 9 percent.",
       "Authored the clean-room roadmap to monetize first-party data with sponsorship and media partners.",
     ],
@@ -204,7 +204,7 @@ const caseStudies = [
 
 const whyme = [
   { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
-  { label: "Independent of every vendor", body: "I have written the requirements, run the RFP, negotiated the contract, and then owned the implementation. I resell nothing and I hold no referral relationships." },
+  { label: "Independent of every vendor", body: "I have written the requirements, run the RFP, negotiated the contract, and then owned the implementation. I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing before you sign anything." },
   { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
   { label: "A network across the ecosystem", body: "A career spent across leagues, holding companies, and platforms shortens every introduction and every deal." },
   { label: "I write and I teach", body: "A public point of view on identity, data, and the AI era, carried through writing, keynotes, and board workshops." },
@@ -214,7 +214,7 @@ const whyme = [
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  url: "https://citizenofnowhere.org/practice",
+  url: "https://www.citizenofnowhere.org/practice",
   dateModified: new Date().toISOString().slice(0, 10),
   mainEntity: {
     "@type": "Person",
@@ -223,12 +223,12 @@ const jsonLd = {
     jobTitle: "Identity, Data & Marketing Technology Leader",
     description:
       "Identity, data, and monetization leader and operator across the US, UK, and Europe, from the global holding companies and Amazon, Spotify, and Facebook to the NFL and MLB.",
-    image: "https://citizenofnowhere.org/ashwin-portrait-web.jpg",
-    url: "https://citizenofnowhere.org/practice",
+    image: "https://www.citizenofnowhere.org/ashwin-portrait-web.jpg",
+    url: "https://www.citizenofnowhere.org/practice",
     worksFor: {
       "@type": "Organization",
       name: "Citizen of Nowhere",
-      url: "https://citizenofnowhere.org",
+      url: "https://www.citizenofnowhere.org",
     },
     workLocation: [
       { "@type": "Place", name: "London, United Kingdom" },
@@ -276,6 +276,8 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
         <a href="/" class={navLink}>Home</a>
         <a href="#about" class={navLink}>About</a>
         <a href="#stack" class={navLink}>Stack</a>
+        <a href="/clubs" class={navLink}>Clubs</a>
+        <a href="/record" class={navLink}>Record</a>
         <a href="#track" class={navLink}>Work</a>
         <a href="#engage" class={navLink}>Engage</a>
         <a href="/perspective" class={navLink}>Perspective</a>
@@ -377,7 +379,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </div>
       <div class="mt-10 space-y-5 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
         <p>
-          I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I hold no referral relationships.
+          I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I take no referral fees. Any product advisory I do for a vendor is disclosed in writing.
         </p>
         <p>
           Most stack failures are not technology failures. They are governance failures that only surface eighteen months in, when two clubs disagree on what a fan is.
@@ -465,6 +467,16 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       </div>
     </section>
 
+    <!-- Club Data Blueprint band -->
+    <section class="mb-24 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">The Club Data Blueprint</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">How a club turns twenty revenue lines into one fan.</h2>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
+        A vendor-neutral blueprint for unifying first-party fan data, with implementation plans for elite clubs, lean clubs, ownership groups, and leagues.
+      </p>
+      <a href="/clubs" class={cta} style="font-family: var(--font-display)">Read the blueprint <span aria-hidden="true">-&gt;</span></a>
+    </section>
+
     <!-- Ways to Work Together -->
     <section id="engage" class="mb-24 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
@@ -525,6 +537,16 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
       <div class="mt-10">
         <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
       </div>
+    </section>
+
+    <!-- On the public record band -->
+    <section class="mb-24 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">On the public record</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">What the leagues have said since.</h2>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
+        Press releases, vendor case studies, and conference sessions about the MLB and NFL platforms I worked on, from 2023 to today.
+      </p>
+      <a href="/record" class={cta} style="font-family: var(--font-display)">Read the record <span aria-hidden="true">-&gt;</span></a>
     </section>
 
     <!-- Why Work With Me -->
