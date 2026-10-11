@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { recordIntro, mlbRecord, nflRecord, recordTakeaways } from "../data/publicRecord";
+
+const allItems = [...mlbRecord, ...nflRecord];
+const stats = [
+  { fig: String(mlbRecord.length), label: "MLB items", context: "Press releases, case studies, and sessions about the MLB programmes." },
+  { fig: String(nflRecord.length), label: "NFL items", context: "Public sources on the NFL fan data and martech programmes." },
+  { fig: String(allItems.filter((i) => i.phase === "During my tenure").length), label: "During my tenure", context: "Work done while I was on the programmes, even where it was published later." },
+  { fig: String(allItems.filter((i) => i.phase !== "During my tenure").length), label: "Context", context: "Published before I joined or after I left, for context on the platforms." },
+];
+const groups = [
+  { id: "mlb", name: "Major League Baseball", items: mlbRecord },
+  { id: "nfl", name: "National Football League", items: nflRecord },
+];
+
+const navLink = "hover:text-[color:var(--color-paper)] transition-colors";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const chipBase = "inline-block text-[10px] tracking-[0.14em] uppercase px-2.5 py-1 rounded-full border";
+const chipTenure = "border-[color:var(--color-accent)] text-[color:var(--color-accent)]";
+const chipSince = "border-[color:var(--color-line)] text-[color:var(--color-muted)]";
+---
+
+<Layout
+  title="On the Public Record | Citizen of Nowhere"
+  description="Press releases, case studies, and conference sessions about the MLB and NFL fan data and martech programmes Ashwin Desikan worked on, 2023 to 2026."
+  path="/record"
+  theme="light"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <!-- Masthead -->
+    <header class="sticky top-0 z-50 -mx-6 md:-mx-10 px-6 md:px-10 py-4 mb-16 md:mb-24 flex items-center justify-between gap-6 bg-[color:var(--color-ink)]/85 backdrop-blur-md border-b border-[color:var(--color-line)]/60">
+      <a href="/" class={eyebrow} style="font-family: var(--font-display)">Citizen of Nowhere</a>
+      <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
+        <a href="/practice" class={navLink}>Practice</a>
+        <a href="/clubs" class={navLink}>Clubs</a>
+        <a href="#mlb" class={navLink}>MLB</a>
+        <a href="#nfl" class={navLink}>NFL</a>
+        <a href="/work" class={navLink}>Work</a>
+        <a href="/practice#contact" class={navLink}>Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-24 md:mb-36">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Evidence</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight font-medium mb-9" style="font-family: var(--font-serif)">
+        {recordIntro.title}
+      </h1>
+      <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        {recordIntro.sub}
+      </p>
+      <p class="mt-6 text-xs md:text-sm leading-relaxed text-[color:var(--color-muted)] max-w-2xl" style="font-family: var(--font-serif)">
+        {recordIntro.note}
+      </p>
+    </section>
+
+    <!-- Summary -->
+    <section class="mb-24 md:mb-36">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {stats.map((s) => (
+          <div class="bg-[color:var(--color-ink)] p-6 md:p-7">
+            <p class="text-3xl md:text-5xl font-medium tracking-tight text-[color:var(--color-paper)] mb-2" style="font-family: var(--font-serif)">{s.fig}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{s.label}</p>
+            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{s.context}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {groups.map((g) => (
+      <section id={g.id} class="mb-24 md:mb-36">
+        <div class="flex items-baseline justify-between mb-4 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">{g.name}</h2>
+          <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">2023 to 2026</span>
+        </div>
+        <ul class="divide-y divide-[color:var(--color-line)]">
+          {g.items.map((item) => (
+            <li class="py-8 grid md:grid-cols-[150px_1fr] gap-4 md:gap-10">
+              <div class="flex md:flex-col items-center md:items-start gap-3">
+                <p class="text-sm text-[color:var(--color-muted)] font-mono">{item.date}</p>
+                <span class={`${chipBase} ${item.phase === "During my tenure" ? chipTenure : chipSince}`} style="font-family: var(--font-display)">{item.phase}</span>
+              </div>
+              <div>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2 font-mono">{item.kind} / {item.publisher}</p>
+                <h3 class="text-xl md:text-2xl font-medium leading-snug mb-4" style="font-family: var(--font-serif)">
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener" class="hover:text-[color:var(--color-accent)] transition-colors">{item.title} <span aria-hidden="true" class="text-[color:var(--color-accent)]">&#8599;</span></a>
+                  ) : (
+                    <>
+                      <span>{item.title}</span>
+                      <span class="block mt-2 text-sm font-normal text-[color:var(--color-muted)]">(source: {item.publisher}, {item.date})</span>
+                    </>
+                  )}
+                </h3>
+                <ul class="space-y-3 mb-5">
+                  {item.facts.map((f) => (
+                    <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+                      <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <p class="text-sm md:text-base leading-relaxed" style="font-family: var(--font-serif)">
+                  <span class="text-[color:var(--color-muted)]">Connects to:</span> <span class="italic text-[color:var(--color-accent)]">{item.link}</span>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <!-- What the record shows -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What the record shows</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Across both leagues</span>
+      </div>
+      <ul class="space-y-4 max-w-2xl">
+        {recordTakeaways.map((t) => (
+          <li class="pl-5 relative text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+            <span class="absolute left-0 top-3 h-px w-3 bg-[color:var(--color-accent)]"></span>{t}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Closing band -->
+    <section class="mb-24 md:mb-32 border border-[color:var(--color-line)] p-8 md:p-12">
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-8 max-w-2xl" style="font-family: var(--font-serif)">The full role-by-role record is on the work page.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href="/work" class={cta}>Read the work page <span aria-hidden="true">-&gt;</span></a>
+        <a href="/clubs" class={cta}>See how this becomes a club blueprint <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-10 border-t border-[color:var(--color-line)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
+        <span>the independent work of Ashwin Desikan</span>
+      </div>
+    </footer>
+  </main>
+</Layout>
