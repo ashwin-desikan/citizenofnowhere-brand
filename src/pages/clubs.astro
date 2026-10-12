@@ -61,7 +61,6 @@ const chip = "shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(-
   title={pageMeta.title}
   description={pageMeta.description}
   path={pageMeta.path}
-  theme="light"
 >
   <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
@@ -215,7 +214,7 @@ const chip = "shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(-
               <span class="text-xs text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{l.num}</span>
               <h3 class="text-xl md:text-2xl font-medium" style="font-family: var(--font-serif)">{l.name}</h3>
             </div>
-            <p class="italic text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-serif)">{l.job}</p>
+            <p class="text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-serif)">{l.job}</p>
             <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-5" style="font-family: var(--font-serif)">{l.body}</p>
             <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">Options</p>
             <ul class="flex flex-wrap gap-2 mb-6">
@@ -247,7 +246,7 @@ const chip = "shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(-
             <span class={`inline-block mb-4 ${pill}`} style="font-family: var(--font-display)">{d.tag}</span>
             <h4 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{d.title}</h4>
             <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-4" style="font-family: var(--font-serif)">{d.body}</p>
-            <p class="text-sm md:text-base text-[color:var(--color-accent)] italic leading-relaxed" style="font-family: var(--font-serif)">My read: {d.read}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-accent)] leading-relaxed" style="font-family: var(--font-serif)">My read: {d.read}</p>
             <p class="mt-4 pt-4 border-t border-[color:var(--color-line)] text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)"><span class="block text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] mb-1" style="font-family: var(--font-display)">Where I have built this</span>{d.built}</p>
           </div>
         ))}
