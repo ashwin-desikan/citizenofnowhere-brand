@@ -7,7 +7,7 @@ const projects = [
     name: "Fan Attention Index",
     meta: "770 teams. 20+ leagues. One scale.",
     blurb:
-      "770 teams across more than twenty leagues, ranked by what people actually look at rather than what they are told to care about. Monthly Wikipedia pageviews in every language, blended with Google Trends where it adds signal, rescaled by a league revenue anchor so a WNBA team and a Premier League club can sit on one scale. The window runs September 2025 to August 2026 and refreshes monthly, with a valued-versus-attention column showing which clubs are priced above or below their audience.",
+      "770 teams across more than twenty leagues, ranked by what people actually look at. Monthly pageviews in every language, blended with search trends and rescaled by a league revenue anchor, so a WNBA team and a Premier League club sit on one scale. Refreshes monthly, with a valued-versus-attention column.",
     href: "https://rankings.citizenofnowhere.org/fans",
     cta: "Open the index",
     tag: "New",
@@ -27,7 +27,7 @@ const projects = [
     name: "The Studio: A Martech Reference Implementation",
     meta: "Identity. Consent. Audience. Activation. Measurement.",
     blurb:
-      "A fragmented fan-data stack resolved into one governed, activated, measurable system, built on the rankings dataset as a stand-in first-party audience: identity resolution, a consent gate, audience building with fan-level scores and plain-English queries, reverse-ETL activation, and lift measurement.",
+      "A fragmented fan-data stack resolved into one governed, activated, measurable system, on its own backend with synthetic fans: identity, consent, audience, activation, and lift measurement. Built rather than described.",
     href: "https://rankings.citizenofnowhere.org/studio",
     cta: "Open the Studio",
     tag: "Live",
@@ -116,7 +116,7 @@ try {
         return true;
       }
     })
-    .slice(0, 5)
+    .slice(0, 3)
     .map((item): Note => ({
       title: (item.title ?? "Untitled").trim(),
       date: formatMonthYear(item.isoDate ?? item.pubDate),
@@ -264,6 +264,20 @@ try {
       </div>
     </section>
 
+    <!-- Practice band -->
+    <section class="mb-28 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12 grid md:grid-cols-[1fr_auto] gap-8 items-end">
+      <div>
+        <p class="text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)] mb-5" style="font-family: var(--font-display)">The Practice</p>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4 max-w-2xl" style="font-family: var(--font-serif)">Advisory for rights holders, media owners and the investors behind them.</h2>
+        <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl" style="font-family: var(--font-serif)">Resolved fan identity, governed and monetizable, from someone who ran it at the NFL and MLB. Independent of every vendor.</p>
+      </div>
+      <div class="flex flex-col gap-3 text-sm md:text-base" style="font-family: var(--font-display)">
+        <a href="/practice" class="inline-flex items-center gap-2 text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">The practice <span aria-hidden="true">-&gt;</span></a>
+        <a href="/clubs" class="inline-flex items-center gap-2 text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">The Club Data Blueprint <span aria-hidden="true">-&gt;</span></a>
+        <a href="/federated" class="inline-flex items-center gap-2 text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">Case study: one fan, 32 clubs <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
     <!-- Writing -->
     <section id="writing" class="mb-28 md:mb-36">
       <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
@@ -372,7 +386,7 @@ try {
     <footer class="pt-10 border-t border-[color:var(--color-line)]">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
         <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
-        <span>citizenofnowhere.org</span>
+        <span class="flex flex-wrap gap-x-5 gap-y-1"><a href="/practice" class="hover:text-[color:var(--color-paper)] transition-colors">Practice</a><a href="/approach" class="hover:text-[color:var(--color-paper)] transition-colors">Approach</a><a href="/clubs" class="hover:text-[color:var(--color-paper)] transition-colors">Clubs</a><a href="/about" class="hover:text-[color:var(--color-paper)] transition-colors">About</a><a href="/readiness" class="hover:text-[color:var(--color-paper)] transition-colors">The Index</a></span>
       </div>
     </footer>
   </main>

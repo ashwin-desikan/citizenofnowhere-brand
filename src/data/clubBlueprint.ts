@@ -125,7 +125,7 @@ export const fieldNote = {
       title: "Put one live profile at the centre",
       body: "Every interaction lands in one real-time fan profile that sales, service, marketing, commerce, and loyalty all read. The same profile grounds the fan and staff assistants.",
       read: "Agents are the visible product. The grounded profile underneath is the actual asset.",
-      built: "At MLB the platform served all 30 clubs from one implementation, and segmentation went from a seven-day technical process to self-serve in under a day.",
+      built: "At MLB one implementation served all 30 clubs, and the same profile fed scan-triggered game-day journeys and the clean-room roadmap for partners.",
     },
   ],
   takeaways: [
@@ -150,6 +150,7 @@ export const archetypes = [
     ],
     horizon: "18 to 24 months",
     firstMove: "The identity anchor and a source inventory of every system that touches a fan.",
+    evidence: "One Premier League club has described publicly merging 35-plus source systems into one fan record, having found eight to ten versions of the same fan before it started. (ITPro and diginomica, Sept 2026)",
   },
   {
     id: "established",
@@ -164,6 +165,7 @@ export const archetypes = [
     ],
     horizon: "9 to 12 months",
     firstMove: "A fan census: how many real people sit behind your records, and how many you can legally market to.",
+    evidence: "The Premier League reported an 81 percent uplift in opt-in from behaviour-triggered consent prompts, and 200 million-plus personalised communications in 2025/26. (Adobe, Sept 2026)",
   },
   {
     id: "lean",
@@ -178,6 +180,7 @@ export const archetypes = [
     ],
     horizon: "90 days, then quarterly",
     firstMove: "A one-page data map and the three journeys that pay for the next step.",
+    evidence: "41 percent of 27 women's professional clubs surveyed have no CRM at all. (Ready Sport Global snapSHOT, 2026)",
   },
   {
     id: "mco",
@@ -192,6 +195,7 @@ export const archetypes = [
     ],
     horizon: "6 months to the template, then per acquisition",
     firstMove: "The shared data model and the data-sharing rules between clubs in the group.",
+    evidence: "Precedent for separated tenancy on a shared platform: the Belgian Pro League put 16 clubs on one CRM with each club's data kept apart. (Green 4 Solutions and Edam)",
   },
   {
     id: "league",
@@ -206,6 +210,8 @@ export const archetypes = [
     ],
     horizon: "12 to 24 months, with governance first",
     firstMove: "The governance charter: what a fan record is, who owns it, and who may act on it.",
+    link: { href: "/federated", label: "Case study: one fan, thirty-two clubs" },
+    evidence: "The NFL has stated publicly that 60 percent of its fans overlap across its 32 clubs, and that its harmonised model cut over-communication by 30 percent. (Adobe, May 2026)",
   },
   {
     id: "owner",
@@ -219,6 +225,7 @@ export const archetypes = [
     ],
     horizon: "One to two weeks for diligence, then 100 days",
     firstMove: "A diligence memo that states what the asset is, what it is not, and what it will cost to fix.",
+    evidence: "Record counts are not fan counts. The same league reported a 60 percent overlap across its clubs, so a diligence that adds up club databases overstates the asset. (Adobe, May 2026)",
   },
 ];
 
@@ -237,7 +244,7 @@ export const kpis = [
   { name: "Records per real fan", why: "How many duplicate profiles hide one supporter. At venue-led clubs it is commonly eight or ten before consolidation." },
   { name: "Known-fan share", why: "The share of digital traffic and transactions tied to a known, consented person." },
   { name: "Marketable consent rate", why: "Known is not enough. Behaviour-triggered prompts have lifted opt-in by 81 percent at the Premier League." },
-  { name: "Time to audience", why: "How long a commercial team waits for a segment. MLB moved from a seven-day technical process to self-serve in under a day." },
+  { name: "Time to audience", why: "How long a commercial team waits for a segment. A week is common. Self-serve inside a day is the standard to hold the stack to." },
   { name: "Over-communication rate", why: "How often one fan hears from several departments at once. The NFL has reported a 30 percent reduction across clubs." },
   { name: "Partner-attributed revenue", why: "The sponsorship and media value you can prove with data, not just reach." },
 ];
@@ -333,7 +340,7 @@ export const cases = [
     layer: "One platform for 30 clubs",
     points: [
       "Built the customer data platform for all 30 clubs on Adobe Experience Platform and Journey Optimizer, a 10 million dollar-plus remit across CDP, clean rooms, email, SMS, push, and CTV.",
-      "Lifted audience engagement 20 percent. Segmentation moved from a seven-day technical process to self-serve in under a day.",
+      "Lifted audience engagement 20 percent across the clubs on the platform, with game-day journey templates any club could clone.",
       "Launched real-time, scan-triggered journeys. The Mets pilot sent 12,000-plus push notifications in a season, and check-in click-through rose from about 4 to 9 percent.",
     ],
     maps: ["02", "03", "05"],

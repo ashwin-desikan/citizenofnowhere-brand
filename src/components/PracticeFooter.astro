@@ -1,0 +1,26 @@
+---
+// Shared footer for the practice pages. The secondary pages live here so the
+// masthead can stay short.
+const links = [
+  { href: "/work", label: "Full record" },
+  { href: "/record", label: "Public record" },
+  { href: "/readiness", label: "The Index" },
+  { href: "/perspective", label: "Field view" },
+  { href: "https://rankings.citizenofnowhere.org/studio", label: "The Studio" },
+  { href: "https://citizenofnowhere.substack.com", label: "Substack" },
+  { href: "https://www.linkedin.com/in/ashwindesikan/", label: "LinkedIn" },
+];
+---
+<footer class="pt-10 border-t border-[color:var(--color-line)]">
+  <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+    <div>
+      <span class="block">&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
+      <span class="block mt-1">the independent work of Ashwin Desikan</span>
+    </div>
+    <nav class="flex flex-wrap gap-x-5 gap-y-2 md:justify-end max-w-md">
+      {links.map((l) => (
+        <a href={l.href} rel={l.href.startsWith("http") ? "noopener" : undefined} target={l.href.startsWith("http") ? "_blank" : undefined} class="hover:text-[color:var(--color-paper)] transition-colors">{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</footer>

@@ -1,215 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+import { proof, tiers, metrics, approach, whyme } from "../data/practice";
 
-const proof = [
-  "NFL",
-  "MLB",
-  "Amazon",
-  "Spotify",
-  "Publicis · Digitas",
-  "Omnicom · Annalect",
-  "GroupM",
-];
+// The landing page. One screen per section, six sections. Depth lives on
+// /approach, /about, /clubs and /federated.
 
-const pillars = [
+const calendly = "https://calendly.com/adesikan/15min";
+
+const situations = [
   {
-    num: "01",
-    title: "Connected Identity & Data Foundations",
-    desc: "The plumbing everything else depends on, built for a privacy-first world.",
-    tags: ["Identity resolution", "CDP architecture", "Clean rooms", "Consent & governance"],
+    who: "Leagues, clubs and rights holders",
+    line: "You acquire fans at real cost and then cannot recognise the same person across ticketing, the app and the gate.",
+    href: "/clubs",
+    label: "The Club Data Blueprint",
   },
   {
-    num: "02",
-    title: "Audience, Activation & Commerce Media",
-    desc: "Turning first-party audiences into addressable, measurable revenue.",
-    tags: ["Audience strategy", "Cross-channel activation", "Retail & commerce media", "Measurement"],
+    who: "Media owners and platforms",
+    line: "The first-party audience is the asset on the slide, and the commercial team still cannot sell it to a partner.",
+    href: "/approach#stack",
+    label: "The Stack Decision",
   },
   {
-    num: "03",
-    title: "AI-Enabled Marketing & Operating Models",
-    desc: "Where applied AI meets the commercial and org design to actually ship it.",
-    tags: ["Applied AI", "Commercial model design", "Operating-model design", "Tier 1 client partnership"],
-  },
-  {
-    num: "04",
-    title: "Sports & Media Business",
-    desc: "Rights-adjacent data strategy and stakeholder work, league to club.",
-    tags: ["League & club strategy", "Partnership negotiation", "Live-event data"],
+    who: "Investors and new owners",
+    line: "The fan data is part of the price, and nobody has looked at it properly before signing.",
+    href: "/clubs#owner",
+    label: "The new owner playbook",
   },
 ];
 
-const whom = [
-  { seg: "Leagues & rights holders", promise: "One governed view of the fan across every club and channel, and the clean-room models to monetize it." },
-  { seg: "Media owners & publishers", promise: "A first-party identity and measurement spine that turns audience into durable ad and subscription revenue." },
-  { seg: "Holding companies & Tier 1 clients", promise: "Connected identity and commercial models that translate client strategy into measurable growth." },
-  { seg: "Sponsors, brands & agencies", promise: "Audience and clean-room infrastructure to choose markets and prove activation value partners can trust." },
-  { seg: "Growth-stage AdTech / MarTech", promise: "Product and data foundations, and a go-to-market a buyer will believe." },
-  { seg: "Investors", promise: "Technical diligence on AdTech, MarTech, and data targets, from a practitioner who has built the stack." },
+const background = [
+  { where: "The leagues", names: "NFL \u00b7 MLB", did: "Ran marketing technology, fan identity and data governance across 32 NFL clubs and 30 MLB clubs: the platforms, the consent and data standards, the clean-room roadmap, and the operating model that let competing clubs share." },
+  { where: "The platforms", names: "Amazon Ads \u00b7 Spotify \u00b7 Facebook", did: "Built the buying side of the same trade: clean rooms and connected identity for 30-plus Tier 1 advertisers on Amazon Marketing Cloud, and the audience measurement and monetization frameworks behind Spotify's ad business." },
+  { where: "The holding companies", names: "Publicis \u00b7 Digitas \u00b7 Omnicom \u00b7 Annalect \u00b7 GroupM", did: "Client-side data strategy at population scale: product owner of a 220 million-identity CDP for Samsung, and the identity and measurement product suite rolled out across 58 EMEA markets." },
 ];
 
-const tiers = [
-  {
-    name: "First-Party Readiness Diagnostic",
-    format: "Three weeks \u00b7 Starts here",
-    items: "Where your fan data actually is, what it is worth, and the two things blocking it. Scored across the six readiness dimensions and delivered as a sequenced roadmap with opportunity sizing. The paid, deeper counterpart to the First-Party Index.",
-  },
-  {
-    name: "Stack Selection, RFP & Negotiation",
-    format: "Eight to twelve weeks",
-    items: "Requirements, shortlist, commercial terms, and the governance model that has to come with them. I have been on the buying side of every category on the list and I am independent of all of them.",
-  },
-  {
-    name: "Fractional Head of Data & Identity",
-    format: "Two days a week \u00b7 Embedded",
-    items: "Standing in as senior data, identity, or marketing-technology leadership through a build or a transition. For estates that need an operator, not a deck.",
-  },
-  {
-    name: "Investor Technical Diligence",
-    format: "One to two weeks per target",
-    items: "What the data asset is, what it is not, and what it will cost to fix. Written for an investment committee, with the limits of the review stated in line rather than smoothed away.",
-  },
-  {
-    name: "Clean Room & Partner Measurement",
-    format: "Project",
-    items: "The collaboration architecture that lets you prove activation value to partners and price inventory on data rather than reach alone.",
-  },
-  {
-    name: "Enablement & workshops",
-    format: "Fixed engagement",
-    items: "Governance design, team enablement, keynotes and board workshops that leave the capability inside the building.",
-  },
+const services = [
+  { name: "Find out where you stand", body: "A diagnostic of the fan data estate: what it is worth, what is in the way, and the sequence that fixes it. Three weeks, a scored roadmap, and a number the board can hold the programme to.", href: "#engage", label: "The Readiness Diagnostic" },
+  { name: "Choose and run the stack", body: "The buyer-side view of a crowded market. Requirements, shortlist, negotiation and the governance that has to come with the contract. I have bought from every category on the list and I am independent of all of them.", href: "/approach#stack", label: "The Stack Decision" },
+  { name: "Lead it, or test it", body: "A fractional head of data and identity through a build or a transition, and technical diligence for investors who need to know what a data asset is before the price is set.", href: "#engage", label: "Fractional and diligence" },
 ];
 
-const metrics = [
-  { fig: "62", label: "Clubs unified", context: "League-scale identity and customer data platforms across every NFL and MLB club." },
-  { fig: "220M+", label: "Identities resolved", context: "Product owner of Samsung's identity-linked CDP on Google Cloud." },
-  { fig: "~99%", label: "Data spend cut", context: "Shifting Samsung from third-party to owned data, roughly 700,000 dollars out, while expanding reach." },
-  { fig: "+20%", label: "Engagement lift", context: "The Adobe Experience Platform rollout across MLB's 30 clubs." },
-  { fig: "+40%", label: "YoY audience revenue", context: "Audience-targeted revenue on Spotify's free tier, across a 500-person sales organization." },
-  { fig: "58", label: "Markets activated", context: "Rolling out Annalect's identity and measurement product suite across EMEA." },
+const proofCards = [
+  { eyebrow: "Case study", title: "One fan, thirty-two clubs", body: "How a league unified identity, consent and data standards across 32 independently owned clubs, in the league's own published numbers.", href: "/federated", label: "Read the case study" },
+  { eyebrow: "Blueprint", title: "The Club Data Blueprint", body: "A vendor-neutral six-layer architecture with implementation plans for elite clubs, lean clubs, ownership groups and leagues.", href: "/clubs", label: "Read the blueprint" },
+  { eyebrow: "Working product", title: "The Studio", body: "Identity, consent, audience, activation and measurement, running on a real backend with synthetic fans. Built, not described.", href: "https://rankings.citizenofnowhere.org/studio", label: "Open the Studio", external: true },
 ];
 
-const heard = [
-  {
-    label: "Identity",
-    quote:
-      "We spend heavily to acquire fans and customers, but once they are in we cannot recognize the same person across ticketing, the app, and email. We are marketing to ghosts.",
-  },
-  {
-    label: "Governance",
-    quote:
-      "Every market and every team built their own data setup. Legal, marketing, and analytics each work from a different version of the truth, and our consent is a patchwork we could not defend.",
-  },
-  {
-    label: "Monetization",
-    quote:
-      "Our first-party data is obviously an asset, but when a partner asks to collaborate in a clean room we cannot say what we can offer, what to charge, or what we are allowed to share.",
-  },
-  {
-    label: "AI & operating model",
-    quote:
-      "We piloted AI in marketing and it demoed well, but nothing shipped, because the data underneath it and the operating model around it were not ready.",
-  },
-];
-
-const highlights = [
-  {
-    co: "Amazon Ads",
-    title: "Clean rooms and Connected Identity for 30+ global advertisers",
-    blurb:
-      "Directed more than 30 Tier 1 client partnerships architecting Connected Identity, clean-room, and advanced-measurement solutions on Amazon Marketing Cloud, driving cross-platform data collaboration and multi-million-dollar revenue growth.",
-  },
-  {
-    co: "Spotify",
-    title: "Turning first-party audio data into ad revenue",
-    blurb:
-      "Built the global audience-measurement and monetization frameworks used across a 500-person sales organization, partnering with 40-plus agencies and contributing to a 40 percent year-over-year increase in audience-targeted revenue on the free tier.",
-  },
-  {
-    co: "Digitas, Publicis Groupe",
-    title: "Samsung's customer data platform, built at population scale",
-    blurb:
-      "As VP of Data Strategy on Samsung's US account, led a multi-capability team of 20-plus as product owner of an identity-linked CDP resolving 220 million-plus identities on Google Cloud. The shift from third-party to owned data cut spend by roughly 700,000 dollars, about 99 percent, while expanding addressable reach.",
-  },
-  {
-    co: "Annalect, Omnicom Media Group",
-    title: "Identity-linked data products across 58 markets",
-    blurb:
-      "Led data science, analytics, and insight for Annalect EMEA, architecting and rolling out the suite of identity and measurement products, attribution, custom audiences, lookalike modeling, media-mix and TV attribution, across 58 markets.",
-  },
-];
-
-const stack = [
-  {
-    cat: "Sports-native activation platforms",
-    good: "Speed to market, brand demand already attached, and signals built for sport.",
-    breaks: "You are activating on somebody else's graph, and the fan relationship stays theirs.",
-  },
-  {
-    cat: "Enterprise CDP suites",
-    good: "Journey orchestration, mature consent tooling, and support a board recognizes.",
-    breaks: "The cost curve at profile scale, and slow to model a federated club estate.",
-  },
-  {
-    cat: "Warehouse-native stacks",
-    good: "Full ownership, the lowest marginal cost, and no vendor lock on the data layer.",
-    breaks: "You are buying an engineering team, not a product.",
-  },
-  {
-    cat: "Commercial intelligence & agentic layers",
-    good: "Fast operational wins and strong internal demand.",
-    breaks: "An agent layer over unresolved identity produces faster wrong answers.",
-  },
-];
-
-const approach = [
-  { num: "01", name: "Diagnose", body: "Score first-party readiness across the six dimensions and find the gap that matters most. The First-Party Index is the front door." },
-  { num: "02", name: "Architect", body: "Design the identity spine, data foundation, and governance the strategy actually needs, sequenced so each step pays for the next." },
-  { num: "03", name: "Activate", body: "Turn audiences into real-time, cross-channel action, and stand up the measurement that ties it back to revenue." },
-  { num: "04", name: "Monetize & govern", body: "Build the clean-room and partnership models that monetize first-party data, with consent enforced by default." },
-];
-
-const rightsHolder = [
-  { t: "Recognize the fan everywhere", d: "One identity resolved across ticketing, the app, email, and the stadium gate, so every message reaches a known person." },
-  { t: "Make sponsorship measurable", d: "Clean-room collaboration that proves activation value to partners and lets you price inventory on data, not just reach." },
-  { t: "Value rights and catchment", d: "Fan catchment, market selection, and rights valuation grounded in real audience data." },
-];
-
-const building = [
-  { t: "Civic Audience Intelligence", d: "Licensable datasets, scoring APIs, and dashboards for choosing markets, planning activations, and valuing rights." },
-  { t: "Sports Cartography APIs", d: "Club, venue, league, and metro data joined on a single editorial source of truth, for leagues, agencies, and rights holders." },
-];
-
-const caseStudies = [
-  {
-    co: "National Football League",
-    role: "Director, Business Relationship Management & MarTech Products",
-    points: [
-      "Unified fan identity and data across all 32 clubs into one league-scale operating model. The hard part was never the technology. It was getting 32 independent commercial entities to agree what a fan is and who may act on that.",
-      "Authored the enterprise governance framework: privacy, consent, data standards, and cross-club integration.",
-      "Modernized the league's AI, data, and Connected Identity platforms, with club toolkits and executive readouts that accelerated adoption.",
-    ],
-  },
-  {
-    co: "Major League Baseball",
-    role: "Director, Marketing Tech & Digital Operations",
-    points: [
-      "Built a customer data platform across all 30 clubs, a 10 million dollar-plus remit spanning CDP, clean rooms, email, SMS, push, and CTV.",
-      "Drove the Adobe Experience Platform and Journey Optimizer rollout across all 30 clubs that lifted audience engagement 20 percent.",
-      "Launched real-time, scan-triggered fan journeys; the Mets pilot deployed 12,000-plus push notifications in a season, with check-in click-through rising from roughly 4 to 9 percent.",
-      "Authored the clean-room roadmap to monetize first-party data with sponsorship and media partners.",
-    ],
-  },
-];
-
-const whyme = [
-  { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
-  { label: "Independent of every vendor", body: "I have written the requirements, run the RFP, negotiated the contract, and then owned the implementation. I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing before you sign anything." },
-  { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
-  { label: "A network across the ecosystem", body: "A career spent across leagues, holding companies, and platforms shortens every introduction and every deal." },
-  { label: "I write and I teach", body: "A public point of view on identity, data, and the AI era, carried through writing, keynotes, and board workshops." },
-  { label: "Both sides of the trade", body: "Platforms like Genius FANHub and Elevate EPIC monetize fan identity. I built the side of the trade the rights holder owns, and the demand side at Amazon that buys from it." },
-];
+const whyThree = whyme.filter((w) => ["Operator, not commentator", "Independent of every vendor", "Both sides of the trade"].includes(w.label));
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -225,11 +64,7 @@ const jsonLd = {
       "Identity, data, and monetization leader and operator across the US, UK, and Europe, from the global holding companies and Amazon, Spotify, and Facebook to the NFL and MLB.",
     image: "https://www.citizenofnowhere.org/ashwin-portrait-web.jpg",
     url: "https://www.citizenofnowhere.org/practice",
-    worksFor: {
-      "@type": "Organization",
-      name: "Citizen of Nowhere",
-      url: "https://www.citizenofnowhere.org",
-    },
+    worksFor: { "@type": "Organization", name: "Citizen of Nowhere", url: "https://www.citizenofnowhere.org" },
     workLocation: [
       { "@type": "Place", name: "London, United Kingdom" },
       { "@type": "Place", name: "New York, United States" },
@@ -240,25 +75,18 @@ const jsonLd = {
       "https://citizenofnowhere.substack.com",
     ],
     knowsAbout: [
-      "Identity resolution",
-      "Customer data platforms",
-      "Data clean rooms",
-      "Consent and data governance",
-      "Marketing technology",
-      "AdTech",
-      "Audience activation",
-      "Marketing measurement and attribution",
-      "Commerce media",
-      "Applied AI in marketing",
-      "Sports and media business",
+      "Identity resolution", "Customer data platforms", "Data clean rooms", "Consent and data governance",
+      "Marketing technology", "AdTech", "Audience activation", "Marketing measurement and attribution",
+      "Commerce media", "Applied AI in marketing", "Sports and media business",
     ],
   },
 };
 
-const navLink = "hover:text-[color:var(--color-paper)] transition-colors";
 const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
 const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
 const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const ctaQuiet = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
 ---
 
 <Layout
@@ -268,380 +96,200 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
 >
   <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
-    <!-- Masthead -->
-    <header class="sticky top-0 z-50 -mx-6 md:-mx-10 px-6 md:px-10 py-4 mb-16 md:mb-24 flex items-center justify-between gap-6 bg-[color:var(--color-ink)]/85 backdrop-blur-md border-b border-[color:var(--color-line)]/60">
-      <a href="/" class={eyebrow} style="font-family: var(--font-display)">Citizen of Nowhere</a>
-      <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
-        <a href="/" class={navLink}>Home</a>
-        <a href="#about" class={navLink}>About</a>
-        <a href="#stack" class={navLink}>Stack</a>
-        <a href="/clubs" class={navLink}>Clubs</a>
-        <a href="/record" class={navLink}>Record</a>
-        <a href="#track" class={navLink}>Work</a>
-        <a href="#engage" class={navLink}>Engage</a>
-        <a href="/perspective" class={navLink}>Perspective</a>
-        <a href="/readiness" class={navLink}>The Index</a>
-        <a href="#contact" class={navLink}>Contact</a>
-      </nav>
-    </header>
+    <PracticeNav current="/practice" />
 
-    <!-- Hero -->
-    <section class="mb-24 md:mb-36">
-      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">
-        Identity-led monetization for rights holders, media &amp; platforms
-      </p>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight font-medium mb-9" style="font-family: var(--font-serif)">
-        An operator who has <span class="text-[color:var(--color-accent)]">run the desk</span> in sports, AdTech, and identity. Now building what comes next.
-      </h1>
-      <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
-        I am Ashwin Desikan. I build and run the data, identity, and monetization function inside sports and media businesses. Two leagues, sixty-two clubs, fifty-eight markets, anchored in London and New York.
-      </p>
-      <p class="mt-5 text-base md:text-lg leading-relaxed text-[color:var(--color-accent)] max-w-2xl" style="font-family: var(--font-serif)">
-        Resolved fan identity, governed and monetizable, without a two-year replatform.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
-        <a href="#contact" class={cta}>Start a conversation <span aria-hidden="true">-&gt;</span></a>
-        <a href="#track" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Read the work <span aria-hidden="true">-&gt;</span></a>
-      </div>
-      <p class="mt-8 text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Open to a senior mandate &amp; selective advisory &middot; London / New York</p>
-    </section>
-
-    <!-- Proof -->
-    <section class="mb-24 md:mb-36">
-      <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-muted)] mb-5" style="font-family: var(--font-display)">
-        Senior roles across leagues, platforms, and holding companies
-      </p>
-      <div class="flex flex-wrap gap-x-7 gap-y-3 text-lg md:text-xl text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">
-        {proof.map((p) => <span>{p}</span>)}
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">About</h2>
-      </div>
-      <div class="grid md:grid-cols-[220px_1fr] gap-10 items-start">
-        <img src="/ashwin-portrait-web.jpg" alt="Ashwin Desikan" class="w-48 md:w-full rounded-sm border border-[color:var(--color-line)]" />
-        <div class="space-y-5 text-base md:text-lg leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
-          <p>
-            I hold three passports and have spent my career building the data and identity systems that organizations depend on when they live or die by their audiences. That work has run across the United States, the United Kingdom, and Europe, anchored in the two cities I call home, London and New York. <span class="text-[color:var(--color-accent)]">Citizen of Nowhere</span> is where that orientation becomes public work.
+    <!-- 1. Hero -->
+    <section class="mb-20 md:mb-28">
+      <div class="grid md:grid-cols-[1fr_200px] lg:grid-cols-[1fr_240px] gap-10 md:gap-14 items-start">
+        <div>
+          <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Operator and advisor &middot; Data, identity &amp; monetization &middot; London and New York</p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.04] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+            Ashwin Desikan builds the data, identity and marketing-technology function inside <span class="text-[color:var(--color-accent)]">sports and media businesses</span>.
+          </h1>
+          <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+            I ran it at the NFL and MLB, across 62 clubs. Before that I built the other side of the trade at Amazon Ads and Spotify, and ran client data strategy inside Publicis and Omnicom. I now do the same work for rights holders, media owners and the investors behind them, as an advisor, a fractional lead, or the person who runs the stack decision.
           </p>
-          <p>
-            The arc runs from bioinformatics at Illumina, through London's early AdTech wave, across European markets with the global holding companies, into the platforms that now define the industry at Amazon, Spotify, and Facebook, and on to the major American sports leagues out of New York. The through-line never changed: treat audiences and places as measurable systems, then build the infrastructure and the commercial model to act on them.
-          </p>
-          <p>
-            Today I do that in two registers. Commercially, advising and leading on identity, data, and monetization on both sides of the Atlantic. And independently, building indices and writing about movement, measurement, and belonging. The phrase was meant as an insult. I kept it, because someone at home in more than one city, loyal to the idea rather than the flag, is not stateless. They simply see more of the map.
-          </p>
+          <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+            <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a 15-minute call <span aria-hidden="true">-&gt;</span></a>
+            <a href="#services" class={ctaQuiet}>What I do <span aria-hidden="true">-&gt;</span></a>
+          </div>
         </div>
+        <a href="/about" class="group block w-40 md:w-full md:mt-12">
+          <img src="/ashwin-portrait-web.jpg" alt="Ashwin Desikan" width="900" height="1350" class="w-full rounded-sm border border-[color:var(--color-line)] group-hover:border-[color:var(--color-accent)] transition-colors" />
+          <span class="mt-3 block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-display)">Ashwin Desikan &middot; London / New York</span>
+        </a>
+      </div>
+      <div class="mt-12 pt-6 border-t border-[color:var(--color-line)] flex flex-wrap items-baseline gap-x-6 gap-y-2">
+        <span class="text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Director and VP roles at</span>
+        {proof.filter((p) => !["GroupM", "Omnicom \u00b7 Annalect"].includes(p)).map((p) => <span class="text-base md:text-lg text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">{p}</span>)}
       </div>
     </section>
 
-    <!-- What I Hear -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I Hear</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">In the first conversation</span>
+    <!-- 2. Background -->
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Background</h2>
+        <a href="/about" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">The full story <span aria-hidden="true">-&gt;</span></a>
       </div>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {heard.map((h) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{h.label}</p>
-            <blockquote class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{h.quote}</blockquote>
-          </div>
-        ))}
-      </div>
-      <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)] max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
-        Different words, one root cause: a business sitting on real audience value without the identity spine, the governance, and the operating model to turn it into revenue. That is the work below.
-      </p>
-    </section>
-
-    <!-- The Stack Decision -->
-    <section id="stack" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">The Stack Decision</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Independent of all of it</span>
-      </div>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
-        Every rights holder now faces the same choice. Buy a sports-native activation platform. Extend an enterprise CDP. Build warehouse-native. Or accept a vendor&rsquo;s identity graph and rent your own fans back.
-      </p>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {stack.map((st) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <h3 class="text-lg md:text-xl font-medium mb-5" style="font-family: var(--font-serif)">{st.cat}</h3>
-            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">Good at</p>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 mb-5 leading-relaxed" style="font-family: var(--font-serif)">{st.good}</p>
-            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">Where it breaks</p>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/60 leading-relaxed" style="font-family: var(--font-serif)">{st.breaks}</p>
-          </div>
-        ))}
-      </div>
-      <div class="mt-10 space-y-5 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
-        <p>
-          I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I take no referral fees. Any product advisory I do for a vendor is disclosed in writing.
-        </p>
-        <p>
-          Most stack failures are not technology failures. They are governance failures that only surface eighteen months in, when two clubs disagree on what a fan is.
-        </p>
-        <p class="text-[color:var(--color-muted)]">
-          There is no right answer, only a right answer for your ownership model, your club autonomy, and your appetite to run engineering.
-        </p>
-      </div>
-    </section>
-
-    <!-- What I Do -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I Do</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The First-Party Operating Model</span>
-      </div>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
-        The framework I diagnose and build against, in sequence. Foundations first, then activation and commerce, then the applied AI and operating model that ship it, all applied to the business of sport and media.
-      </p>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {pillars.map((p) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <p class="text-xs text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{p.num}</p>
-            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{p.title}</h3>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 mb-5" style="font-family: var(--font-serif)">{p.desc}</p>
-            <ul class="flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <li class="text-[11px] tracking-[0.04em] text-[color:var(--color-muted)] border border-[color:var(--color-line)] px-2.5 py-1 rounded-full" style="font-family: var(--font-display)">{t}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- How an Engagement Works -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">How an Engagement Works</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Insight before assumption</span>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
-        {approach.map((a) => (
-          <div class="md:border-l border-[color:var(--color-line)] md:pl-5">
-            <p class="text-xs text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{a.num}</p>
-            <h3 class="text-lg md:text-xl font-medium mb-2" style="font-family: var(--font-serif)">{a.name}</h3>
-            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Who I Help -->
-    <section id="who" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who I Help</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">And what you get</span>
-      </div>
-      <ul class="divide-y divide-[color:var(--color-line)]">
-        {whom.map((w) => (
-          <li class="py-5 grid md:grid-cols-[260px_1fr] gap-2 md:gap-10">
-            <p class="text-base md:text-lg text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{w.seg}</p>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{w.promise}</p>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <!-- For Leagues, Clubs & Rights Holders -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">For Leagues, Clubs &amp; Rights Holders</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The most under-monetized asset in the building</span>
-      </div>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">
-        In sport, supporters hand over more, and more willingly, than customers in almost any other category. That signal usually sits trapped across vendor platforms and disconnected systems. I have built the identity and data layer beneath the fan relationship at league scale, and I am building the tools that put a value on it.
-      </p>
       <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {rightsHolder.map((r) => (
+        {background.map((b) => (
           <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{r.t}</h3>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{r.d}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{b.where}</p>
+            <p class="text-xs tracking-[0.1em] uppercase text-[color:var(--color-muted)] mb-4" style="font-family: var(--font-display)">{b.names}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{b.did}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Club Data Blueprint band -->
-    <section class="mb-24 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12">
-      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">The Club Data Blueprint</p>
-      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">How a club turns twenty revenue lines into one fan.</h2>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
-        A vendor-neutral blueprint for unifying first-party fan data, with implementation plans for elite clubs, lean clubs, ownership groups, and leagues.
-      </p>
-      <a href="/clubs" class={cta} style="font-family: var(--font-display)">Read the blueprint <span aria-hidden="true">-&gt;</span></a>
+    <!-- 3. What I do -->
+    <section id="services" class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I do</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Three kinds of work</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+        {services.map((sv) => (
+          <div>
+            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{sv.name}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-4" style="font-family: var(--font-serif)">{sv.body}</p>
+            <a href={sv.href} class={small} style="font-family: var(--font-display)">{sv.label} <span aria-hidden="true">-&gt;</span></a>
+          </div>
+        ))}
+      </div>
     </section>
 
-    <!-- Ways to Work Together -->
-    <section id="engage" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Ways to Work Together</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Sized to the problem</span>
+    <!-- 4. Who this is for -->
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who this is for</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The three situations I hear most</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {tiers.map((t) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <div class="flex items-baseline justify-between gap-4 mb-3">
-              <h3 class="text-xl md:text-2xl font-medium" style="font-family: var(--font-serif)">{t.name}</h3>
-              <span class="shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{t.format}</span>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {situations.map((s) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{s.who}</p>
+            <p class="text-base md:text-lg text-[color:var(--color-paper)]/85 leading-relaxed grow" style="font-family: var(--font-serif)">{s.line}</p>
+            <a href={s.href} class={`${small} mt-6`} style="font-family: var(--font-display)">{s.label} <span aria-hidden="true">-&gt;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 5. Ways to work together (accordion) -->
+    <section id="engage" class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Ways to work together</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Six offers, sized to the problem</span>
+      </div>
+      <div class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {tiers.map((t, i) => (
+          <details class="group" open={i === 0}>
+            <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden py-5 flex items-baseline justify-between gap-4">
+              <span class="flex items-baseline gap-4">
+                <span class="text-xs text-[color:var(--color-accent)] w-6" style="font-family: var(--font-display)">0{i + 1}</span>
+                <span class="text-lg md:text-xl font-medium group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">{t.name}</span>
+              </span>
+              <span class="shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">{t.format}</span>
+            </summary>
+            <div class="pb-7 md:pl-10 grid md:grid-cols-[1fr_280px] gap-6 md:gap-10">
+              <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.items}</p>
+              <div>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">You buy this when</p>
+                <ul class="space-y-2 mb-4">
+                  {t.situations.map((x) => (
+                    <li class="pl-5 relative text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">
+                      <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{x}
+                    </li>
+                  ))}
+                </ul>
+                <a href={t.proof.href} class={small} style="font-family: var(--font-display)">See it built: {t.proof.label} <span aria-hidden="true">-&gt;</span></a>
+              </div>
             </div>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{t.items}</p>
-          </div>
+          </details>
         ))}
       </div>
+      <p class="mt-6 text-sm text-[color:var(--color-muted)] max-w-2xl" style="font-family: var(--font-serif)">
+        I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing before you sign anything. <a href="/approach" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">How an engagement runs</a>.
+      </p>
     </section>
 
-    <!-- Impact at Scale -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Impact at Scale</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Measured outcomes</span>
+    <!-- 6. Proof -->
+    <section id="proof" class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Proof</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Built, not described</span>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)] mb-px">
+        {proofCards.map((c) => (
+          <a href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener" : undefined} class="bg-[color:var(--color-ink)] p-7 md:p-8 group flex flex-col">
+            <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{c.eyebrow}</p>
+            <h3 class="text-xl md:text-2xl font-medium mb-3 group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">{c.title}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed grow" style="font-family: var(--font-serif)">{c.body}</p>
+            <span class={`${small} mt-6`} style="font-family: var(--font-display)">{c.label} <span aria-hidden="true">-&gt;</span></span>
+          </a>
+        ))}
+      </div>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {metrics.map((m) => (
-          <div class="bg-[color:var(--color-ink)] p-6 md:p-7">
-            <p class="text-3xl md:text-5xl font-medium tracking-tight text-[color:var(--color-paper)] mb-2" style="font-family: var(--font-serif)">{m.fig}</p>
-            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{m.label}</p>
-            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{m.context}</p>
+          <div class="bg-[color:var(--color-ink)] p-4 md:p-5">
+            <p class="text-2xl md:text-3xl font-medium tracking-tight text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{m.fig}</p>
+            <p class="text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] mt-1" style="font-family: var(--font-display)">{m.label}</p>
           </div>
         ))}
       </div>
-    </section>
-
-    <!-- Selected Work -->
-    <section id="track" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Selected Work</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">League scale, in detail</span>
-      </div>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {caseStudies.map((c) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{c.co}</p>
-            <p class="text-sm text-[color:var(--color-muted)] mb-5" style="font-family: var(--font-display)">{c.role}</p>
-            <ul class="space-y-3">
-              {c.points.map((pt) => (
-                <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
-                  <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{pt}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div class="mt-10">
-        <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
+      <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
+        <a href="/about#impact" class={small}>What each number means <span aria-hidden="true">-&gt;</span></a>
+        <a href="/record" class={small}>What the leagues have said since <span aria-hidden="true">-&gt;</span></a>
       </div>
     </section>
 
-    <!-- On the public record band -->
-    <section class="mb-24 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12">
-      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">On the public record</p>
-      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">What the leagues have said since.</h2>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
-        Press releases, vendor case studies, and conference sessions about the MLB and NFL platforms I worked on, from 2023 to today.
-      </p>
-      <a href="/record" class={cta} style="font-family: var(--font-display)">Read the record <span aria-hidden="true">-&gt;</span></a>
-    </section>
-
-    <!-- Why Work With Me -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Why Work With Me</h2>
+    <!-- 7. How it works + why me -->
+    <section class="mb-20 md:mb-28 grid md:grid-cols-2 gap-12 md:gap-16">
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">How it works</h2>
+        </div>
+        <ol class="space-y-5">
+          {approach.map((a) => (
+            <li class="grid grid-cols-[32px_1fr] gap-3">
+              <span class="text-xs text-[color:var(--color-accent)] pt-1" style="font-family: var(--font-display)">{a.num}</span>
+              <div>
+                <h3 class="text-lg font-medium" style="font-family: var(--font-serif)">{a.name}</h3>
+                <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <a href="/approach" class={`${small} mt-6`} style="font-family: var(--font-display)">The full approach, and the stack decision <span aria-hidden="true">-&gt;</span></a>
       </div>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {whyme.map((w) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <h3 class="text-lg md:text-xl font-medium mb-3 text-[color:var(--color-accent)]" style="font-family: var(--font-serif)">{w.label}</h3>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{w.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Point of View -->
-    <section id="view" class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">A Point of View</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The business of sport</span>
-      </div>
-      <h3 class="text-2xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl leading-snug" style="font-family: var(--font-serif)">
-        A club becomes data-centric the day its leadership <span class="text-[color:var(--color-accent)]">decides to</span>, not the day it buys the platform.
-      </h3>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
-        Private capital is professionalizing the business of sport, and the first thing new ownership scrutinizes is how well a club actually knows its own fans. A field view on owning that relationship, drawn from league-scale work and sharpened in the London sports-business community.
-      </p>
-      <a href="/perspective" class={cta} style="font-family: var(--font-display)">Read the field view <span aria-hidden="true">-&gt;</span></a>
-    </section>
-
-    <!-- The Studio -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">The Studio</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Proof, not just advice</span>
-      </div>
-      <p class="text-xl md:text-2xl leading-relaxed max-w-2xl mb-10" style="font-family: var(--font-serif)">
-        I do not just advise on data products. I build them. The studio is the proof.
-      </p>
-      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        <a href="https://rankings.citizenofnowhere.org" target="_blank" rel="noopener" class="bg-[color:var(--color-ink)] p-7 md:p-8 group">
-          <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">Work / 001 &middot; Live</p>
-          <h3 class="text-2xl font-medium mb-2 group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">Global Metro Power Rankings</h3>
-          <p class="text-xs tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-4" style="font-family: var(--font-display)">70,000+ parameters &middot; 4,200+ metros &middot; 237 countries</p>
-          <p class="text-sm md:text-base text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">A data-driven measure of what makes a city matter globally, assembled parameter by parameter across sixteen dimensions.</p>
-        </a>
-        <a href="https://rankings.citizenofnowhere.org/studio" target="_blank" rel="noopener" class="bg-[color:var(--color-ink)] p-7 md:p-8 group">
-          <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">Work / 002 &middot; Live</p>
-          <h3 class="text-2xl font-medium mb-2 group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">The Studio: A Martech Reference Implementation</h3>
-          <p class="text-xs tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-4" style="font-family: var(--font-display)">Identity &middot; Consent &middot; Audience &middot; Activation &middot; Measurement</p>
-          <p class="text-sm md:text-base text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">A fragmented fan-data stack resolved into one governed, activated, measurable system: identity resolution, a consent gate, audience building with fan-level scores and plain-English queries, reverse-ETL activation, and lift measurement. The four pillars, built rather than described.</p>
-        </a>
-        <a href="https://citizenofnowhere.substack.com" target="_blank" rel="noopener" class="bg-[color:var(--color-ink)] p-7 md:p-8 group">
-          <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">Writing &middot; Substack</p>
-          <h3 class="text-2xl font-medium mb-3 group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">Field reports</h3>
-          <ul class="text-sm md:text-base text-[color:var(--color-paper)]/70 divide-y divide-[color:var(--color-line)]" style="font-family: var(--font-serif)">
-            <li class="py-2">The Geography of Erasure</li>
-            <li class="py-2">Every Metro Keeps Score: The Sports Layer Is Now Live</li>
-            <li class="py-2">One Week, Two Cities, No Contest</li>
-          </ul>
-        </a>
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">Why me</h2>
+        </div>
+        <ul class="space-y-5">
+          {whyThree.map((w) => (
+            <li>
+              <h3 class="text-lg font-medium text-[color:var(--color-accent)]" style="font-family: var(--font-serif)">{w.label}</h3>
+              <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{w.body}</p>
+            </li>
+          ))}
+        </ul>
+        <a href="/about" class={`${small} mt-6`} style="font-family: var(--font-display)">About Ashwin, and the record <span aria-hidden="true">-&gt;</span></a>
       </div>
     </section>
 
-    <!-- The Index band -->
-    <section class="mb-24 md:mb-36 border border-[color:var(--color-line)] p-8 md:p-12">
-      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">The First-Party Index</p>
-      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">How ready is your first-party data to drive revenue?</h2>
-      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
-        A six-question index drawn from patterns across thirty-plus enterprise engagements. Score your organization across six dimensions and see the shape of your readiness, in under two minutes. No email required.
-      </p>
-      <a href="/readiness" class={cta} style="font-family: var(--font-display)">Calculate your index <span aria-hidden="true">-&gt;</span></a>
-    </section>
-
-    <!-- Currently -->
-    <section class="mb-24 md:mb-36">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Currently</h2>
-      </div>
-      <p class="text-2xl md:text-4xl leading-snug font-medium max-w-3xl" style="font-family: var(--font-serif)">
-        Open to a senior leadership mandate in data, identity, and marketing technology, the kind that <span class="text-[color:var(--color-accent)]">owns the operating model end to end</span>. Full-time, based in New York or London and fluent across US and European teams, with selective advisory alongside. If the problem is interesting, let's talk.
-      </p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mb-24 md:mb-32">
-      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+    <!-- 8. Contact -->
+    <section id="contact" class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Contact</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">No preparation needed for a first call</span>
       </div>
       <div class="grid md:grid-cols-2 gap-12">
         <div>
           <h3 class="text-3xl md:text-4xl font-medium tracking-tight mb-4" style="font-family: var(--font-serif)">Start a conversation.</h3>
           <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-md mb-7" style="font-family: var(--font-serif)">
-            Whether you are building an identity and data capability, preparing a media business for the AI era, or hiring for the role that does both.
+            Open to a senior in-house mandate and to selective advisory. London or New York, and comfortable working across both.
           </p>
           <form id="contactForm" action="https://formspree.io/f/maqzebor" method="POST" class="flex flex-col gap-3 max-w-md">
             <input type="text" name="name" placeholder="Name" aria-label="Your name" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
@@ -653,7 +301,7 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
           <p id="formStatus" role="status" class="mt-4 text-sm md:text-base max-w-md hidden" style="font-family: var(--font-serif)"></p>
         </div>
         <div class="divide-y divide-[color:var(--color-line)]" style="font-family: var(--font-display)">
-          <a href="https://calendly.com/adesikan/15min" target="_blank" rel="noopener" class="flex items-center justify-between py-5 text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors">
+          <a href={calendly} target="_blank" rel="noopener" class="flex items-center justify-between py-5 text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors">
             <span><span class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1">Book a call</span>15-minute intro call</span><span aria-hidden="true">-&gt;</span>
           </a>
           <a href="https://www.linkedin.com/in/ashwindesikan/" target="_blank" rel="noopener" class="flex items-center justify-between py-5 text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors">
@@ -662,17 +310,14 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
           <a href="https://www.linkedin.com/company/citizen-of-nowhere" target="_blank" rel="noopener" class="flex items-center justify-between py-5 text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors">
             <span><span class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1">LinkedIn &middot; Citizen of Nowhere</span>Company page</span><span aria-hidden="true">-&gt;</span>
           </a>
+          <a href="https://citizenofnowhere.substack.com/subscribe" target="_blank" rel="noopener" class="flex items-center justify-between py-5 text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors">
+            <span><span class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1">Substack &middot; Free</span>Get the field reports by email</span><span aria-hidden="true">-&gt;</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="pt-10 border-t border-[color:var(--color-line)]">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
-        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
-        <span>the independent work of Ashwin Desikan</span>
-      </div>
-    </footer>
+    <PracticeFooter />
   </main>
 
   <script is:inline>

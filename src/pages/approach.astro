@@ -1,0 +1,170 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+import { approach, stack, heard, pillars, rightsHolder } from "../data/practice";
+
+// The method page: how an engagement runs, the stack decision, what the
+// first conversation sounds like, and the operating model I build against.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+
+const toc = [
+  { href: "#how", label: "How an engagement works" },
+  { href: "#stack", label: "The stack decision" },
+  { href: "#heard", label: "What I hear first" },
+  { href: "#model", label: "The operating model" },
+  { href: "#sport", label: "For rights holders" },
+];
+---
+
+<Layout
+  title="Approach | Ashwin Desikan, Citizen of Nowhere"
+  description="How an engagement with Ashwin Desikan runs: diagnose, architect, activate, monetize and govern. The buyer-side view of the fan-data stack decision, independent of every vendor, and the first-party operating model the work builds against."
+  path="/approach"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/approach" />
+
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Approach</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        Insight before assumption. <span class="text-[color:var(--color-accent)]">Governance before platform.</span>
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        Every engagement runs the same four steps, in the same order, whatever the size. The method is the same one I used inside the leagues, and it is built so that each step pays for the next.
+      </p>
+      <nav class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-xs md:text-sm" style="font-family: var(--font-display)" aria-label="On this page">
+        {toc.map((t) => <a href={t.href} class="text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">{t.label}</a>)}
+      </nav>
+    </section>
+
+    <!-- How an engagement works -->
+    <section id="how" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">How an engagement works</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Four steps</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+        {approach.map((a) => (
+          <div class="md:border-l border-[color:var(--color-line)] md:pl-5">
+            <p class="text-xs text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{a.num}</p>
+            <h3 class="text-lg md:text-xl font-medium mb-2" style="font-family: var(--font-serif)">{a.name}</h3>
+            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{a.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
+        <a href="/readiness" class={small}>Start with the free First-Party Index <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#engage" class={small}>The six offers <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- The Stack Decision -->
+    <section id="stack" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The stack decision</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Independent of all of it</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
+        Every rights holder now faces the same choice. Buy a sports-native activation platform. Extend an enterprise CDP. Build warehouse-native. Or accept a vendor&rsquo;s identity graph and rent your own fans back.
+      </p>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {stack.map((st) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-5" style="font-family: var(--font-serif)">{st.cat}</h3>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">Good at</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 mb-5 leading-relaxed" style="font-family: var(--font-serif)">{st.good}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">Where it breaks</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/60 leading-relaxed" style="font-family: var(--font-serif)">{st.breaks}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 space-y-4 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+        <p>I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I take no referral fees. Any product advisory I do for a vendor is disclosed in writing.</p>
+        <p>Most stack failures are not technology failures. They are governance failures that only surface eighteen months in, when two clubs disagree on what a fan is.</p>
+        <p class="text-[color:var(--color-muted)]">There is no right answer, only a right answer for your ownership model, your club autonomy, and your appetite to run engineering.</p>
+      </div>
+    </section>
+
+    <!-- What I hear -->
+    <section id="heard" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What I hear first</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">In the first conversation</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {heard.map((h) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{h.label}</p>
+            <blockquote class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{h.quote}</blockquote>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)] max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        Different words, one root cause: a business sitting on real audience value without the identity spine, the governance, and the operating model to turn it into revenue.
+      </p>
+    </section>
+
+    <!-- The operating model -->
+    <section id="model" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The operating model</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">What I diagnose and build against</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
+        Foundations first, then activation and commerce, then the applied AI and operating model that ship it, all applied to the business of sport and media.
+      </p>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {pillars.map((p) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-xs text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{p.num}</p>
+            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{p.title}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 mb-5" style="font-family: var(--font-serif)">{p.desc}</p>
+            <ul class="flex flex-wrap gap-2">
+              {p.tags.map((t) => (
+                <li class="text-[11px] tracking-[0.04em] text-[color:var(--color-muted)] border border-[color:var(--color-line)] px-2.5 py-1 rounded-full" style="font-family: var(--font-display)">{t}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- For rights holders -->
+    <section id="sport" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">For leagues, clubs &amp; rights holders</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The most under-monetized asset in the building</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {rightsHolder.map((r) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{r.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{r.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
+        <a href="/clubs" class={small}>The Club Data Blueprint <span aria-hidden="true">-&gt;</span></a>
+        <a href="/federated" class={small}>The federated model, a case study <span aria-hidden="true">-&gt;</span></a>
+        <a href="/perspective" class={small}>A field view on the data-centric club <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">Start here</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">A first call is fifteen minutes and needs no preparation.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#contact" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Send a note <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>

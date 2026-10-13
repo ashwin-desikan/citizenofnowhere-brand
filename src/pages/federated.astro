@@ -1,0 +1,243 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+
+const calendly = "https://calendly.com/adesikan/15min";
+
+const facts = [
+  { fig: "32", label: "Club stacks, one model", context: "A harmonised data model connecting the league's stack with those of all 32 clubs, giving one view of the fan across web, app, stadium and partner channels." },
+  { fig: "60%", label: "Fan overlap across clubs", context: "The share of fans who appear in more than one club's records, as stated publicly by the league. Identity resolution was never optional." },
+  { fig: "30%", label: "Less over-communication", context: "The reduction in duplicate and conflicting messages across teams once one profile governed the send." },
+  { fig: "544", label: "Game-day sends, minimum", context: "272 regular-season games, two clubs each, before any other outreach. The volume that makes a shared cadence rule necessary." },
+];
+
+const decisions = [
+  {
+    num: "01",
+    name: "Governance before platform",
+    body: "The first artefact was a charter, not a contract: what a fan record is, which entity owns it, which purposes it may be used for, and who may act on it. Privacy, consent, data standards and cross-club integration were written down and signed before any pipe was built. Thirty-two independent commercial entities agreed the nouns first.",
+    built: "Authored the enterprise governance framework and the club-facing standards that sat under it.",
+  },
+  {
+    num: "02",
+    name: "Central identity, club-owned activation",
+    body: "The league resolves identity and sets the standards. Each club keeps its own activation: its journeys, its tone, its commercial decisions. Nothing central sends on a club's behalf, and nothing at a club breaks the shared model. That split is what makes competing entities willing to share.",
+    built: "Modernised the Connected Identity and data platforms, with club toolkits and executive readouts that moved adoption from the pilot clubs to the whole league.",
+  },
+  {
+    num: "03",
+    name: "One harmonised model, many stacks",
+    body: "Rather than one platform for everyone, a common model that each club's existing stack maps into. The hard integration work is done once, at the model, and the clubs keep the tools their teams already run. A cadence rule across all senders then becomes enforceable, which is where the over-communication number comes from.",
+    built: "Ran the business relationship and product layer between the league's data and marketing-technology teams and the 32 clubs through the rollout.",
+  },
+];
+
+const transfers = [
+  { who: "A league or federation", what: "The same three decisions, in the same order. Charter, then federated identity, then a clean room in place of file exchange.", href: "/clubs#league", label: "The league archetype" },
+  { who: "A multi-club ownership group", what: "A federation in miniature. One data model, per-club tenancy, consent by jurisdiction, and group analytics on aggregates rather than shared fan records.", href: "/clubs#mco", label: "The ownership-group archetype" },
+  { who: "A club inside a league", what: "Know what the league already holds about your fans and what you may use. Build the club-owned anchor so you are a tenant by choice, not by default.", href: "/clubs#established", label: "The established club archetype" },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "The federated model: one fan, thirty-two clubs",
+  author: { "@type": "Person", name: "Ashwin Desikan", url: "https://www.citizenofnowhere.org/practice" },
+  publisher: { "@type": "Organization", name: "Citizen of Nowhere" },
+  about: "How a league unified fan identity and data across 32 independently owned clubs, and what transfers to other leagues, clubs and ownership groups.",
+};
+
+const navLink = "hover:text-[color:var(--color-paper)] transition-colors";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const ctaQuiet = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors";
+---
+
+<Layout
+  title="The Federated Model: One Fan, Thirty-Two Clubs | Citizen of Nowhere"
+  description="A case study in league-scale fan data: how identity, consent and data standards were unified across 32 independently owned clubs, the three decisions that made it work, and what transfers to other leagues, clubs and ownership groups."
+  path="/federated"
+>
+  <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/federated" />
+
+    <!-- Hero -->
+    <section class="mb-24 md:mb-36">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Case study &middot; League-scale fan data</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight font-medium mb-9" style="font-family: var(--font-serif)">
+        One fan, <span class="text-[color:var(--color-accent)]">thirty-two clubs</span>. The federated model.
+      </h1>
+      <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        How a league unified fan identity, consent and data standards across 32 independently owned clubs without taking their activation away from them. The hard part was never the technology.
+      </p>
+      <nav class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-xs md:text-sm" style="font-family: var(--font-display)" aria-label="On this page">
+        <a href="#problem" class="text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">The problem</a>
+        <a href="#decisions" class="text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Three decisions</a>
+        <a href="#architecture" class="text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Architecture</a>
+        <a href="#transfers" class="text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">What transfers</a>
+      </nav>
+    </section>
+
+    <!-- The numbers -->
+    <section id="problem" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The problem, in the league's own numbers</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Published figures</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {facts.map((m) => (
+          <div class="bg-[color:var(--color-ink)] p-6 md:p-7">
+            <p class="text-3xl md:text-5xl font-medium tracking-tight text-[color:var(--color-paper)] mb-2" style="font-family: var(--font-serif)">{m.fig}</p>
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{m.label}</p>
+            <p class="text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{m.context}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        Thirty-two clubs, each a separate business with its own owner, its own stack and its own view of who its fans are. Six in ten of those fans sit in more than one club's records. Every club, and the league, wanted to talk to them on the same days. A platform cannot settle that. An agreement can.
+      </p>
+    </section>
+
+    <!-- Three decisions -->
+    <section id="decisions" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The three decisions</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">In this order</span>
+      </div>
+      <div class="divide-y divide-[color:var(--color-line)]">
+        {decisions.map((d) => (
+          <article class="py-10 grid md:grid-cols-[80px_1fr] gap-4 md:gap-10">
+            <span class="text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{d.num}</span>
+            <div>
+              <h3 class="text-2xl md:text-3xl font-medium mb-4" style="font-family: var(--font-serif)">{d.name}</h3>
+              <p class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed max-w-2xl mb-5" style="font-family: var(--font-serif)">{d.body}</p>
+              <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">My part</p>
+              <p class="text-sm md:text-base text-[color:var(--color-accent)] leading-relaxed max-w-2xl" style="font-family: var(--font-serif)">{d.built}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The architecture</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Simplified, no vendor names</span>
+      </div>
+      <figure class="border border-[color:var(--color-line)] p-4 md:p-8">
+        <svg viewBox="0 0 880 520" role="img" aria-labelledby="archTitle" class="w-full h-auto" style="font-family: var(--font-display)">
+          <title id="archTitle">Federated fan data model: a governance spine, a central identity and standards layer, 32 club stacks that activate, and the channels where fans are met.</title>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--color-muted)" />
+            </marker>
+          </defs>
+          <!-- governance spine -->
+          <rect x="20" y="20" width="110" height="480" fill="none" stroke="var(--color-accent)" stroke-dasharray="4 4" />
+          <text x="75" y="60" text-anchor="middle" fill="var(--color-accent)" font-size="11" letter-spacing="2">GOVERNANCE</text>
+          <text x="75" y="130" text-anchor="middle" fill="var(--color-paper)" font-size="12">Charter</text>
+          <text x="75" y="190" text-anchor="middle" fill="var(--color-paper)" font-size="12">Consent purposes</text>
+          <text x="75" y="250" text-anchor="middle" fill="var(--color-paper)" font-size="12">Data standards</text>
+          <text x="75" y="310" text-anchor="middle" fill="var(--color-paper)" font-size="12">Club agreements</text>
+          <text x="75" y="370" text-anchor="middle" fill="var(--color-paper)" font-size="12">Cadence rule</text>
+          <text x="75" y="430" text-anchor="middle" fill="var(--color-paper)" font-size="12">Audit</text>
+          <!-- league layer -->
+          <rect x="160" y="20" width="700" height="150" fill="none" stroke="var(--color-line)" />
+          <text x="180" y="48" fill="var(--color-muted)" font-size="11" letter-spacing="2">LEAGUE LAYER &middot; CENTRAL</text>
+          <rect x="180" y="70" width="200" height="76" fill="none" stroke="var(--color-accent)" />
+          <text x="280" y="102" text-anchor="middle" fill="var(--color-paper)" font-size="13">Identity resolution</text>
+          <text x="280" y="124" text-anchor="middle" fill="var(--color-muted)" font-size="11">one fan across 32 records</text>
+          <rect x="400" y="70" width="200" height="76" fill="none" stroke="var(--color-accent)" />
+          <text x="500" y="102" text-anchor="middle" fill="var(--color-paper)" font-size="13">Harmonised model</text>
+          <text x="500" y="124" text-anchor="middle" fill="var(--color-muted)" font-size="11">shared schema, shared profile</text>
+          <rect x="620" y="70" width="220" height="76" fill="none" stroke="var(--color-accent)" />
+          <text x="730" y="102" text-anchor="middle" fill="var(--color-paper)" font-size="13">Clean room</text>
+          <text x="730" y="124" text-anchor="middle" fill="var(--color-muted)" font-size="11">partners and cross-club, no file exchange</text>
+          <!-- arrows down -->
+          <line x1="280" y1="170" x2="280" y2="215" stroke="var(--color-muted)" marker-end="url(#arr)" marker-start="url(#arr)" />
+          <line x1="500" y1="170" x2="500" y2="215" stroke="var(--color-muted)" marker-end="url(#arr)" marker-start="url(#arr)" />
+          <line x1="730" y1="170" x2="730" y2="215" stroke="var(--color-muted)" marker-end="url(#arr)" marker-start="url(#arr)" />
+          <text x="845" y="198" text-anchor="end" fill="var(--color-muted)" font-size="11">standards down, signals up</text>
+          <!-- club layer -->
+          <rect x="160" y="220" width="700" height="150" fill="none" stroke="var(--color-line)" />
+          <text x="180" y="248" fill="var(--color-muted)" font-size="11" letter-spacing="2">CLUB LAYER &middot; 32 INDEPENDENT STACKS &middot; ACTIVATION STAYS HERE</text>
+          <rect x="180" y="270" width="120" height="76" fill="none" stroke="var(--color-paper)" opacity="0.6" />
+          <text x="240" y="302" text-anchor="middle" fill="var(--color-paper)" font-size="13">Club 01</text>
+          <text x="240" y="324" text-anchor="middle" fill="var(--color-muted)" font-size="11">own CRM, own journeys</text>
+          <rect x="320" y="270" width="120" height="76" fill="none" stroke="var(--color-paper)" opacity="0.6" />
+          <text x="380" y="302" text-anchor="middle" fill="var(--color-paper)" font-size="13">Club 02</text>
+          <text x="380" y="324" text-anchor="middle" fill="var(--color-muted)" font-size="11">own stack, mapped in</text>
+          <text x="500" y="312" text-anchor="middle" fill="var(--color-muted)" font-size="16">&middot; &middot; &middot;</text>
+          <rect x="560" y="270" width="120" height="76" fill="none" stroke="var(--color-paper)" opacity="0.6" />
+          <text x="620" y="302" text-anchor="middle" fill="var(--color-paper)" font-size="13">Club 31</text>
+          <text x="620" y="324" text-anchor="middle" fill="var(--color-muted)" font-size="11">own tone, own offers</text>
+          <rect x="700" y="270" width="140" height="76" fill="none" stroke="var(--color-paper)" opacity="0.6" />
+          <text x="770" y="302" text-anchor="middle" fill="var(--color-paper)" font-size="13">Club 32</text>
+          <text x="770" y="324" text-anchor="middle" fill="var(--color-muted)" font-size="11">same model, same consent</text>
+          <!-- arrows down -->
+          <line x1="500" y1="370" x2="500" y2="415" stroke="var(--color-muted)" marker-end="url(#arr)" marker-start="url(#arr)" />
+          <!-- channels -->
+          <rect x="160" y="420" width="700" height="80" fill="none" stroke="var(--color-line)" />
+          <text x="180" y="448" fill="var(--color-muted)" font-size="11" letter-spacing="2">WHERE THE FAN IS MET</text>
+          <text x="510" y="482" text-anchor="middle" fill="var(--color-paper)" font-size="13">Web &middot; App &middot; Stadium gate &middot; Email and push &middot; Retail &middot; Broadcast and partner channels</text>
+        </svg>
+        <figcaption class="mt-5 text-sm text-[color:var(--color-muted)] leading-relaxed max-w-2xl" style="font-family: var(--font-serif)">
+          Identity and standards are central. Activation is local. The governance spine runs through both, and the cadence rule is enforced at the model, which is the only place it can be. Product names are left off on purpose; the decisions hold whichever vendors sit in the boxes.
+        </figcaption>
+      </figure>
+      <p class="mt-8 text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        The league's own summary of the operating rule is worth keeping: the system reads the signal, and humans decide the play. The model tells a club what it knows about a fan today. The club decides what, if anything, to do about it.
+      </p>
+    </section>
+
+    <!-- What transfers -->
+    <section id="transfers" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What transfers</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Three readers</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {transfers.map((t) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{t.who}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed mb-6 grow" style="font-family: var(--font-serif)">{t.what}</p>
+            <a href={t.href} class="inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">{t.label} <span aria-hidden="true">-&gt;</span></a>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        A working version of the tenant split, where a club, a brand and a league each see a different cut of the same session, runs in <a href="https://rankings.citizenofnowhere.org/studio" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">the Studio</a> on synthetic data.
+      </p>
+    </section>
+
+    <!-- Limits -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What this page does and does not claim</h2>
+      </div>
+      <div class="space-y-4 text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
+        <p>The figures above are the league's own published numbers. The account of the three decisions and the architecture is mine, from the inside of the programme, and it names no club-level data, no contract terms and no vendor configuration.</p>
+        <p>I ran the business relationship and marketing-technology product function for the programme. I did not build it alone, and the clubs did the activation work that produced the results. Where I describe my part, it is the part I would defend in a room with the people who were there.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mb-24 md:mb-32 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">If this is your problem</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">The charter comes first. I can draft it with you in three weeks.</h2>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8" style="font-family: var(--font-serif)">
+        A first call is fifteen minutes and needs no preparation. Bring the number of entities that have to agree, and I will tell you where it usually breaks.
+      </p>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a 15-minute call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#engage" class={ctaQuiet}>Ways to work together <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>
