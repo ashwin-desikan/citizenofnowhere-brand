@@ -5,9 +5,12 @@ import Parser from "rss-parser";
 const projects = [
   {
     name: "Fan Attention Index",
-    meta: "770 teams. 20+ leagues. One scale.",
+    // Counts as of 2026-10-14 (metric audit): 770 = data/fans/preview.json
+    // meta.totalTeams; 33 leagues in 11 sports = lib/sportLabels.ts
+    // FAN_INDEX_SPORT_LEAGUES in the rankings repo. Re-check after each monthly refresh.
+    meta: "770 teams. 33 leagues. One scale.",
     blurb:
-      "770 teams across more than twenty leagues, ranked by what people actually look at. Monthly pageviews in every language, blended with search trends and rescaled by a league revenue anchor, so a WNBA team and a Premier League club sit on one scale. Refreshes monthly, with a valued-versus-attention column.",
+      "770 teams across 33 leagues in eleven sports, ranked by what people actually look at. Monthly pageviews in every language, blended with search trends and rescaled by a league revenue anchor, so a WNBA team and a Premier League club sit on one scale. Refreshes monthly, with a valued-versus-attention column.",
     href: "https://rankings.citizenofnowhere.org/fans",
     cta: "Open the index",
     tag: "New",
@@ -16,7 +19,12 @@ const projects = [
   },
   {
     name: "Global Metro Power Rankings",
-    meta: "70,000+ parameters. 4,200+ metros. 237 countries.",
+    // Counts as of 2026-10-14 (metric audit), from the rankings repo's served data:
+    // 4,315 metros in public/data/metros.json; 247 countries and territories in
+    // public/data/countries.json (every one holds at least one metro). "70,000+
+    // parameters" is 4,315 metros x 16 scored dimensions (69,040) plus population
+    // and GDP per metro (77,670 inputs in all).
+    meta: "70,000+ parameters. 4,300+ metros. 247 countries and territories.",
     blurb:
       "A data-driven measure of what makes a city matter globally, assembled parameter by parameter across sixteen dimensions.",
     href: "https://rankings.citizenofnowhere.org",

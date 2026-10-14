@@ -376,7 +376,7 @@ export const cases = [
     co: "Citizen of Nowhere",
     layer: "Built, not described",
     points: [
-      "Designed and shipped the Global Metro Power Rankings as an AI-assisted product: 70,000-plus parameters across 4,200-plus metros and 237 countries, with a sports layer covering clubs, venues, and valuations.",
+      "Designed and shipped the Global Metro Power Rankings as an AI-assisted product: 70,000-plus parameters across 4,300-plus metros in 247 countries and territories, with a sports layer covering clubs, venues, and valuations.",
       "Built the Studio, a working fan-data stack with identity, consent, audience building, activation, and lift measurement, plus the configurator for this blueprint.",
       "Product manager and builder in one seat: requirements, data model, agentic tooling, and release, with the same discipline I apply to a club estate.",
     ],
