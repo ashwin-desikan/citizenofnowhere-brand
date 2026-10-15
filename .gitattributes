@@ -1,0 +1,15 @@
+# Line endings. Every file written through the Windows mount comes back as CRLF,
+# so without this git reports every line of every text file as changed. On
+# 2026-10-15 the working tree showed 2546 insertions against 2546 deletions with
+# zero content difference (`git diff --ignore-all-space` was empty).
+#
+# text=auto  git stores LF in the repository and decides text vs binary itself,
+#            so images and fonts are untouched.
+# eol=crlf   the working tree is CRLF on every machine, Windows and the Linux
+#            mount alike, so the two never disagree about what "unchanged" means.
+#
+# After adding this file, run `git add --renormalize .` ON WINDOWS once and commit.
+* text=auto eol=crlf
+
+# Shell scripts genuinely break with CRLF (the shebang line). Nothing else here does.
+*.sh text eol=lf

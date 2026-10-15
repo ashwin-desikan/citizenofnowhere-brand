@@ -209,9 +209,17 @@ const ctaQuiet = "inline-flex items-center gap-2 text-sm md:text-base text-[colo
           </div>
         ))}
       </div>
-      <p class="mt-8 text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
-        A working version of the tenant split, where a club, a brand and a league each see a different cut of the same session, runs in <a href="https://rankings.citizenofnowhere.org/studio" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">the Studio</a> on synthetic data.
-      </p>
+      <div class="mt-8 max-w-2xl">
+        <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">
+          A working version of this runs in the Studio on synthetic data. The <a href="https://rankings.citizenofnowhere.org/studio/clean-room" target="_blank" rel="noopener" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">federated clean room</a> holds three clubs, a league as operator and one sponsor. A club asking for its fan overlap with a rival is refused. The league running the identical query is allowed, and returns counts without a single identifier leaving the room.
+        </p>
+        <p class="mt-4 text-sm md:text-base text-[color:var(--color-paper)]/60 leading-relaxed" style="font-family: var(--font-serif)">
+          Same records, same join, same threshold. The only thing that changed is who is asking, and that is the whole case for the league holding the room rather than each club holding its own.
+        </p>
+        <p class="mt-5">
+          <a href="https://rankings.citizenofnowhere.org/studio/clean-room" target="_blank" rel="noopener" class={cta} style="font-family: var(--font-display)">Open the clean room <span aria-hidden="true">-&gt;</span></a>
+        </p>
+      </div>
     </section>
 
     <!-- Limits -->
