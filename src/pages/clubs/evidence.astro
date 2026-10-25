@@ -1,0 +1,186 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PracticeNav from "../../components/PracticeNav.astro";
+import PracticeFooter from "../../components/PracticeFooter.astro";
+import SectionNav from "../../components/SectionNav.astro";
+import { wordCount, oneUpdate, fieldNote, twoEstates, ecosystem, cases } from "../../data/clubBlueprint";
+
+const calendly = "https://calendly.com/adesikan/15min";
+const sections = [
+  { id: "one-update", label: "One update, five teams" },
+  { id: "field-note", label: "From the field" },
+  { id: "estates", label: "Two data estates" },
+  { id: "market", label: "Market map" },
+  { id: "work", label: "Selected work" },
+  { id: "book", label: "Book a call" },
+];
+const words = wordCount([oneUpdate, fieldNote, twoEstates, ecosystem, cases]);
+
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const ctaQuiet = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors";
+const pill = "text-[11px] tracking-[0.04em] text-[color:var(--color-muted)] border border-[color:var(--color-line)] px-2.5 py-1 rounded-full";
+const chip = "shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-accent)]";
+---
+
+<Layout
+  title="Evidence | The Club Data Blueprint | Citizen of Nowhere"
+  description="One update five teams, a field note, the two data estates, the market map and selected work behind the Club Data Blueprint."
+  path="/clubs/evidence"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/clubs" />
+
+    <header class="mb-10">
+      <nav aria-label="Breadcrumb" class="mb-8 text-[11px] md:text-xs tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+        <a href="/" class="hover:text-[color:var(--color-paper)] transition-colors">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/clubs" class="hover:text-[color:var(--color-paper)] transition-colors">Clubs</a>
+        <span aria-hidden="true"> / </span>
+        <span class="text-[color:var(--color-paper)]">Evidence</span>
+      </nav>
+      <p class={`${eyebrow} mb-6`} style="font-family: var(--font-display)">The Club Data Blueprint</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.04] tracking-tight font-medium" style="font-family: var(--font-serif)">Evidence</h1>
+    </header>
+
+    <SectionNav items={sections} words={words} />
+
+    <section id="one-update" class="mb-24 md:mb-36 scroll-mt-32">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">One Update, Five Teams</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Layers 01 and 02 at work</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">{oneUpdate.body}</p>
+      <div class="border border-[color:var(--color-accent)] p-6 md:p-7 max-w-xl mx-auto text-center">
+        <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">Entered once</p>
+        <p class="text-lg md:text-xl font-medium" style="font-family: var(--font-serif)">{oneUpdate.event}</p>
+      </div>
+      <div class="flex justify-center" aria-hidden="true"><span class="block w-px h-10 bg-[color:var(--color-accent)]"></span></div>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {oneUpdate.signals.map((g) => (
+          <li class="min-w-0 bg-[color:var(--color-ink)] p-5 md:p-5">
+            <p class="text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{g.team}</p>
+            <p class="text-sm text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{g.d}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-8 text-lg md:text-xl font-semibold max-w-2xl leading-snug" style="font-family: var(--font-serif)">{oneUpdate.close}</p>
+      <div class="mt-10" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a Club Data Blueprint call <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Field Note -->
+    <section id="field-note" class="mb-24 md:mb-36 scroll-mt-32">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">From the Field</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Anonymised, generalised</span>
+      </div>
+      <p class={`${eyebrow} mb-4`} style="font-family: var(--font-display)">{fieldNote.eyebrow}</p>
+      <h3 class="text-2xl md:text-4xl font-medium tracking-tight mb-8 max-w-3xl leading-snug" style="font-family: var(--font-serif)">{fieldNote.title}</h3>
+      <p class="border border-[color:var(--color-line)] p-5 md:p-6 mb-8 max-w-2xl text-sm md:text-base text-[color:var(--color-muted)] leading-relaxed" style="font-family: var(--font-serif)">{fieldNote.disclaimer}</p>
+      <div class="space-y-5 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed mb-10" style="font-family: var(--font-serif)">
+        {fieldNote.context.map((p) => <p>{p}</p>)}
+      </div>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)] mb-10">
+        {fieldNote.decisions.map((d) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <span class={`inline-block mb-4 ${pill}`} style="font-family: var(--font-display)">{d.tag}</span>
+            <h4 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{d.title}</h4>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-4" style="font-family: var(--font-serif)">{d.body}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-accent)] leading-relaxed" style="font-family: var(--font-serif)">My read: {d.read}</p>
+            <p class="mt-4 pt-4 border-t border-[color:var(--color-line)] text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)"><span class="block text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] mb-1" style="font-family: var(--font-display)">Where I have built this</span>{d.built}</p>
+          </div>
+        ))}
+      </div>
+      <ul class="space-y-3 max-w-2xl">
+        {fieldNote.takeaways.map((t) => (
+          <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+            <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{t}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="estates" class="mb-24 md:mb-36 scroll-mt-32">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">One Club, Two Data Estates</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Commercial and sporting</span>
+      </div>
+      <h3 class="text-2xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl leading-snug" style="font-family: var(--font-serif)">{twoEstates.title}</h3>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-10 leading-relaxed" style="font-family: var(--font-serif)">{twoEstates.body}</p>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {twoEstates.points.map((p) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h4 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{p.t}</h4>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="market" class="mb-24 md:mb-36 scroll-mt-32">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The Market Map</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Independent of all of it</span>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)]">
+        {ecosystem.map((e) => (
+          <li class="py-5 grid md:grid-cols-[240px_1fr] gap-2 md:gap-10">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] pt-1" style="font-family: var(--font-display)">{e.cat}</p>
+            <div>
+              <p class="text-base md:text-lg text-[color:var(--color-paper)] mb-1" style="font-family: var(--font-serif)">{e.names}</p>
+              <p class="text-sm md:text-base text-[color:var(--color-muted)] leading-relaxed" style="font-family: var(--font-serif)">{e.note}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">Independent of every vendor listed. I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing before you sign anything.</p>
+    </section>
+
+    <section id="work" class="mb-24 md:mb-36 scroll-mt-32">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Selected Work</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Mapped to the blueprint</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {cases.map((c) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-[11px] tracking-[0.18em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{c.co}</p>
+            <p class="text-sm text-[color:var(--color-muted)] mb-5" style="font-family: var(--font-display)">{c.layer}</p>
+            <ul class="space-y-3 mb-6">
+              {c.points.map((pt) => (
+                <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+                  <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{pt}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              {c.maps.map((m) => (
+                <span class={pill} style="font-family: var(--font-display)">Layer {m}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10">
+        <a href="/work" class={cta} style="font-family: var(--font-display)">See the full record of building, from Illumina to the NFL <span aria-hidden="true">-&gt;</span></a>
+      </div>
+      <div class="mt-4">
+        <a href="/record" class={cta} style="font-family: var(--font-display)">See the public record on MLB and NFL <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Book a call -->
+    <section id="book" class="mb-24 md:mb-32 scroll-mt-32 border border-[color:var(--color-line)] p-8 md:p-12">
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-8 max-w-2xl" style="font-family: var(--font-serif)">Start with a Club Data Blueprint.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a Club Data Blueprint call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#contact" class={ctaQuiet}>Send a note <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>

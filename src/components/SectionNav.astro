@@ -1,0 +1,72 @@
+---
+// Sticky in-page nav for the /clubs child pages. Anchor links, scroll-spy via
+// IntersectionObserver, and a mono reading-time line. Sits below PracticeNav,
+// so its top offset is measured from the header at runtime.
+interface Props {
+  items: { id: string; label: string }[];
+  words?: number;
+}
+const { items, words = 0 } = Astro.props;
+const minutes = Math.max(1, Math.round(words / 230));
+---
+<nav
+  data-section-nav
+  aria-label="On this page"
+  class="section-nav sticky top-[57px] z-40 -mx-6 md:-mx-10 px-6 md:px-10 mb-16 md:mb-24 bg-[color:var(--color-ink)] border-b border-[color:var(--color-line)] flex items-center justify-between gap-6"
+  style="font-family: var(--font-display)"
+>
+  <div class="min-w-0 flex-1 overflow-x-auto flex gap-x-6 py-3 text-[11px] md:text-xs tracking-[0.18em] uppercase whitespace-nowrap">
+    {items.map((it) => (
+      <a href={`#${it.id}`} data-target={it.id} class="shrink-0 text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">{it.label}</a>
+    ))}
+  </div>
+  {words > 0 && (
+    <span class="shrink-0 hidden sm:inline text-[11px] md:text-xs tracking-[0.14em] uppercase text-[color:var(--color-muted)]">{minutes} min read</span>
+  )}
+</nav>
+
+<style>
+  .section-nav > div { scrollbar-width: none; }
+  .section-nav > div::-webkit-scrollbar { display: none; }
+  .section-nav a[aria-current="true"] { color: var(--color-accent); }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("[data-section-nav]");
+  if (nav) {
+    const header = document.querySelector("header");
+    const setTop = () => {
+      if (header) nav.style.top = header.getBoundingClientRect().height + "px";
+    };
+    setTop();
+    window.addEventListener("resize", setTop);
+
+    const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>("a[data-target]"));
+    const byId = new Map(links.map((a) => [a.dataset.target as string, a]));
+    const setActive = (id: string) => {
+      links.forEach((a) => a.removeAttribute("aria-current"));
+      const a = byId.get(id);
+      if (a) {
+        a.setAttribute("aria-current", "true");
+        const box = a.parentElement as HTMLElement;
+        if (box && box.scrollWidth > box.clientWidth) {
+          box.scrollTo({ left: a.offsetLeft - 24, behavior: "smooth" });
+        }
+      }
+    };
+    const sections = links
+      .map((a) => document.getElementById(a.dataset.target as string))
+      .filter((el): el is HTMLElement => el !== null);
+    if ("IntersectionObserver" in window && sections.length) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) setActive((e.target as HTMLElement).id);
+          });
+        },
+        { rootMargin: "-20% 0px -65% 0px", threshold: 0 }
+      );
+      sections.forEach((s) => obs.observe(s));
+    }
+  }
+</script>

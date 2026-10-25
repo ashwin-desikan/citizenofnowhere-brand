@@ -462,3 +462,32 @@ export const pageMeta = {
     "How football clubs, leagues, and ownership groups unify first-party fan data across their martech and adtech stacks. A vendor-neutral blueprint, implementation archetypes, and services from Ashwin Desikan.",
   path: "/clubs",
 };
+
+// ---------------------------------------------------------------------------
+// Additive exports for the /clubs child pages (front-door branch).
+// ---------------------------------------------------------------------------
+
+// Which services fit which archetype. Keys are archetype ids; values are
+// titles exactly as they appear in `offers`.
+export const archetypeServices: Record<string, string[]> = {
+  venue: ["Club Data Blueprint", "Identity Anchor Sprint", "Partner Value & Clean Rooms"],
+  established: ["Club Data Blueprint", "Identity Anchor Sprint", "Stack Selection & RFP"],
+  lean: ["Club Data Blueprint", "Fractional Head of Fan Data", "Stack Selection & RFP"],
+  mco: ["Multi-Club & League Data Model", "Club Data Blueprint", "Identity Anchor Sprint"],
+  league: ["Multi-Club & League Data Model", "Partner Value & Clean Rooms", "Club Data Blueprint"],
+  owner: ["Ownership Diligence", "Club Data Blueprint", "Fractional Head of Fan Data"],
+};
+
+// Counts the words in every string found inside any value (strings, arrays,
+// plain objects). Used to feed the reading-time line on the child pages.
+export function wordCount(value: unknown): number {
+  if (typeof value === "string") {
+    const t = value.trim();
+    return t ? t.split(/\s+/).length : 0;
+  }
+  if (Array.isArray(value)) return value.reduce((n: number, v: unknown) => n + wordCount(v), 0);
+  if (value && typeof value === "object") {
+    return Object.values(value as Record<string, unknown>).reduce((n: number, v: unknown) => n + wordCount(v), 0);
+  }
+  return 0;
+}
