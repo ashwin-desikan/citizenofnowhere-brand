@@ -427,6 +427,35 @@ export const faq = [
   },
 ];
 
+// One fan event, routed to every team that needs it. Illustrates layers 01 and 02.
+export const oneUpdate = {
+  title: "One update, five teams",
+  body: "A fan renews a season ticket. In most clubs, five teams find out at five different times, and some never do. With an identity anchor and real-time integration, the renewal is entered once and each team gets the part it needs.",
+  event: "A fan renews a season ticket for next season",
+  signals: [
+    { team: "Ticketing", d: "The seat is held and the renewal counts against the target." },
+    { team: "Membership and CRM", d: "The fan moves to the renewed segment. The lapse journey stops." },
+    { team: "Partnerships", d: "The consented sponsor audience updates the same day." },
+    { team: "Retail and content", d: "One renewal offer goes out, not three." },
+    { team: "Finance", d: "The revenue is booked and the forecast moves." },
+  ],
+  close: "Most clubs do this by hand, in five systems, a week apart. The blueprint makes it one entry.",
+};
+
+// Who the practice is not for. Stated plainly so the right clubs self-select.
+export const notFor = [
+  "You want a vendor named in the first meeting. I name one only after the source inventory.",
+  "You want a dashboard, not a decision. Every engagement ends on a decision the board can make.",
+  "You cannot share the source systems. The blueprint starts from real exports, not from slides.",
+  "You need a team to build and run the platform. I design it, select it, and oversee delivery. A delivery partner builds it.",
+];
+
+// How every engagement closes.
+export const decisionCard = {
+  title: "Every engagement ends on one decision card",
+  items: ["What I recommend", "Why this one", "What it assumes", "Two alternatives", "The next decision"],
+};
+
 export const pageMeta = {
   title: "The Club Data Blueprint | Citizen of Nowhere",
   description:
