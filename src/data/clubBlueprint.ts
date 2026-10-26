@@ -5,7 +5,7 @@
 
 export const hero = {
   eyebrow: "The Club Data Blueprint",
-  title: "Many businesses. One fan in common. Most clubs still cannot see that fan.",
+  title: "Most clubs still cannot see their own fan.",
   sub: "A modern football club runs matchday, retail, hospitality, media, attractions, and partnerships. Each line keeps its own record of the same supporter. I design and build the layer that turns those records into one governed fan, and then put that fan to work.",
   accent: "Independent of every vendor. Built by someone who has done it across 62 clubs.",
 };
@@ -155,7 +155,7 @@ export const archetypes = [
   {
     id: "established",
     name: "The established top-flight club",
-    example: "A top-division club or franchise in Europe or North America without a large venue business.",
+    example: "A top-division club in Europe or North America. Good ticketing and retail data, and a CRM that is mostly an email tool.",
     problem: "Good ticketing and retail data, a CRM that is mostly an email tool, and a small team asked to do everything.",
     build: [
       "Single sign-on across ticketing, app, and retail, usually from the ticketing or sports-platform provider.",
@@ -185,7 +185,7 @@ export const archetypes = [
   {
     id: "mco",
     name: "The multi-club ownership group",
-    example: "A group that owns clubs in several countries and leagues.",
+    example: "Clubs in several countries, with different stacks and consent laws, and one owner who needs one view of all of them.",
     problem: "Different stacks, different consent laws, and fans who must stay separate per club while the group needs one view of performance.",
     build: [
       "One core data model with per-club configuration outside it, so club eight costs what club two cost.",
@@ -200,8 +200,8 @@ export const archetypes = [
   {
     id: "league",
     name: "The league or federation",
-    example: "A league that holds central fan relationships, such as fantasy, central apps, and OTT, alongside its member clubs. Where the league already supplies club apps, websites or approved technology partners, the league is the buyer and the clubs follow.",
-    problem: "Clubs that compete with each other must share fan data with the league and, sometimes, with each other. Vendors want access too.",
+    example: "A league that holds central fan relationships, such as fantasy, central apps, and OTT, alongside its member clubs.",
+    problem: "Clubs that compete with each other must share fan data with the league and, sometimes, with each other. Vendors want access too. Where the league already supplies club apps, websites or approved technology partners, the league is the buyer and the clubs follow.",
     build: [
       "A federated model: central identity and data standards, with club-owned activation.",
       "Opt-in sharing between league and clubs that fans can understand and control.",
@@ -226,7 +226,7 @@ export const archetypes = [
     ],
     horizon: "One to two weeks for diligence, then 100 days",
     firstMove: "A diligence memo that states what the asset is, what it is not, and what it will cost to fix.",
-    evidence: "Record counts are not fan counts. The same league reported a 60 percent overlap across its clubs, so a diligence that adds up club databases overstates the asset. (Adobe, May 2026)",
+    evidence: "Record counts are not fan counts. The NFL has said publicly that 60 percent of its fans overlap across its 32 clubs, so a diligence that adds up club databases overstates the asset. (Adobe, May 2026)",
   },
 ];
 
