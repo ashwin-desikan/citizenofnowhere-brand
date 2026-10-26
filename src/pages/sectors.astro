@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+import { sectors } from "../data/sectors";
+
+// Who I work with: one door per kind of organisation. Each door names the
+// problem, the record that answers it, and where to start. Accordion so the
+// page stays one screen until a reader opens their door.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+---
+
+<Layout
+  title="Who I work with | Ashwin Desikan, Citizen of Nowhere"
+  description="Leagues, clubs, owners and investors, media owners and platforms, agencies and holding companies, brands and sponsors, and the AI and data companies entering sport. What each brings to the first conversation, and the record behind the answer."
+  path="/sectors"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/sectors" />
+
+    <section class="mb-14 md:mb-20">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Who I work with</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        One discipline, <span class="text-[color:var(--color-accent)]">seven kinds of buyer</span>.
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        The work is the same everywhere: turn an organisation's own audience data into something governed, measurable and worth paying for. I have done it for leagues, clubs, platforms, agencies and their clients, in the US, the UK and 58 EMEA markets. Open the door that describes you.
+      </p>
+      <nav class="mt-10 flex flex-wrap gap-2" aria-label="Sectors" style="font-family: var(--font-display)">
+        {sectors.map((s) => (
+          <a href={`#${s.id}`} class="text-xs md:text-sm border border-[color:var(--color-line)] rounded-full px-3 py-1.5 text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] hover:border-[color:var(--color-accent)] transition-colors">{s.short}</a>
+        ))}
+      </nav>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {sectors.map((s, i) => (
+          <details id={s.id} class="group scroll-mt-24" open={i === 0}>
+            <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden py-6 grid md:grid-cols-[1fr_260px] gap-2 md:gap-8 items-baseline">
+              <span>
+                <span class="block text-xl md:text-2xl font-medium group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">{s.name}</span>
+                <span class="block mt-1 text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">{s.examples}</span>
+              </span>
+              <span class="text-[10px] md:text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] md:text-right" style="font-family: var(--font-display)">{s.where}</span>
+            </summary>
+            <div class="pb-8 grid md:grid-cols-[1fr_260px] gap-8 md:gap-10">
+              <div>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">What you bring to the first call</p>
+                <p class="text-base md:text-lg text-[color:var(--color-paper)]/85 leading-relaxed mb-6" style="font-family: var(--font-serif)">&ldquo;{s.problem}&rdquo;</p>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-3" style="font-family: var(--font-display)">What I bring</p>
+                <ul class="space-y-3">
+                  {s.bring.map((b) => (
+                    <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)"><span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{b}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-3" style="font-family: var(--font-display)">Where to start</p>
+                <ul class="space-y-2 mb-6">
+                  {s.start.map((o) => (
+                    <li><a href={o.href} class={small} style="font-family: var(--font-display)">{o.label} <span aria-hidden="true">-&gt;</span></a></li>
+                  ))}
+                </ul>
+                <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">See it</p>
+                <a href={s.proof.href} target={s.proof.href.startsWith("http") ? "_blank" : undefined} rel={s.proof.href.startsWith("http") ? "noopener" : undefined} class={small} style="font-family: var(--font-display)">{s.proof.label} <span aria-hidden="true">-&gt;</span></a>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28 grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+      <div class="bg-[color:var(--color-ink)] p-8 md:p-10">
+        <p class={`${eyebrow} mb-4`} style="font-family: var(--font-display)">Engagements</p>
+        <h2 class="text-2xl md:text-3xl font-medium tracking-tight mb-4" style="font-family: var(--font-serif)">Start from your problem.</h2>
+        <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed mb-6" style="font-family: var(--font-serif)">Nine problems, each routed to one engagement with its trigger, its output and what I need from you.</p>
+        <a href="/approach#start" class={small} style="font-family: var(--font-display)">The problem router <span aria-hidden="true">-&gt;</span></a>
+      </div>
+      <div class="bg-[color:var(--color-ink)] p-8 md:p-10">
+        <p class={`${eyebrow} mb-4`} style="font-family: var(--font-display)">Full-time</p>
+        <h2 class="text-2xl md:text-3xl font-medium tracking-tight mb-4" style="font-family: var(--font-serif)">Hiring for this?</h2>
+        <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed mb-6" style="font-family: var(--font-serif)">I am open to a senior in-house role at a league, an agency, a platform or a sports technology company. The roles, and what I would own in them, are on one page.</p>
+        <a href="/hiring" class={small} style="font-family: var(--font-display)">For hiring managers <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>

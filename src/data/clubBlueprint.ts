@@ -155,7 +155,7 @@ export const archetypes = [
   {
     id: "established",
     name: "The established top-flight club",
-    example: "A Premier League or European top-division club without a large venue business.",
+    example: "A top-division club or franchise in Europe or North America without a large venue business.",
     problem: "Good ticketing and retail data, a CRM that is mostly an email tool, and a small team asked to do everything.",
     build: [
       "Single sign-on across ticketing, app, and retail, usually from the ticketing or sports-platform provider.",
@@ -170,7 +170,7 @@ export const archetypes = [
   {
     id: "lean",
     name: "The lean club",
-    example: "Championship, EFL, second-tier European, and women's professional clubs.",
+    example: "Championship, EFL and second-tier European clubs, North American lower divisions, and women's professional teams.",
     problem: "One or two people in CRM, no data engineer, and a ticketing vendor that holds most of the data.",
     build: [
       "CRM before CDP. Get one clean, consented supporter list and keep it clean.",
@@ -460,7 +460,7 @@ export const decisionCard = {
 export const pageMeta = {
   title: "The Club Data Blueprint | Citizen of Nowhere",
   description:
-    "How football clubs, leagues, and ownership groups unify first-party fan data across their martech and adtech stacks. A vendor-neutral blueprint, implementation archetypes, and services from Ashwin Desikan.",
+    "How clubs, franchises, leagues, and ownership groups in Europe and North America unify first-party fan data across their martech and adtech stacks. A vendor-neutral blueprint, implementation archetypes, and services from Ashwin Desikan.",
   path: "/clubs",
 };
 

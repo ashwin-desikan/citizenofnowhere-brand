@@ -169,7 +169,7 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
     <section class="mb-20 md:mb-28">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Who this is for</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The four situations I hear most</span>
+        <a href="/sectors" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">All seven kinds of buyer <span aria-hidden="true">-&gt;</span></a>
       </div>
       <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {situations.map((s) => (

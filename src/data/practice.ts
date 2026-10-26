@@ -130,7 +130,7 @@ export const tiers = [
 export const metrics = [
   { fig: "62", label: "Clubs unified", context: "League-scale identity and customer data platforms across every NFL and MLB club." },
   { fig: "220M+", label: "Identities resolved", context: "Product owner of Samsung's identity-linked CDP on Google Cloud." },
-  { fig: "~99%", label: "Data spend cut", context: "Shifting Samsung from third-party to owned data, roughly 700,000 dollars out, while expanding reach." },
+  { fig: "$700K", label: "Data spend cut", context: "Shifting Samsung from third-party to owned data, roughly 700,000 dollars out, while expanding reach." },
   { fig: "+20%", label: "Engagement lift", context: "The Adobe Experience Platform rollout across MLB's 30 clubs." },
   { fig: "+40%", label: "YoY audience revenue", context: "Audience-targeted revenue on Spotify's free tier, across a 500-person sales organization." },
   { fig: "58", label: "Markets activated", context: "Rolling out Annalect's identity and measurement product suite across EMEA." },

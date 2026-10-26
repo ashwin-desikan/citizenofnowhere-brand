@@ -51,12 +51,14 @@ const deeper = [
 >
   <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
-    <PracticeNav current="/clubs" />
+    <PracticeNav current="/sectors" />
 
     <!-- Hero -->
     <header class="mb-20 md:mb-28">
       <nav aria-label="Breadcrumb" class="mb-8 text-[11px] md:text-xs tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
         <a href="/" class="hover:text-[color:var(--color-paper)] transition-colors">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/sectors" class="hover:text-[color:var(--color-paper)] transition-colors">Who I work with</a>
         <span aria-hidden="true"> / </span>
         <span class="text-[color:var(--color-paper)]">Clubs</span>
       </nav>
@@ -78,8 +80,9 @@ const deeper = [
           ))}
         </ol>
       </div>
-      <div class="mt-10" style="font-family: var(--font-display)">
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
         <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a Club Data Blueprint call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/sectors" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Not a club? Leagues, owners, media, agencies, brands and vendors <span aria-hidden="true">-&gt;</span></a>
       </div>
     </header>
 

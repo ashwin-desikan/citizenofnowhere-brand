@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+import { roleFamilies } from "../data/sectors";
+import { metrics } from "../data/practice";
+
+// For hiring managers and search firms: the role families, what I would own,
+// the record behind each, and the practicalities. CV on request, by design.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+
+const lead = [
+  { t: "Adoption is the product", d: "In a federation nobody has to use what you build. I make clubs, markets or business units co-authors of the standard, and I measure adoption as the outcome." },
+  { t: "Governance before platform", d: "Most stack failures are governance failures that surface eighteen months in. I settle what a fan or customer record is, who owns it and who may act on it, before the contract." },
+  { t: "I still build", d: "I write requirements, run the RFP and own the implementation, and I build working systems myself with AI coding agents. The Studio on this site is one of them." },
+];
+
+const practical = [
+  { k: "Based", v: "London, with regular time in New York" },
+  { k: "Work types", v: "Full-time, interim, or fractional through the practice" },
+  { k: "Level", v: "Director, VP and SVP mandates, or the head of the function" },
+  { k: "CV", v: "On request, tailored to the role" },
+];
+---
+
+<Layout
+  title="For hiring managers | Ashwin Desikan, Citizen of Nowhere"
+  description="Ashwin Desikan is open to a senior in-house role leading data, identity and marketing technology at a league, rights holder, agency, media platform or sports technology company. The roles, what he would own, and the record behind each."
+  path="/hiring"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/hiring" />
+
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">For hiring managers and search firms</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        Open to the right seat, <span class="text-[color:var(--color-accent)]">where first-party data is central to the business</span>.
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        I ran data, identity and marketing technology at the NFL and MLB, built the buying side of the same trade at Amazon Ads and Spotify, and led client data strategy inside Publicis and Omnicom. I am open to doing that again in-house, at a league, an agency, a platform or a sports technology company.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href="/practice?engagement=role#contact" class={cta}>Ask for the CV <span aria-hidden="true">-&gt;</span></a>
+        <a href={calendly} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Book 15 minutes <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The roles</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Four families</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {roleFamilies.map((r) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
+            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{r.who}</h3>
+            <p class="text-[11px] tracking-[0.12em] uppercase text-[color:var(--color-accent)] mb-4 leading-relaxed" style="font-family: var(--font-display)">{r.titles}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-4 grow" style="font-family: var(--font-serif)"><span class="text-[color:var(--color-muted)]">What I would own: </span>{r.own}</p>
+            <p class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Record: {r.proof}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28 grid md:grid-cols-[1fr_300px] gap-12 md:gap-16">
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">How I lead</h2>
+        </div>
+        <ul class="space-y-6">
+          {lead.map((l) => (
+            <li>
+              <h3 class="text-lg font-medium text-[color:var(--color-accent)]" style="font-family: var(--font-serif)">{l.t}</h3>
+              <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{l.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">Practicalities</h2>
+        </div>
+        <dl class="space-y-4">
+          {practical.map((p) => (
+            <div>
+              <dt class="text-[10px] tracking-[0.16em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">{p.k}</dt>
+              <dd class="text-sm md:text-base text-[color:var(--color-paper)]/80" style="font-family: var(--font-serif)">{p.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {metrics.map((m) => (
+          <div class="bg-[color:var(--color-ink)] p-4 md:p-5">
+            <p class="text-2xl md:text-3xl font-medium tracking-tight text-[color:var(--color-paper)]" style="font-family: var(--font-serif)">{m.fig}</p>
+            <p class="text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] mt-1" style="font-family: var(--font-display)">{m.label}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
+        <a href="/work" class={small}>The full record, role by role <span aria-hidden="true">-&gt;</span></a>
+        <a href="/record" class={small}>What the leagues have said publicly <span aria-hidden="true">-&gt;</span></a>
+        <a href="/sectors" class={small}>Who I work with <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>
