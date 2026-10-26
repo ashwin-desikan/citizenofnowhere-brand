@@ -49,6 +49,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <div class="cta">
           <a class="solid" href="https://calendly.com/adesikan/15min" target="_blank" rel="noopener">Talk through your index -&gt;</a>
+          <a class="ghost" id="sendBrief" href="/practice?engagement=diagnostic#contact">Send me this result -&gt;</a>
           <a class="ghost" id="retake">Recalculate</a>
         </div>
         <p class="disc">This is a directional index, not an audit. The scoring reflects what tends to predict success when organizations invest in identity and first-party data; a real engagement goes a level deeper.</p>
@@ -202,6 +203,11 @@ import Layout from "../layouts/Layout.astro";
         document.getElementById("readout").textContent = band.read;
         document.getElementById("gapTitle").textContent = dim;
         document.getElementById("gapText").textContent = GAPS[dim];
+        try {
+          var brief = "First-Party Index: " + index + "/100 (" + band.name + "). Biggest gap: " + dim + ". Dimension scores: " +
+            QUESTIONS.map(function (q, qi) { return q.dim + " " + a[qi]; }).join(", ") + ".";
+          document.getElementById("sendBrief").href = "/practice?engagement=diagnostic&brief=" + encodeURIComponent(brief) + "#contact";
+        } catch (err) {}
         document.getElementById("radar").innerHTML = radar(a);
 
         document.getElementById("result").classList.add("show");

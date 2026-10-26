@@ -24,16 +24,22 @@ const situations = [
   },
   {
     who: "Investors and new owners",
-    line: "The fan data is part of the price, and nobody has looked at it properly before signing.",
+    line: "You are taking a playbook written in New York or London to a club in Milan, Seville or Lyon. The fan data is part of the price, and the people who can run it locally are not yet in the building.",
     href: "/clubs#owner",
     label: "The new owner playbook",
+  },
+  {
+    who: "AI and data companies entering sport",
+    line: "You need one fan-scale result at a property that boardrooms watch, and the club's own partners as your first enterprise conversations.",
+    href: "/approach#vendors",
+    label: "Sport as the door to enterprise",
   },
 ];
 
 const background = [
   { where: "The leagues", names: "NFL \u00b7 MLB", did: "Ran marketing technology, fan identity and data governance across 32 NFL clubs and 30 MLB clubs: the platforms, the consent and data standards, the clean-room roadmap, and the operating model that let competing clubs share." },
-  { where: "The platforms", names: "Amazon Ads \u00b7 Spotify \u00b7 Facebook", did: "Built the buying side of the same trade: clean rooms and connected identity for 30-plus Tier 1 advertisers on Amazon Marketing Cloud, and the audience measurement and monetization frameworks behind Spotify's ad business." },
-  { where: "The holding companies", names: "Publicis \u00b7 Digitas \u00b7 Omnicom \u00b7 Annalect \u00b7 GroupM", did: "Client-side data strategy at population scale: product owner of a 220 million-identity CDP for Samsung, and the identity and measurement product suite rolled out across 58 EMEA markets." },
+  { where: "The platforms", names: "Amazon Ads \u00b7 Spotify \u00b7 Facebook \u00b7 Adform", did: "Built the buying side of the same trade: clean rooms and connected identity for 30-plus Tier 1 advertisers on Amazon Marketing Cloud, and the audience measurement and monetization frameworks behind Spotify's ad business. At Adform, the primary European data lead." },
+  { where: "The holding companies", names: "Publicis \u00b7 Digitas \u00b7 Omnicom \u00b7 Annalect \u00b7 GroupM", did: "Client-side data strategy at population scale: product owner of a 220 million-identity CDP for Samsung, and the identity and measurement product suite rolled out across 58 EMEA markets, with client work in the Nordics, Germany, France, Italy and Spain." },
 ];
 
 const services = [
@@ -45,7 +51,7 @@ const services = [
 const proofCards = [
   { eyebrow: "Case study", title: "One fan, thirty-two clubs", body: "How a league unified identity, consent and data standards across 32 independently owned clubs, in the league's own published numbers.", href: "/federated", label: "Read the case study" },
   { eyebrow: "Blueprint", title: "The Club Data Blueprint", body: "A vendor-neutral six-layer architecture with implementation plans for elite clubs, lean clubs, ownership groups and leagues.", href: "/clubs", label: "Read the blueprint" },
-  { eyebrow: "Working product", title: "The Studio", body: "Identity, consent, audience, activation and measurement, running on a real backend with synthetic fans. Built, not described.", href: "https://rankings.citizenofnowhere.org/studio", label: "Open the Studio", external: true },
+  { eyebrow: "Toolkit", title: "The Studio", body: "The instruments I use inside an engagement, on a real backend with synthetic fans: a map of every system that touches a fan, a fan census, a board scoreboard, and a clean room that refuses the wrong question.", href: "https://rankings.citizenofnowhere.org/studio", label: "Open the toolkit", external: true },
 ];
 
 const whyThree = whyme.filter((w) => ["Operator, not commentator", "Independent of every vendor", "Both sides of the trade"].includes(w.label));
@@ -163,9 +169,9 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
     <section class="mb-20 md:mb-28">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Who this is for</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The three situations I hear most</span>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The four situations I hear most</span>
       </div>
-      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {situations.map((s) => (
           <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
             <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">{s.who}</p>
@@ -180,11 +186,11 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
     <section id="engage" class="mb-20 md:mb-28">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Ways to work together</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Six offers, sized to the problem</span>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Seven offers, sized to the problem</span>
       </div>
       <div class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
         {tiers.map((t, i) => (
-          <details class="group" open={i === 0}>
+          <details id={`offer-${t.slug}`} class="group scroll-mt-24" open={i === 0}>
             <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden py-5 flex items-baseline justify-between gap-4">
               <span class="flex items-baseline gap-4">
                 <span class="text-xs text-[color:var(--color-accent)] w-6" style="font-family: var(--font-display)">0{i + 1}</span>
@@ -193,7 +199,15 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
               <span class="shrink-0 text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">{t.format}</span>
             </summary>
             <div class="pb-7 md:pl-10 grid md:grid-cols-[1fr_280px] gap-6 md:gap-10">
-              <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.items}</p>
+              <div>
+                <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.items}</p>
+                <dl class="mt-5 grid sm:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+                  <div class="bg-[color:var(--color-ink)] p-4"><dt class="text-[10px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1" style="font-family: var(--font-display)">Typical trigger</dt><dd class="text-xs md:text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.trigger}</dd></div>
+                  <div class="bg-[color:var(--color-ink)] p-4"><dt class="text-[10px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1" style="font-family: var(--font-display)">You get</dt><dd class="text-xs md:text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.output}</dd></div>
+                  <div class="bg-[color:var(--color-ink)] p-4"><dt class="text-[10px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-1" style="font-family: var(--font-display)">I need from you</dt><dd class="text-xs md:text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{t.inputs}</dd></div>
+                </dl>
+                <a href={`/practice?engagement=${t.slug}#contact`} class={`${small} mt-5`} style="font-family: var(--font-display)">Start a conversation about this <span aria-hidden="true">-&gt;</span></a>
+              </div>
               <div>
                 <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2" style="font-family: var(--font-display)">You buy this when</p>
                 <ul class="space-y-2 mb-4">
@@ -210,7 +224,7 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
         ))}
       </div>
       <p class="mt-6 text-sm text-[color:var(--color-muted)] max-w-2xl" style="font-family: var(--font-serif)">
-        I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing before you sign anything. <a href="/approach" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">How an engagement runs</a>.
+        I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing, and I never advise you on a choice where that vendor is in the running. <a href="/approach#start" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">Start from your problem</a> or read <a href="/approach#fit" class="text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors">who this is not for</a>.
       </p>
     </section>
 
@@ -288,13 +302,25 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
       <div class="grid md:grid-cols-2 gap-12">
         <div>
           <h3 class="text-3xl md:text-4xl font-medium tracking-tight mb-4" style="font-family: var(--font-serif)">Start a conversation.</h3>
-          <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-md mb-7" style="font-family: var(--font-serif)">
+          <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-md mb-5" style="font-family: var(--font-serif)">
             Open to a senior in-house mandate and to selective advisory. London or New York, and comfortable working across both.
           </p>
+          <ol class="max-w-md mb-7 space-y-2 text-sm text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">
+            <li><span class="text-[color:var(--color-accent)] mr-2" style="font-family: var(--font-display)">01</span>Where you are: the estate, the owner and the deadline.</li>
+            <li><span class="text-[color:var(--color-accent)] mr-2" style="font-family: var(--font-display)">02</span>The real problem, which is often not the one in the brief.</li>
+            <li><span class="text-[color:var(--color-accent)] mr-2" style="font-family: var(--font-display)">03</span>What comes next, including a straight answer if I am not the right fit.</li>
+          </ol>
           <form id="contactForm" action="https://formspree.io/f/maqzebor" method="POST" class="flex flex-col gap-3 max-w-md">
             <input type="text" name="name" placeholder="Name" aria-label="Your name" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
             <input type="email" name="email" placeholder="Email" aria-label="Your email address" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)" />
-            <textarea name="message" rows="4" placeholder="What are you working on?" aria-label="What are you working on?" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)] resize-y" style="font-family: var(--font-sans)"></textarea>
+            <select name="engagement" id="engagementSelect" aria-label="What kind of help?" class="bg-[color:var(--color-ink)] border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] focus:outline-none focus:border-[color:var(--color-accent)]" style="font-family: var(--font-sans)">
+              <option value="">What kind of help? (optional)</option>
+              {tiers.map((t) => <option value={t.slug}>{t.name}</option>)}
+              <option value="role">A senior in-house role</option>
+              <option value="other">Something else</option>
+            </select>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <textarea name="message" id="messageField" rows="4" placeholder="What are you working on?" aria-label="What are you working on?" required class="bg-transparent border border-[color:var(--color-line)] rounded-sm px-4 py-3 text-[color:var(--color-paper)] placeholder:text-[color:var(--color-muted)] focus:outline-none focus:border-[color:var(--color-accent)] resize-y" style="font-family: var(--font-sans)"></textarea>
             <button type="submit" class="self-start border border-[color:var(--color-accent)] text-[color:var(--color-accent)] hover:bg-[color:var(--color-accent)] hover:text-[color:var(--color-ink)] transition-colors px-6 py-3 text-xs tracking-[0.08em] uppercase rounded-sm" style="font-family: var(--font-display)">Send a note</button>
             <p class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Goes straight to my inbox. Prefer to talk? Book a call.</p>
           </form>
@@ -325,6 +351,13 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
       var f = document.getElementById("contactForm"),
         s = document.getElementById("formStatus");
       if (!f || !s) return;
+      try {
+        var qp = new URLSearchParams(window.location.search);
+        var eng = qp.get("engagement"), brief = qp.get("brief");
+        var sel = document.getElementById("engagementSelect"), msg = document.getElementById("messageField");
+        if (eng && sel) { for (var k = 0; k < sel.options.length; k++) { if (sel.options[k].value === eng) sel.value = eng; } }
+        if (brief && msg && !msg.value) msg.value = brief.slice(0, 1500);
+      } catch (err) {}
       f.addEventListener("submit", function (e) {
         e.preventDefault();
         var btn = f.querySelector('button[type=submit]'),

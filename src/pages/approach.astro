@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PracticeNav from "../components/PracticeNav.astro";
 import PracticeFooter from "../components/PracticeFooter.astro";
-import { approach, stack, heard, pillars, rightsHolder } from "../data/practice";
+import { approach, stack, heard, pillars, rightsHolder, router, fit } from "../data/practice";
 
 // The method page: how an engagement runs, the stack decision, what the
 // first conversation sounds like, and the operating model I build against.
@@ -14,11 +14,29 @@ const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var
 const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
 
 const toc = [
+  { href: "#start", label: "Start from your problem" },
   { href: "#how", label: "How an engagement works" },
   { href: "#stack", label: "The stack decision" },
   { href: "#heard", label: "What I hear first" },
+  { href: "#who", label: "Who decides" },
   { href: "#model", label: "The operating model" },
   { href: "#sport", label: "For rights holders" },
+  { href: "#vendors", label: "For AI and data companies" },
+  { href: "#fit", label: "Who this is for" },
+];
+
+// Ownership structure decides whether a group-wide data programme can happen.
+const owners = [
+  { t: "One controlling owner", d: "A family or principal that controls several clubs. One decision point, so a shared data model can be mandated, funded and enforced across the group. This is where a group-wide programme starts." },
+  { t: "A fund-led group", d: "Several investors pooled through a fund, with a board on top. Board time goes to players, transfers and the main sponsor first. A data programme needs a named board sponsor and a case tied to one of those." },
+  { t: "A holding company with club vehicles", d: "Different investors behind each club. Data sharing across the group has to be written into each vehicle's agreements before anything can be built." },
+];
+
+// What AI and data companies need from sport before it becomes an enterprise channel.
+const vendorNeeds = [
+  { t: "A reference boardrooms recognise", d: "A named property whose executives other executives already watch, and a result they can repeat in their own words." },
+  { t: "A use case at fan scale", d: "One build that reaches real supporters and moves a line the club cares about: matchday, retail, hospitality or a partner renewal." },
+  { t: "A route to the enterprise buyer", d: "The club's sponsors and hospitality guests are the first enterprise conversations. The activation has to be designed so the club makes those introductions." },
 ];
 ---
 
@@ -43,6 +61,24 @@ const toc = [
       </nav>
     </section>
 
+    <!-- Start from your problem -->
+    <section id="start" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Start from your problem</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Pick the sentence closest to yours</span>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {router.map((r) => (
+          <li>
+            <a href={r.href} class="group grid md:grid-cols-[1fr_260px] gap-2 md:gap-8 py-4 items-baseline">
+              <span class="text-base md:text-lg text-[color:var(--color-paper)]/85 group-hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-serif)">&ldquo;{r.problem}&rdquo;</span>
+              <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">{r.label} <span aria-hidden="true">-&gt;</span></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
     <!-- How an engagement works -->
     <section id="how" class="mb-20 md:mb-28 scroll-mt-24">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
@@ -58,9 +94,10 @@ const toc = [
           </div>
         ))}
       </div>
+      <p class="mt-8 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">One rule runs through all four steps: redesign the workflow before automating it. Putting AI on a broken process only makes the broken process faster.</p>
       <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
         <a href="/readiness" class={small}>Start with the free First-Party Index <span aria-hidden="true">-&gt;</span></a>
-        <a href="/practice#engage" class={small}>The six offers <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#engage" class={small}>The seven offers <span aria-hidden="true">-&gt;</span></a>
       </div>
     </section>
 
@@ -85,7 +122,8 @@ const toc = [
         ))}
       </div>
       <div class="mt-8 space-y-4 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
-        <p>I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I take no referral fees. Any product advisory I do for a vendor is disclosed in writing.</p>
+        <p>I have been on the buying side of all four. I wrote the requirements, ran the RFP, negotiated the contract, and then owned the implementation. I do not resell anyone&rsquo;s platform and I take no referral fees. Any product advisory I do for a vendor is disclosed in writing, and I never advise a property on a choice where that vendor is in the running.</p>
+        <p>Every stack review ends in five verbs: buy, build, connect, simplify and retire. The retire list is usually where the first year's budget comes from, and it is the list a vendor will never write for you.</p>
         <p>Most stack failures are not technology failures. They are governance failures that only surface eighteen months in, when two clubs disagree on what a fan is.</p>
         <p class="text-[color:var(--color-muted)]">There is no right answer, only a right answer for your ownership model, your club autonomy, and your appetite to run engineering.</p>
       </div>
@@ -108,6 +146,29 @@ const toc = [
       <p class="mt-6 text-sm md:text-base text-[color:var(--color-muted)] max-w-2xl leading-relaxed" style="font-family: var(--font-serif)">
         Different words, one root cause: a business sitting on real audience value without the identity spine, the governance, and the operating model to turn it into revenue.
       </p>
+    </section>
+
+    <!-- Who decides -->
+    <section id="who" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who decides</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Before any multi-club or league scope</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
+        Ownership structure decides whether a data programme can happen at all, long before any question of technology. I establish which of these I am talking to in the first conversation.
+      </p>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {owners.map((o) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{o.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{o.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 space-y-4 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+        <p>A minority stake decides nothing on its own. In football the money sits in media rights, player trading and the venue, so a fan data programme earns board time when it moves one of those or a sponsor renewal.</p>
+        <p class="text-[color:var(--color-muted)]">The exception is a league that already supplies its clubs with apps, websites or approved technology partners. There the league is the buyer, and the clubs follow.</p>
+      </div>
     </section>
 
     <!-- The operating model -->
@@ -149,10 +210,63 @@ const toc = [
           </div>
         ))}
       </div>
+            <div class="mt-10 grid md:grid-cols-[220px_1fr] gap-6 md:gap-10 border-t border-[color:var(--color-line)] pt-8">
+        <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The competition is the product</p>
+        <div class="space-y-4 text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+          <p>The leagues that grew fastest made the competition itself the product, and invested centrally in telling its story and finding new fans. That needs a central relationship with the fan, which most European leagues do not yet have.</p>
+          <p>The data version of football's reset is a league data charter: one identity standard, shared services for the clubs that cannot afford their own, and partner value shared by an agreed rule. It does for fan data what a revenue-sharing agreement does for prize money, and no club gives up its own records.</p>
+          <p class="text-[color:var(--color-muted)]">Capital follows predictability. A club that can show revenue per known fan, and a stack with known costs and exit terms, is easier to invest in.</p>
+        </div>
+      </div>
       <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
         <a href="/clubs" class={small}>The Club Data Blueprint <span aria-hidden="true">-&gt;</span></a>
         <a href="/federated" class={small}>The federated model, a case study <span aria-hidden="true">-&gt;</span></a>
         <a href="/perspective" class={small}>A field view on the data-centric club <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- For AI and data companies -->
+    <section id="vendors" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">For AI and data companies</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Sport as the door to enterprise</span>
+      </div>
+      <p class="text-base md:text-lg text-[color:var(--color-paper)]/75 max-w-2xl mb-8 leading-relaxed" style="font-family: var(--font-serif)">
+        AI and data companies arriving in European sport usually need three things that a sponsorship package does not give them.
+      </p>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {vendorNeeds.map((v) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{v.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{v.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 space-y-4 max-w-2xl text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+        <p>I sat on the buying side of this at MLB and the NFL, where vendors pitched the league and the clubs every week. I know what a league needs to see before it lets a vendor scale across clubs, and how quickly other clubs ask for a platform once one club has proved it.</p>
+        <p>For investors, the same work shortens the route from a sports pilot to an enterprise logo for the portfolio companies most likely to win.</p>
+        <p class="text-[color:var(--color-muted)]">The rule I keep: when I work for a vendor, I do not advise any property on a choice where that vendor is in the running, and I say so in writing on both sides.</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2" style="font-family: var(--font-display)">
+        <a href="/practice#engage" class={small}>The Sport-to-Enterprise Sprint <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Fit -->
+    <section id="fit" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Who this is for</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">A straight answer either way</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+          <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-4" style="font-family: var(--font-display)">A good fit</p>
+          <ul class="space-y-3">{fit.yes.map((x) => <li class="pl-6 relative text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)"><span class="absolute left-0 text-[color:var(--color-accent)]" aria-hidden="true">&#10003;</span>{x}</li>)}</ul>
+        </div>
+        <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+          <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-4" style="font-family: var(--font-display)">Not a fit</p>
+          <ul class="space-y-3">{fit.no.map((x) => <li class="pl-6 relative text-sm md:text-base text-[color:var(--color-paper)]/60 leading-relaxed" style="font-family: var(--font-serif)"><span class="absolute left-0 text-[color:var(--color-muted)]" aria-hidden="true">&#10005;</span>{x}</li>)}</ul>
+        </div>
       </div>
     </section>
 

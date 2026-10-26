@@ -194,13 +194,13 @@ export const archetypes = [
       "A shared playbook and toolkit, so each new acquisition onboards in weeks.",
     ],
     horizon: "6 months to the template, then per acquisition",
-    firstMove: "The shared data model and the data-sharing rules between clubs in the group.",
+    firstMove: "Who can mandate it. A single controlling owner can; a fund-led or holding-company structure needs a named board sponsor first. Then the shared data model and the data-sharing rules between clubs.",
     evidence: "Precedent for separated tenancy on a shared platform: the Belgian Pro League put 16 clubs on one CRM with each club's data kept apart. (Green 4 Solutions and Edam)",
   },
   {
     id: "league",
     name: "The league or federation",
-    example: "A league that holds central fan relationships, such as fantasy, central apps, and OTT, alongside its member clubs.",
+    example: "A league that holds central fan relationships, such as fantasy, central apps, and OTT, alongside its member clubs. Where the league already supplies club apps, websites or approved technology partners, the league is the buyer and the clubs follow.",
     problem: "Clubs that compete with each other must share fan data with the league and, sometimes, with each other. Vendors want access too.",
     build: [
       "A federated model: central identity and data standards, with club-owned activation.",
@@ -216,12 +216,13 @@ export const archetypes = [
   {
     id: "owner",
     name: "The new owner or investor",
-    example: "Private capital acquiring or investing in a club or league asset.",
+    example: "Private capital, often from the US, acquiring or investing in a European club or league asset.",
     problem: "The fan data asset is part of the valuation, and nobody has looked at it properly.",
     build: [
       "Technical and commercial diligence on the fan data estate before signing.",
       "A 100-day plan for the identity and data foundation after completion.",
       "Board-level KPIs that track the asset, not the activity.",
+      "A local operating plan. A playbook written in New York or London rarely transfers to Milan or Seville unchanged.",
     ],
     horizon: "One to two weeks for diligence, then 100 days",
     firstMove: "A diligence memo that states what the asset is, what it is not, and what it will cost to fix.",
