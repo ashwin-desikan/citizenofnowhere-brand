@@ -210,11 +210,18 @@ export const stack = [
 ];
 
 export const approach = [
-  { num: "01", name: "Diagnose", body: "Score first-party readiness across the six dimensions and find the gap that matters most. The First-Party Index is the front door." },
-  { num: "02", name: "Architect", body: "Design the identity spine, data foundation, and governance the strategy actually needs, sequenced so each step pays for the next." },
-  { num: "03", name: "Activate", body: "Turn audiences into real-time, cross-channel action, and stand up the measurement that ties it back to revenue." },
-  { num: "04", name: "Monetize & govern", body: "Build the clean-room and partnership models that monetize first-party data, with consent enforced by default." },
+  { num: "01", name: "Assess", body: "Find out what the fan data estate is worth and what is in the way: records per real person, marketable consent, the systems with no data contract, and the sponsor questions nobody can answer yet. Ends in a scored roadmap and a number the board can hold the programme to." },
+  { num: "02", name: "Build", body: "Stand up the pieces the roadmap needs, in the order each pays for the next: the identity spine, consent by purpose, the rights rules between parties, the release checks, and the match that proves a sponsor outcome without moving fan records." },
+  { num: "03", name: "Run", body: "Operate it through a season. Releases checked at the moment they leave, the activation tools the club already has doing the carrying, a scoreboard the board reads without a translator, and the proof report at every renewal." },
 ];
+
+// Which offers sit under which stage on /approach. The offers themselves live
+// in `tiers`; this only decides where each one is shown.
+export const stageOffers: Record<string, string[]> = {
+  Assess: ["diagnostic", "diligence"],
+  Build: ["stack", "cleanroom", "aibuilder"],
+  Run: ["fractional", "sprint"],
+};
 
 // Problem statements routed to the offer that fits. Shown on /approach.
 export const router = [

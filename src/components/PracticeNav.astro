@@ -1,6 +1,6 @@
 ---
-// Shared masthead for the practice pages. Six links, no more: the depth lives
-// on the pages, not in the menu.
+// Shared masthead for the practice pages. Keep it short: the depth lives on
+// the pages, not in the menu. Pricing, Kit and Partners added 2026-10-29.
 interface Props { current?: string }
 const { current = "" } = Astro.props;
 const calendly = "https://calendly.com/adesikan/15min";
@@ -8,6 +8,9 @@ const links = [
   { href: "/practice", label: "Overview" },
   { href: "/approach", label: "Approach" },
   { href: "/sectors", label: "Who I work with" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/kit", label: "Kit" },
+  { href: "/partners", label: "Partners" },
   { href: "/federated", label: "Case study" },
   { href: "/about", label: "About" },
   { href: "/hiring", label: "Hiring" },

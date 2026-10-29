@@ -11,36 +11,52 @@ const calendly = "https://calendly.com/adesikan/15min";
 
 const situations = [
   {
-    who: "Leagues, clubs and rights holders",
-    line: "You acquire fans at real cost and then cannot recognise the same person across ticketing, the app and the gate.",
-    href: "/clubs",
-    label: "The Club Data Blueprint",
+    who: "Clubs below the top tier",
+    line: "You acquire fans at real cost and then cannot recognise the same person across ticketing, the app and the gate, and the sponsor gets a reach number at renewal.",
+    href: "/for/clubs",
+    label: "For clubs",
   },
   {
-    who: "Media owners and platforms",
-    line: "The first-party audience is the asset on the slide, and the commercial team still cannot sell it to a partner.",
-    href: "/approach#stack",
-    label: "The Stack Decision",
+    who: "Federations, leagues and tours",
+    line: "Your clubs compete with each other, your sponsors want to buy across all of them, and nobody can measure the overlap or prove the reach.",
+    href: "/for/federations",
+    label: "For federations and leagues",
   },
   {
-    who: "Investors and new owners",
-    line: "You are taking a playbook written in New York or London to a club in Milan, Seville or Lyon. The fan data is part of the price, and the people who can run it locally are not yet in the building.",
-    href: "/clubs#owner",
-    label: "The new owner playbook",
+    who: "US mid-market properties",
+    line: "Four systems, four fan records, and a sponsor with purchase data asking for a match you cannot run.",
+    href: "/for/us-properties",
+    label: "For US properties",
   },
   {
-    who: "AI and data companies entering sport",
-    line: "You need one fan-scale result at a property that boardrooms watch, and the club's own partners as your first enterprise conversations.",
-    href: "/approach#vendors",
-    label: "Sport as the door to enterprise",
+    who: "Investors, owners and vendors",
+    line: "The fan data is part of the price, or the product needs one reference a boardroom recognises. Either way you need an independent view from someone who sells no platform.",
+    href: "/for/investors",
+    label: "For investors and vendors",
   },
 ];
 
-const background = [
-  { where: "The leagues", names: "NFL \u00b7 MLB", did: "Ran marketing technology, fan identity and data governance across 32 NFL clubs and 30 MLB clubs: the platforms, the consent and data standards, the clean-room roadmap, and the operating model that let competing clubs share." },
-  { where: "The platforms", names: "Amazon Ads \u00b7 Spotify \u00b7 Facebook \u00b7 Adform", did: "Built the buying side of the same trade: clean rooms and connected identity for 30-plus Tier 1 advertisers on Amazon Marketing Cloud, and the audience measurement and monetization frameworks behind Spotify's ad business. At Adform, the primary European data lead." },
-  { where: "The holding companies", names: "Publicis \u00b7 Digitas \u00b7 Omnicom \u00b7 Annalect \u00b7 GroupM", did: "Client-side data strategy at population scale: product owner of a 220 million-identity CDP for Samsung, and the identity and measurement product suite rolled out across 58 EMEA markets, with client work in the Nordics, Germany, France, Italy and Spain." },
+const jobs = [
+  {
+    num: "01", verb: "Prove", title: "Prove who your fans are.",
+    body: "One fan across ticketing, the app, the gate, the shop and the inbox, without a vendor's identity graph in the middle. Consent recorded by purpose, not as a single tick box. Records per real person is the first number a board sees, because every other number is wrong until that one is honest.",
+    proof: "Live in the Studio: the identity graph, the consent gate and the board scoreboard, on a synthetic club.",
+    href: "https://rankings.citizenofnowhere.org/studio/identity", label: "See the identity graph", external: true,
+  },
+  {
+    num: "02", verb: "Release", title: "Release only what may leave.",
+    body: "Every export checks three things at the moment it runs: is this recipient allowed, did each supporter agree to this purpose, and is the group large enough to be anonymous. Then the hashed audience goes out through the activation tools the club already uses. Withdraw a consent and the next release is smaller. Nothing is copied.",
+    proof: "Live in the Studio: export by purpose, with a signed delivery and a run log that records every refusal.",
+    href: "https://rankings.citizenofnowhere.org/studio/export", label: "See a release checked", external: true,
+  },
+  {
+    num: "03", verb: "Measure", title: "Measure what sponsors got.",
+    body: "The fans a sponsor reached, matched to what those fans then did, with small groups withheld and no records pooled between the parties. A league sees the overlap across its clubs; a club cannot query a rival. This is the renewal proof a commercial team currently has to argue for.",
+    proof: "Live in the Studio: the two-party match with k-anonymity, and the refusal when the wrong party asks.",
+    href: "https://rankings.citizenofnowhere.org/studio/clean-room", label: "See the match refuse a rival", external: true,
+  },
 ];
+
 
 const services = [
   { name: "Find out where you stand", body: "A diagnostic of the fan data estate: what it is worth, what is in the way, and the sequence that fixes it. Three weeks, a scored roadmap, and a number the board can hold the programme to.", href: "#engage", label: "The Readiness Diagnostic" },
@@ -97,27 +113,27 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
 
 <Layout
   title="Ashwin Desikan | Citizen of Nowhere"
-  description="Ashwin Desikan: identity, data, and monetization advisor and operator across the US, UK, and Europe, from the holding companies and Amazon, Spotify, and Facebook to the NFL and MLB. Independent of every platform vendor."
+  description="Prove who your fans are, release only what may leave, measure what sponsors got. Ashwin Desikan builds and runs the fan data layer for leagues, clubs and the sponsors who buy from them. Independent of every vendor."
   path="/practice"
 >
   <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
   <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
     <PracticeNav current="/practice" />
 
-    <!-- 1. Hero -->
+    <!-- 1. The three jobs -->
     <section class="mb-20 md:mb-28">
       <div class="grid md:grid-cols-[1fr_200px] lg:grid-cols-[1fr_240px] gap-10 md:gap-14 items-start">
         <div>
-          <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Operator and advisor &middot; Data, identity &amp; monetization &middot; London and New York</p>
+          <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Operator and advisor &middot; Fan data, identity &amp; sponsor proof &middot; London and New York</p>
           <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.04] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
-            Ashwin Desikan builds the data, identity and marketing-technology function inside <span class="text-[color:var(--color-accent)]">sports and media businesses</span>.
+            Prove who your fans are. Release only what may leave. <span class="text-[color:var(--color-accent)]">Measure what sponsors got.</span>
           </h1>
           <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
-            I ran it at the NFL and MLB, across 62 clubs. Before that I built the other side of the trade at Amazon Ads and Spotify, and ran client data strategy inside Publicis and Omnicom. I now do the same work for rights holders, media owners and the investors behind them, as an advisor, a fractional lead, or the person who runs the stack decision.
+            Three jobs, one platform, run inside the club's own systems. I built this for the NFL in New York across 32 clubs and for MLB across 30, and the other side of the trade at Amazon Ads and Spotify. I now do it for the properties below the top tier, where the same problem exists and nobody is supplying the answer.
           </p>
           <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
             <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a 15-minute call <span aria-hidden="true">-&gt;</span></a>
-            <a href="#services" class={ctaQuiet}>What I do <span aria-hidden="true">-&gt;</span></a>
+            <a href="/kit" class={ctaQuiet}>The deployment kit <span aria-hidden="true">-&gt;</span></a>
           </div>
         </div>
         <a href="/about" class="group block w-40 md:w-full md:mt-12">
@@ -125,26 +141,20 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
           <span class="mt-3 block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] group-hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-display)">Ashwin Desikan &middot; London / New York</span>
         </a>
       </div>
-      <div class="mt-12 pt-6 border-t border-[color:var(--color-line)] flex flex-wrap items-baseline gap-x-6 gap-y-2">
-        <span class="text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Director and VP roles at</span>
-        {proof.filter((p) => !["GroupM", "Omnicom \u00b7 Annalect"].includes(p)).map((p) => <span class="text-base md:text-lg text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">{p}</span>)}
-      </div>
-    </section>
-
-    <!-- 2. Background -->
-    <section class="mb-20 md:mb-28">
-      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
-        <h2 class={sectionLabel} style="font-family: var(--font-display)">Background</h2>
-        <a href="/about" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">The full story <span aria-hidden="true">-&gt;</span></a>
-      </div>
-      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
-        {background.map((b) => (
-          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
-            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-2" style="font-family: var(--font-display)">{b.where}</p>
-            <p class="text-xs tracking-[0.1em] uppercase text-[color:var(--color-muted)] mb-4" style="font-family: var(--font-display)">{b.names}</p>
-            <p class="text-sm md:text-base text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{b.did}</p>
+      <div class="mt-12 grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {jobs.map((j) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{j.num} &middot; {j.verb}</p>
+            <h2 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{j.title}</h2>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed grow" style="font-family: var(--font-serif)">{j.body}</p>
+            <p class="mt-4 text-xs text-[color:var(--color-muted)] leading-relaxed" style="font-family: var(--font-serif)">{j.proof}</p>
+            <a href={j.href} target={j.external ? "_blank" : undefined} rel={j.external ? "noopener" : undefined} class={`${small} mt-4`} style="font-family: var(--font-display)">{j.label} <span aria-hidden="true">-&gt;</span></a>
           </div>
         ))}
+      </div>
+      <div class="mt-8 pt-6 border-t border-[color:var(--color-line)] flex flex-wrap items-baseline gap-x-6 gap-y-2">
+        <span class="text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Director and VP roles at</span>
+        {proof.filter((p) => !["GroupM", "Omnicom \u00b7 Annalect"].includes(p)).map((p) => <span class="text-base md:text-lg text-[color:var(--color-paper)]/70" style="font-family: var(--font-serif)">{p}</span>)}
       </div>
     </section>
 
@@ -169,7 +179,7 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
     <section class="mb-20 md:mb-28">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Who this is for</h2>
-        <a href="/sectors" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">All seven kinds of buyer <span aria-hidden="true">-&gt;</span></a>
+        <a href="/sectors" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">Every kind of buyer <span aria-hidden="true">-&gt;</span></a>
       </div>
       <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
         {situations.map((s) => (
@@ -186,7 +196,7 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
     <section id="engage" class="mb-20 md:mb-28">
       <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
         <h2 class={sectionLabel} style="font-family: var(--font-display)">Ways to work together</h2>
-        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Seven offers, sized to the problem</span>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Sized to the problem</span>
       </div>
       <div class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
         {tiers.map((t, i) => (

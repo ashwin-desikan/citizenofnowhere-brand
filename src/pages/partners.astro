@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+
+// Disclosed partners. This is the one page on the site where vendors are
+// named. Everything here is a current fact; a relationship appears when it
+// exists, not when it is hoped for. Update it the day a status changes.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+
+const rules = [
+  { t: "No referral fees", d: "I am not paid by any vendor for a recommendation, an introduction or a sale, and I do not co-sell." },
+  { t: "Disclosed advisory", d: "Where I advise a vendor on its product, it is disclosed in writing to that vendor and to any client. I never advise a property on a choice where that vendor is in the running." },
+  { t: "The platform is a product, and it says so", d: "Where my own platform could be an answer to a client's question, it is never on a shortlist in a selection I am paid to run. The client is told that in writing before the selection starts." },
+  { t: "Named when real", d: "A partner appears on this page when something is connected, signed or in writing. Conversations in progress are described, not named." },
+];
+
+const connected = [
+  { name: "Hightouch", role: "Activation", status: "Connected in the Studio demonstration", d: "Reads the released audience views from the Studio database through a read-only login and carries them to its destinations on a schedule. It sees released views only and writes nothing back. The pattern a property's own activation tool follows." },
+  { name: "Google Ads and Meta", role: "Destinations", status: "Formats supported", d: "Released audiences are produced as hashed identifiers in the formats these platforms accept for customer matching. Delivery to either runs through the property's activation tool or the sponsor's own account, never direct from the Studio." },
+  { name: "Supabase (Postgres)", role: "The demonstration backend", status: "In use", d: "The Studio runs on a Postgres database with row-level tenancy, the consent ledger, the rights matrix and the release functions. A real deployment runs the same SQL on the property's own database or cloud account." },
+  { name: "Anthropic (Claude)", role: "Build tooling", status: "In use", d: "The Studio and the practice site are built with AI coding agents. The release checks and the evaluation checks are tested the same way, against the live deployment." },
+];
+
+const inProgress = [
+  "A ticketing and membership platform used by clubs and leagues below the top tier, as a supply partner: it holds the record, the kit enforces consent and rights at release and proves cross-club and sponsor audiences.",
+  "A brand-side activation platform, to agree lanes: the rights-holder side is mine, the brand side is theirs, and a sponsor's audience lands in their instance without raw fan data moving.",
+  "An identity partner for the sponsor-side match, where the sponsor already runs its own clean room.",
+  "Clean-room compute on the property's existing cloud account, so the federated match runs where the data already lives.",
+];
+---
+
+<Layout
+  title="Disclosed partners | Ashwin Desikan, Citizen of Nowhere"
+  description="The tools and partners the practice and its platform run with, named only when connected or in writing, and the rules that keep the advice independent: no referral fees, no co-selling, disclosed vendor advisory."
+  path="/partners"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/partners" />
+
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Disclosed partners</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        Independent of every vendor. <span class="text-[color:var(--color-accent)]">Here is every vendor.</span>
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        Independence is a claim that only means something if it can be checked. This page lists what the practice and its platform run with, what each relationship is, and the rules that govern all of them. It is the only page on this site where vendors are named.
+      </p>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The rules</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {rules.map((r) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{r.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{r.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Connected or in use</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Current facts, kept current</span>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {connected.map((c) => (
+          <li class="py-6 grid md:grid-cols-[220px_1fr] gap-3 md:gap-8">
+            <div>
+              <p class="text-lg md:text-xl font-medium" style="font-family: var(--font-serif)">{c.name}</p>
+              <p class="text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] mt-1" style="font-family: var(--font-display)">{c.role}</p>
+              <p class="text-[11px] tracking-[0.14em] uppercase text-[color:var(--color-accent)] mt-1" style="font-family: var(--font-display)">{c.status}</p>
+            </div>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{c.d}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">In conversation</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Described, not named, until agreed</span>
+      </div>
+      <ul class="space-y-3 max-w-2xl">
+        {inProgress.map((x) => (
+          <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">
+            <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{x}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-20 md:mb-28 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">For vendors</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">If your product belongs on this page, the conversation starts with what the property gets, not what I get.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/approach#vendors" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Sport as the door to enterprise <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>

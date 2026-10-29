@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PracticeNav from "../../components/PracticeNav.astro";
+import PracticeFooter from "../../components/PracticeFooter.astro";
+import { segments } from "../../data/segments";
+import { tiers } from "../../data/practice";
+
+// One shared layout for the four buyer segments. The content lives in
+// data/segments.ts; this file only decides the order it is read in.
+
+export function getStaticPaths() {
+  return segments.map((s) => ({ params: { segment: s.id }, props: { s } }));
+}
+
+const { s } = Astro.props;
+const calendly = "https://calendly.com/adesikan/15min";
+const offers = s.offers.map((slug) => tiers.find((t) => t.slug === slug)).filter((t): t is typeof tiers[number] => t !== undefined);
+
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+---
+
+<Layout title={`${s.title} | Ashwin Desikan, Citizen of Nowhere`} description={s.description} path={`/for/${s.id}`}>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/sectors" />
+
+    <section class="mb-16 md:mb-24">
+      <nav class="mb-8 flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm" style="font-family: var(--font-display)" aria-label="Segments">
+        {segments.map((x) => (
+          <a href={`/for/${x.id}`} aria-current={x.id === s.id ? "page" : undefined} class={x.id === s.id ? "text-[color:var(--color-paper)]" : "text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors"}>{x.nav}</a>
+        ))}
+      </nav>
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">{s.title}</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-[1.04] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">{s.headline}</h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">{s.lead}</p>
+      <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a 15-minute call <span aria-hidden="true">-&gt;</span></a>
+        <a href="#season" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">What season one looks like <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">If this sounds familiar</h2>
+      </div>
+      <ul class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {s.symptoms.map((x) => (
+          <li class="bg-[color:var(--color-ink)] p-6 md:p-7 text-base md:text-lg text-[color:var(--color-paper)]/85 leading-relaxed" style="font-family: var(--font-serif)">{x}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section id="season" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Season one</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Prove, release, measure</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {s.seasonOne.map((j, i) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">0{i + 1} &middot; {j.t}</p>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{j.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 border-t border-[color:var(--color-line)] pt-8">
+        <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">The first move</p>
+        <p class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{s.firstMove}</p>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Offers that fit</h2>
+        <a href="/pricing" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">How it is priced <span aria-hidden="true">-&gt;</span></a>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {offers.map((t) => (
+          <li class="py-5 grid md:grid-cols-[1fr_220px] gap-2 md:gap-8">
+            <div>
+              <a href={`/practice#offer-${t.slug}`} class="text-lg md:text-xl font-medium hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">{t.name}</a>
+              <p class="mt-1 text-sm text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{t.trigger}</p>
+            </div>
+            <span class="text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)] md:text-right" style="font-family: var(--font-display)">{t.format}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-20 md:mb-28 grid md:grid-cols-2 gap-12 md:gap-16">
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">Built, not described</h2>
+        </div>
+        <ul class="space-y-3" style="font-family: var(--font-display)">
+          {s.proof.map((p) => (
+            <li><a href={p.href} target={p.external ? "_blank" : undefined} rel={p.external ? "noopener" : undefined} class={small}>{p.label} <span aria-hidden="true">-&gt;</span></a></li>
+          ))}
+        </ul>
+        <p class="mt-5 text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">The Studio runs on a real backend with a synthetic club, labelled as such. Named properties appear here when they agree to be named.</p>
+      </div>
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">The usual objection</h2>
+        </div>
+        <p class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">&ldquo;{s.objection.q}&rdquo;</p>
+        <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">{s.objection.a}</p>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">Start here</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">A first call is fifteen minutes and needs no preparation.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/kit" class={small}>What a deployment contains <span aria-hidden="true">-&gt;</span></a>
+        <a href="/practice#contact" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">Send a note <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>

@@ -1,0 +1,206 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+import { tiers } from "../data/practice";
+
+// Pricing as return, not rate. The slider is illustrative and runs entirely in
+// the browser; every assumption it uses is printed beside it and editable.
+// No day rate and no currency on this page, by design.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const field = "bg-transparent border border-[color:var(--color-line)] rounded-sm px-3 py-2 text-[color:var(--color-paper)] focus:outline-none focus:border-[color:var(--color-accent)] w-full";
+
+const shapes = [
+  { t: "Fixed fee per offer", d: "Each offer on the practice page has a scope, a duration and a deliverable, and is priced as one number before it starts. No timesheets, no surprises in month two." },
+  { t: "Flat licence per property", d: "Where the platform runs through a season, the property pays one flat annual amount. It does not rise with the number of fans, because a fan count should never be a reason to keep the estate small." },
+  { t: "Proof fee per sponsor", d: "Sponsor measurement is priced per sponsor per season, because that is the unit the commercial team sells and renews. It sits on the revenue line, not the technology budget." },
+  { t: "Founding terms", d: "Two founding properties each season take the platform at cost in exchange for a case study they approve and a reference call a quarter. Ask whether a place is open." },
+];
+
+const notPriced = [
+  "No percentage of media spend. The practice is not paid more when a property spends more.",
+  "No referral fees from any vendor, and no co-selling. Where I advise a vendor on its product, it is disclosed in writing and I never advise you on a choice where that vendor is in the running.",
+  "No per-fan pricing. The estate should grow without the invoice growing with it.",
+];
+---
+
+<Layout
+  title="Pricing | Ashwin Desikan, Citizen of Nowhere"
+  description="Do not compare the fee. Compare the return. How engagements and the platform are priced, and an illustrative calculator for what honest fan identity and consent do to a property's marketable base."
+  path="/pricing"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/pricing" />
+
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">Pricing</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        Do not compare the fee. <span class="text-[color:var(--color-accent)]">Compare the return.</span>
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        A fan data programme is bought out of a cost budget and judged on a revenue line. The right question is not what a day costs. It is how many real, consented, reachable people the property has at the end of the season that it did not have at the start, and how much of its sponsor income it can now prove.
+      </p>
+    </section>
+
+    <!-- Illustrative calculator -->
+    <section id="return" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">Compare the return</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Illustrative. Runs in your browser. Nothing is sent anywhere.</span>
+      </div>
+      <div class="grid md:grid-cols-[1fr_1fr] gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        <div class="bg-[color:var(--color-ink)] p-7 md:p-8 space-y-6" style="font-family: var(--font-display)">
+          <div>
+            <label for="records" class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2">Records in the estate today</label>
+            <input id="records" type="range" min="20000" max="2000000" step="10000" value="250000" class="w-full accent-[color:var(--color-accent)]" />
+            <p class="mt-1 text-sm text-[color:var(--color-paper)]"><span id="recordsOut">250,000</span> records across ticketing, app, shop and email</p>
+          </div>
+          <div>
+            <label for="dup" class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2">Records per real person today</label>
+            <input id="dup" type="range" min="1.0" max="3.0" step="0.1" value="1.8" class="w-full accent-[color:var(--color-accent)]" />
+            <p class="mt-1 text-sm text-[color:var(--color-paper)]"><span id="dupOut">1.8</span> records for every one person</p>
+          </div>
+          <div>
+            <label for="consent" class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2">Share of people with marketable consent today</label>
+            <input id="consent" type="range" min="5" max="80" step="1" value="30" class="w-full accent-[color:var(--color-accent)]" />
+            <p class="mt-1 text-sm text-[color:var(--color-paper)]"><span id="consentOut">30</span> percent</p>
+          </div>
+          <div>
+            <label for="sponsors" class="block text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-2">Sponsor renewals this season</label>
+            <input id="sponsors" type="range" min="1" max="20" step="1" value="4" class="w-full accent-[color:var(--color-accent)]" />
+            <p class="mt-1 text-sm text-[color:var(--color-paper)]"><span id="sponsorsOut">4</span> renewals</p>
+          </div>
+          <details class="pt-2 border-t border-[color:var(--color-line)]">
+            <summary class="cursor-pointer text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)]">Assumptions (edit them)</summary>
+            <div class="mt-4 grid grid-cols-2 gap-4 text-xs">
+              <label class="block">Consent uplift from purpose-level capture, percentage points<input id="aUplift" type="number" min="0" max="60" value="15" class={`${field} mt-1`} /></label>
+              <label class="block">Share of each renewal that can be proven with a match<input id="aProof" type="number" min="0" max="100" value="60" class={`${field} mt-1`} /></label>
+              <label class="block">Records per person after identity resolution<input id="aDupAfter" type="number" min="1" max="3" step="0.05" value="1.1" class={`${field} mt-1`} /></label>
+              <label class="block">Renewals with proof that renew at a higher tier, percent<input id="aRenew" type="number" min="0" max="100" value="25" class={`${field} mt-1`} /></label>
+            </div>
+            <p class="mt-3 text-xs text-[color:var(--color-muted)] leading-relaxed" style="font-family: var(--font-serif)">These are starting points for a conversation, not benchmarks. The first engagement replaces every one of them with your own numbers. Nothing here is a promise of a result.</p>
+          </details>
+        </div>
+        <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+          <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-6" style="font-family: var(--font-display)">What changes by the end of the season</p>
+          <dl class="space-y-6">
+            <div>
+              <dt class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Real people in the estate</dt>
+              <dd class="text-2xl md:text-3xl font-medium tracking-tight" style="font-family: var(--font-serif)"><span id="peopleOut">0</span></dd>
+              <dd class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">The number that replaces the record count in the board paper.</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Marketable people today, then after</dt>
+              <dd class="text-2xl md:text-3xl font-medium tracking-tight" style="font-family: var(--font-serif)"><span id="mktNow">0</span> <span class="text-[color:var(--color-muted)] text-lg">to</span> <span id="mktAfter" class="text-[color:var(--color-accent)]">0</span></dd>
+              <dd class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">Consent recorded by purpose, checked at the moment anything leaves.</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Additional people the club may now reach</dt>
+              <dd class="text-2xl md:text-3xl font-medium tracking-tight text-[color:var(--color-accent)]" style="font-family: var(--font-serif)">+<span id="gainOut">0</span></dd>
+              <dd class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">Acquired at no media cost. They were already in the building.</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Renewals with proof, and renewals that step up</dt>
+              <dd class="text-2xl md:text-3xl font-medium tracking-tight" style="font-family: var(--font-serif)"><span id="provenOut">0</span> <span class="text-[color:var(--color-muted)] text-lg">proven,</span> <span id="stepOut" class="text-[color:var(--color-accent)]">0</span> <span class="text-[color:var(--color-muted)] text-lg">step up</span></dd>
+              <dd class="text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-serif)">A renewal with a proof report is a different conversation from a renewal with a reach number.</dd>
+            </div>
+          </dl>
+          <p class="mt-8 text-sm text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">
+            Set the fee against those four lines, not against a day. If the lines do not move for your property, the honest answer is that you should not buy this, and I will say so on the first call.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it is priced -->
+    <section id="shape" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">How it is priced</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Four shapes, stated before work starts</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {shapes.map((s) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{s.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{s.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 max-w-2xl">
+        <p class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)] mb-3" style="font-family: var(--font-display)">What is never in the price</p>
+        <ul class="space-y-2">
+          {notPriced.map((x) => (
+            <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">
+              <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{x}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- The offers, by shape -->
+    <section id="offers" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">The offers</h2>
+        <a href="/practice#engage" class="text-xs md:text-sm text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors" style="font-family: var(--font-display)">Full detail on each <span aria-hidden="true">-&gt;</span></a>
+      </div>
+      <ul class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {tiers.map((t) => (
+          <li class="py-4 grid md:grid-cols-[1fr_220px] gap-2 md:gap-8 items-baseline">
+            <a href={`/practice#offer-${t.slug}`} class="text-base md:text-lg text-[color:var(--color-paper)]/85 hover:text-[color:var(--color-accent)] transition-colors" style="font-family: var(--font-serif)">{t.name}</a>
+            <span class="text-[10px] tracking-[0.14em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">{t.format}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm text-[color:var(--color-muted)] max-w-2xl" style="font-family: var(--font-serif)">Each offer is quoted as one fixed number once the scope is agreed on a first call. The platform licence and the proof fee are quoted per property and per sponsor the same way.</p>
+    </section>
+
+    <section class="mb-20 md:mb-28 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">Start here</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">Bring the numbers you have. The first call replaces the assumptions above with yours.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/kit" class={small}>What a deployment contains <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+
+  <script is:inline>
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var ids = ["records", "dup", "consent", "sponsors", "aUplift", "aProof", "aDupAfter", "aRenew"];
+      var fmt = function (n) { return Math.round(n).toLocaleString("en-GB"); };
+      function calc() {
+        var records = +$("records").value, dup = +$("dup").value, consent = +$("consent").value, sponsors = +$("sponsors").value;
+        var uplift = +$("aUplift").value, proof = +$("aProof").value, dupAfter = +$("aDupAfter").value, renew = +$("aRenew").value;
+        $("recordsOut").textContent = fmt(records);
+        $("dupOut").textContent = dup.toFixed(1);
+        $("consentOut").textContent = consent;
+        $("sponsorsOut").textContent = sponsors;
+        var people = records / dup;
+        var peopleAfter = records / Math.max(1, dupAfter);
+        // Resolution does not create people; the honest base is the smaller of the two.
+        var base = Math.min(people, peopleAfter);
+        var mktNow = base * consent / 100;
+        var mktAfter = base * Math.min(100, consent + uplift) / 100;
+        var proven = Math.round(sponsors * proof / 100);
+        var step = Math.round(proven * renew / 100);
+        $("peopleOut").textContent = fmt(base);
+        $("mktNow").textContent = fmt(mktNow);
+        $("mktAfter").textContent = fmt(mktAfter);
+        $("gainOut").textContent = fmt(Math.max(0, mktAfter - mktNow));
+        $("provenOut").textContent = proven;
+        $("stepOut").textContent = step;
+      }
+      ids.forEach(function (id) { var el = $(id); if (el) el.addEventListener("input", calc); });
+      calc();
+    })();
+  </script>
+</Layout>

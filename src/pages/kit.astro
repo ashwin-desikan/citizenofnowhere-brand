@@ -1,0 +1,153 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PracticeNav from "../components/PracticeNav.astro";
+import PracticeFooter from "../components/PracticeFooter.astro";
+
+// The deployment kit: what a deployment contains, what the property provides,
+// how it is tested, and what is deliberately not in it. Generic system names
+// only; vendors are named on /partners.
+
+const calendly = "https://calendly.com/adesikan/15min";
+const studio = "https://rankings.citizenofnowhere.org/studio";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+
+const parts = [
+  { n: "01", t: "The identity spine", d: "Keys from ticketing, the app, the shop, the gate, streaming and email resolved to one person, with the rule for each key written down and the duplication number reported, not hidden.", href: `${studio}/identity`, label: "Identity graph" },
+  { n: "02", t: "Consent by purpose", d: "A ledger, not a tick box. Marketing email, push, partner offers, audience extension and profiling are separate purposes with separate states, and the latest state wins at the moment of use.", href: `${studio}/consent`, label: "Consent gate" },
+  { n: "03", t: "The rights matrix", d: "Who may ask which question of whose records: a league of its clubs, a club of its sponsors, a sponsor of the club. A rival asking is refused by the rules, and every refusal is logged.", href: `${studio}/clean-room`, label: "The match refusing a rival" },
+  { n: "04", t: "Release checks", d: "Every export runs the rights check, the consent check and the minimum group size before a hashed identifier leaves, and writes a run record that says who was excluded and why.", href: `${studio}/export`, label: "Export by purpose" },
+  { n: "05", t: "Activation through what you have", d: "Released audiences appear in a read-only schema that the property's activation tool reads and carries to its destinations. The tool sees the released views and nothing else, and writes nothing back.", href: `${studio}/activate`, label: "Activate" },
+  { n: "06", t: "Sponsor proof", d: "The two-party match with k-anonymity: fans reached, matched to outcomes, with small groups withheld and no records pooled between the parties. The output is a report both boards can read.", href: `${studio}/measurement`, label: "Lift measurement" },
+  { n: "07", t: "The board scoreboard", d: "Records per real person, known-fan share, marketable consent, over-communication stopped, time to audience and partner-attributed spend, each with a direction and a target.", href: `${studio}/scoreboard`, label: "Scoreboard" },
+  { n: "08", t: "Evaluation checks", d: "A standing set of checks that run against the live deployment: a rival is refused, a withdrawn consent drops out of the next release, no raw key reaches a partner view, small groups stay withheld. Results are published, not promised.", href: `${studio}/evals`, label: "Evaluation results" },
+];
+
+const youProvide = [
+  { t: "Exports, not access", d: "A periodic export from ticketing, membership, the shop and the app. No system is replaced and no fan record leaves your environment unhashed." },
+  { t: "One owner", d: "A commercial or data lead who can decide, and a legal contact for the data terms. Half a day a week for the first weeks, less after." },
+  { t: "One sponsor", d: "A renewal to build the proof around. The sponsor needs to bring its own outcome data or agree to a matched measure; either works." },
+  { t: "Your activation tool", d: "Whatever already carries audiences to email, push or the ad platforms. If there is none, a free tier of a warehouse-native tool is enough for season one." },
+];
+
+const timeline = [
+  { when: "Weeks one and two", what: "Assess. Exports in, keys mapped, duplication measured, consent states classified, the sponsor renewal chosen." },
+  { when: "Weeks three to six", what: "Build. Identity rules, the consent ledger, the rights matrix and the release checks stood up on the property's own records. First release to the activation tool." },
+  { when: "The rest of the season", what: "Run. Releases on a schedule, the scoreboard in the board pack, the match run for the chosen sponsor, the proof report delivered before the renewal meeting." },
+];
+
+const notIncluded = [
+  "A new CRM, email tool or app. The kit sits on what you have.",
+  "A mobile app, a content platform or a ticketing system.",
+  "Direct integrations to ad networks. Those run through your activation tool or the sponsor's own seat.",
+  "A proprietary identity graph. Your keys, your rules, written down and yours to take away.",
+];
+---
+
+<Layout
+  title="The deployment kit | Ashwin Desikan, Citizen of Nowhere"
+  description="What a fan data deployment contains: the identity spine, consent by purpose, a rights matrix, release checks, activation through the tools you have, sponsor proof, a board scoreboard and published evaluation checks."
+  path="/kit"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <PracticeNav current="/kit" />
+
+    <section class="mb-16 md:mb-24">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">The deployment kit</p>
+      <h1 class="text-4xl md:text-6xl leading-[1.02] tracking-tight font-medium mb-8" style="font-family: var(--font-serif)">
+        Everything a deployment contains, <span class="text-[color:var(--color-accent)]">and everything it does not.</span>
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        A deployment is working code on the property's own records, not a slide about it. Each part below is running today in the Studio on a synthetic club, with the same rules a real deployment uses. Open any of them and try to break it.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={studio} target="_blank" rel="noopener" class={cta}>Open the Studio <span aria-hidden="true">-&gt;</span></a>
+        <a href="#provide" class="inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-muted)] hover:text-[color:var(--color-paper)] transition-colors">What you provide <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What is in the kit</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Each part links to its live module</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {parts.map((p) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8 flex flex-col">
+            <p class="text-xs text-[color:var(--color-accent)] mb-3" style="font-family: var(--font-display)">{p.n}</p>
+            <h3 class="text-xl md:text-2xl font-medium mb-3" style="font-family: var(--font-serif)">{p.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed grow" style="font-family: var(--font-serif)">{p.d}</p>
+            <a href={p.href} target="_blank" rel="noopener" class={`${small} mt-5`} style="font-family: var(--font-display)">{p.label} <span aria-hidden="true">-&gt;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="provide" class="mb-20 md:mb-28 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What you provide</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Nothing complex</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[color:var(--color-line)] border border-[color:var(--color-line)]">
+        {youProvide.map((y) => (
+          <div class="bg-[color:var(--color-ink)] p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-medium mb-3" style="font-family: var(--font-serif)">{y.t}</h3>
+            <p class="text-sm md:text-base text-[color:var(--color-paper)]/70 leading-relaxed" style="font-family: var(--font-serif)">{y.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28">
+      <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">How a season runs</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Assess, build, run</span>
+      </div>
+      <ol class="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+        {timeline.map((t) => (
+          <li class="py-5 grid md:grid-cols-[200px_1fr] gap-2 md:gap-8">
+            <span class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-accent)] pt-1" style="font-family: var(--font-display)">{t.when}</span>
+            <span class="text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">{t.what}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-6 text-sm text-[color:var(--color-muted)] max-w-2xl" style="font-family: var(--font-serif)">Weeks, not quarters, because the hard part is already built and the property's part is an export and a decision. A property with a clean ticketing export and one willing sponsor has seen its first release inside the first month.</p>
+    </section>
+
+    <section class="mb-20 md:mb-28 grid md:grid-cols-2 gap-12 md:gap-16">
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">Deliberately not included</h2>
+        </div>
+        <ul class="space-y-3">
+          {notIncluded.map((x) => (
+            <li class="pl-5 relative text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)">
+              <span class="absolute left-0 top-2.5 h-px w-3 bg-[color:var(--color-accent)]"></span>{x}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-[color:var(--color-line)]">
+          <h2 class={sectionLabel} style="font-family: var(--font-display)">The two rules</h2>
+        </div>
+        <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed mb-4" style="font-family: var(--font-serif)"><strong class="text-[color:var(--color-paper)]">Consent is enforced at the moment of use, not at collection.</strong> Every release checks purpose and lawful basis when it runs. It is the first question a data protection officer asks, and almost nobody builds it this way.</p>
+        <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed" style="font-family: var(--font-serif)"><strong class="text-[color:var(--color-paper)]">Your records never leave your environment unhashed.</strong> The kit runs on the property's own database or cloud account. Partners read released views; nobody receives a copy of the fan table.</p>
+        <a href="/partners" class={`${small} mt-6`} style="font-family: var(--font-display)">The tools and partners it runs with <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <section class="mb-20 md:mb-28 border border-[color:var(--color-line)] p-8 md:p-12">
+      <p class={`${eyebrow} mb-5`} style="font-family: var(--font-display)">Start here</p>
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-5 max-w-2xl" style="font-family: var(--font-serif)">Bring one export and one renewal. The first call decides whether this is worth a season.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href={calendly} target="_blank" rel="noopener" class={cta}>Book a call <span aria-hidden="true">-&gt;</span></a>
+        <a href="/pricing" class={small}>Compare the return <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <PracticeFooter />
+  </main>
+</Layout>
