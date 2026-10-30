@@ -140,6 +140,20 @@ export const mlbRecord: RecordItem[] = [
     ],
     link: "Fan data platform plus content: the activation layer at club level.",
   },
+  {
+    date: "Oct 2026",
+    publisher: "Adobe",
+    title: "How MLB and Adobe drove record fan engagement",
+    url: "https://business.adobe.com/blog/how-mlb-and-adobe-drove-record-fan-engagement",
+    kind: "Vendor case study",
+    phase: "During my tenure",
+    facts: [
+      "Sunny and 75, piloted in 2025: real-time weather, purchase history and location data combined to offer last-minute tickets to fans near the ballpark.",
+      "The pilot reported click-through 51 percent above the average for weather-based push, and a lift in incremental ticket sales.",
+      "Six-week sprints replaced twelve-month project cycles, and a shared playbook microsite gives all 30 clubs the use cases, journeys and templates.",
+    ],
+    link: "The journey orchestration and the cross-club operating model: one pilot turned into a repeatable capability every club could run.",
+  },
 ];
 
 export const nflRecord: RecordItem[] = [
