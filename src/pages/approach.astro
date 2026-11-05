@@ -217,6 +217,9 @@ const vendorNeeds = [
                 <li class="text-[11px] tracking-[0.04em] text-[color:var(--color-muted)] border border-[color:var(--color-line)] px-2.5 py-1 rounded-full" style="font-family: var(--font-display)">{t}</li>
               ))}
             </ul>
+            {p.proof && (
+              <a href={p.proof.href} target="_blank" rel="noopener" class={`${small} mt-5`} style="font-family: var(--font-display)">{p.proof.label} <span aria-hidden="true">-&gt;</span></a>
+            )}
           </div>
         ))}
       </div>

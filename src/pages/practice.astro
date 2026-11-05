@@ -54,6 +54,7 @@ const jobs = [
     body: "The fans a sponsor reached, matched to what those fans then did, with small groups withheld and no records pooled between the parties. A league sees the overlap across its clubs; a club cannot query a rival. This is the renewal proof a commercial team currently has to argue for.",
     proof: "Live in the Studio: the two-party match with k-anonymity, and the refusal when the wrong party asks.",
     href: "https://rankings.citizenofnowhere.org/studio/clean-room", label: "See the match refuse a rival", external: true,
+    extra: { href: "https://rankings.citizenofnowhere.org/studio/agents", label: "See an agent held at the cap" },
   },
 ];
 
@@ -149,6 +150,9 @@ const small = "inline-flex items-center gap-2 text-xs md:text-sm text-[color:var
             <p class="text-sm md:text-base text-[color:var(--color-paper)]/75 leading-relaxed grow" style="font-family: var(--font-serif)">{j.body}</p>
             <p class="mt-4 text-xs text-[color:var(--color-muted)] leading-relaxed" style="font-family: var(--font-serif)">{j.proof}</p>
             <a href={j.href} target={j.external ? "_blank" : undefined} rel={j.external ? "noopener" : undefined} class={`${small} mt-4`} style="font-family: var(--font-display)">{j.label} <span aria-hidden="true">-&gt;</span></a>
+            {j.extra && (
+              <a href={j.extra.href} target="_blank" rel="noopener" class={`${small} mt-2`} style="font-family: var(--font-display)">{j.extra.label} <span aria-hidden="true">-&gt;</span></a>
+            )}
           </div>
         ))}
       </div>

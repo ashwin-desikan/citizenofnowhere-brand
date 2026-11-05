@@ -12,6 +12,7 @@ const links = [
   { href: "/kit", label: "Kit" },
   { href: "/partners", label: "Partners" },
   { href: "/federated", label: "Case study" },
+  { href: "https://rankings.citizenofnowhere.org/studio", label: "Studio", external: true },
   { href: "/about", label: "About" },
   { href: "/hiring", label: "Hiring" },
 ];
@@ -21,7 +22,7 @@ const base = "transition-colors hover:text-[color:var(--color-paper)]";
   <a href="/" class="text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]" style="font-family: var(--font-display)">Citizen of Nowhere</a>
   <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-7 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
     {links.map((l) => (
-      <a href={l.href} class={base} aria-current={current === l.href ? "page" : undefined} style={current === l.href ? "color: var(--color-paper)" : undefined}>{l.label}</a>
+      <a href={l.href} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener" : undefined} class={base} aria-current={current === l.href ? "page" : undefined} style={current === l.href ? "color: var(--color-paper)" : undefined}>{l.label}</a>
     ))}
     <a href={calendly} target="_blank" rel="noopener" class="border border-[color:var(--color-accent)] text-[color:var(--color-accent)] hover:bg-[color:var(--color-accent)] hover:text-[color:var(--color-ink)] transition-colors px-3 py-1.5 rounded-sm">Book a call</a>
   </nav>

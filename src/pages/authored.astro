@@ -1,0 +1,214 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// /authored: the two items on the public record that predate the leagues.
+// Sibling of /record. Keep facts checkable; never "patent holder" or "patent pending".
+
+const claimMap = [
+  { then: "Determine a user identifier from the request", now: "Identity resolution at the edge", here: "The identity spine: one record per real person" },
+  { then: "Obtain a user profile based on the identifier", now: "Profile lookup from a customer data platform", here: "The unified fan profile" },
+  { then: "A direction model with one predictor per page variant", now: "Decisioning, next-best-experience, multi-armed bandits", here: "The activation layer: which offer, which fan, which moment" },
+  { then: "Rate a default page against alternatives and redirect", now: "Experimentation with a control arm", here: "Holdouts in every sponsor and ticketing journey" },
+  { then: "Blend an estimated rating with a measured one, weighted by visitor count", now: "Bayesian updating; exploration versus exploitation", here: "Learn from the first hundred fans, trust the ten thousandth" },
+  { then: "Modify the model from the user's interaction with the chosen page", now: "Closed-loop measurement", here: "Measure what sponsors got, then re-score" },
+];
+
+const claims = [
+  "I am a named inventor on the 2013 application. I am not the patent holder. The application was assigned to Imagini Holdings and was not taken to grant. It confers no rights on anyone, me included.",
+  "I was third author of nine on the 2003 paper, as a research technician. The science belongs to the lab and to the first authors.",
+  "Both are on the public record and can be checked at the links on this page.",
+];
+
+const navLink = "hover:text-[color:var(--color-paper)] transition-colors";
+const eyebrow = "text-[11px] md:text-xs tracking-[0.22em] uppercase text-[color:var(--color-accent)]";
+const sectionLabel = "text-xs md:text-sm tracking-[0.22em] uppercase text-[color:var(--color-muted)]";
+const cta = "inline-flex items-center gap-2 text-sm md:text-base text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const body = "text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed max-w-2xl";
+const inline = "text-[color:var(--color-accent)] hover:text-[color:var(--color-paper)] transition-colors";
+const cite = "text-sm md:text-base leading-relaxed text-[color:var(--color-paper)]/75 border-l-2 border-[color:var(--color-accent)] pl-5 max-w-2xl";
+---
+
+<Layout
+  title="In Print | Citizen of Nowhere"
+  description="Two items on the public record before the leagues: a 2013 patent application on profile-driven site personalisation, and a 2003 paper in Science on finding function by comparing genomes."
+  path="/authored"
+>
+  <main class="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-28">
+    <!-- Masthead -->
+    <header class="sticky top-0 z-50 -mx-6 md:-mx-10 px-6 md:px-10 py-4 mb-16 md:mb-24 flex items-center justify-between gap-6 bg-[color:var(--color-ink)]/85 backdrop-blur-md border-b border-[color:var(--color-line)]/60">
+      <a href="/" class={eyebrow} style="font-family: var(--font-display)">Citizen of Nowhere</a>
+      <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 text-xs md:text-sm text-[color:var(--color-muted)] justify-end" style="font-family: var(--font-display)">
+        <a href="/practice" class={navLink}>Practice</a>
+        <a href="#patent" class={navLink}>2013</a>
+        <a href="#science" class={navLink}>2003</a>
+        <a href="/record" class={navLink}>Public record</a>
+        <a href="/work" class={navLink}>Work</a>
+        <a href="/practice#contact" class={navLink}>Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-24 md:mb-36">
+      <p class={`${eyebrow} mb-8`} style="font-family: var(--font-display)">In print</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight font-medium mb-9" style="font-family: var(--font-serif)">
+        Two things on the public record, before the leagues.
+      </h1>
+      <p class="text-lg md:text-2xl leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl" style="font-family: var(--font-serif)">
+        Most of what I have built sits behind league and platform walls. Two items do not. One is a patent application from London's early AdTech wave. The other is a paper in <em>Science</em> from a genetics lab in St Louis. They are twenty years apart and they make the same argument: identify the thing, compare it with its relatives, keep what the evidence supports, and act on it.
+      </p>
+    </section>
+
+    <!-- 01 Patent application -->
+    <section id="patent" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">01 &middot; Patent application</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Filed 2013 &middot; Published 2014</span>
+      </div>
+
+      <h3 class="text-2xl md:text-4xl font-medium tracking-tight leading-snug mb-8 max-w-3xl" style="font-family: var(--font-serif)">
+        Profile-driven site personalisation, written down in claim language.
+      </h3>
+
+      <p class={`${cite} mb-8`} style="font-family: var(--font-serif)">
+        Wiles C., Diotalevi F., <strong class="text-[color:var(--color-paper)]">Desikan A.</strong>, Cervenka T. <em>Network method and apparatus.</em> US 2014/0215008 A1, published 31 July 2014. Filed 7 March 2013; GB priority 30 January 2013. Assigned to Imagini Holdings (VisualDNA).
+        <a href="https://patents.google.com/patent/US20140215008" target="_blank" rel="noopener" class={inline}>Google Patents <span aria-hidden="true">&#8599;</span></a>
+      </p>
+
+      <div class="space-y-5" style="font-family: var(--font-serif)">
+        <p class={body}>
+          At VisualDNA I ran the data products. We had rich psychographic profiles on tens of millions of people and nowhere to put them to work. The question in this filing is the question every club asks now: you know who the fan is, so why does everyone see the same page?
+        </p>
+        <p class={body}>
+          The answer we filed is a redirection server. A request arrives. The server works out who is asking, loads the profile, and runs a <em>direction model</em>: one predictor per page variant, each one rating that variant for this profile. The default page gets a rating too. The server sends the fan to the variant that scores highest, watches what they do, and updates the model. Early on, the model leans on an estimate. As visitors accumulate, it leans on what was measured. Claim 17 does the same for search results.
+        </p>
+      </div>
+
+      <!-- The loop, claims 1 to 6 -->
+      <figure class="my-12 text-[color:var(--color-paper)]">
+        <svg viewBox="0 0 760 170" role="img" aria-label="Request, identify the user, load the profile, direction model, redirect to variant, with observed interaction feeding back into the model" class="w-full h-auto block">
+          <defs>
+            <marker id="ap-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+            </marker>
+          </defs>
+          <g fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.85">
+            <rect x="10" y="55" width="120" height="48" rx="3" />
+            <rect x="170" y="55" width="120" height="48" rx="3" />
+            <rect x="330" y="55" width="120" height="48" rx="3" />
+            <rect x="490" y="55" width="120" height="48" rx="3" />
+            <rect x="650" y="55" width="100" height="48" rx="3" />
+            <line x1="130" y1="79" x2="168" y2="79" marker-end="url(#ap-arrow)" />
+            <line x1="290" y1="79" x2="328" y2="79" marker-end="url(#ap-arrow)" />
+            <line x1="450" y1="79" x2="488" y2="79" marker-end="url(#ap-arrow)" />
+            <line x1="610" y1="79" x2="648" y2="79" marker-end="url(#ap-arrow)" />
+          </g>
+          <path d="M700,103 L700,140 L550,140 L550,105" fill="none" stroke="var(--color-accent)" stroke-width="1.25" stroke-dasharray="4 4" marker-end="url(#ap-arrow)" />
+          <g font-size="12" fill="currentColor" text-anchor="middle" style="font-family: var(--font-display)">
+            <text x="70" y="75">request</text><text x="70" y="92">for content</text>
+            <text x="230" y="75">identify</text><text x="230" y="92">the user</text>
+            <text x="390" y="75">load the</text><text x="390" y="92">profile</text>
+            <text x="550" y="75">direction</text><text x="550" y="92">model</text>
+            <text x="700" y="75">redirect</text><text x="700" y="92">to variant</text>
+            <text x="625" y="158" font-size="11" fill="var(--color-accent)">observed interaction updates the model</text>
+          </g>
+        </svg>
+        <figcaption class="mt-3 text-xs text-[color:var(--color-muted)]" style="font-family: var(--font-display)">The loop in claims 1 to 6. The dashed line is the part that matters.</figcaption>
+      </figure>
+
+      <h4 class={`${sectionLabel} mb-6`} style="font-family: var(--font-display)">What the 2013 claims became</h4>
+      <p class={`${body} mb-8`} style="font-family: var(--font-serif)">
+        Nobody licensed this. The application was published and not pursued to grant, and the rights sat with the company, not with me. What is interesting is how little the architecture has moved. Read the claim elements against the vocabulary of 2026 and the stack I now build for clubs.
+      </p>
+
+      <div class="overflow-x-auto border border-[color:var(--color-line)] mb-10">
+        <table class="w-full text-left text-sm md:text-base" style="font-family: var(--font-serif)">
+          <thead>
+            <tr class="text-[11px] tracking-[0.16em] uppercase text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+              <th class="p-4 md:p-5 font-normal border-b border-[color:var(--color-line)]">Claim element, 2013</th>
+              <th class="p-4 md:p-5 font-normal border-b border-[color:var(--color-line)]">What the market calls it now</th>
+              <th class="p-4 md:p-5 font-normal border-b border-[color:var(--color-line)]">Where it lives in my work</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[color:var(--color-line)]">
+            {claimMap.map((r) => (
+              <tr class="align-top">
+                <td class="p-4 md:p-5 text-[color:var(--color-paper)]/80 leading-relaxed">{r.then}</td>
+                <td class="p-4 md:p-5 text-[color:var(--color-paper)]/80 leading-relaxed">{r.now}</td>
+                <td class="p-4 md:p-5 text-[color:var(--color-accent)] leading-relaxed">{r.here}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class={body} style="font-family: var(--font-serif)">
+        The lesson I took from it is not about intellectual property. It is that the hard part was never the model. It was getting a trustworthy identifier on the request and a profile the business was allowed to use. That is still where every personalisation programme succeeds or fails, and it is why <a href="/practice" class={inline}>the practice</a> starts with identity and consent rather than with a decisioning tool.
+      </p>
+    </section>
+
+    <!-- 02 Science -->
+    <section id="science" class="mb-24 md:mb-36 scroll-mt-24">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">02 &middot; Science</h2>
+        <span class="text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">Published 2003</span>
+      </div>
+
+      <h3 class="text-2xl md:text-4xl font-medium tracking-tight leading-snug mb-8 max-w-3xl" style="font-family: var(--font-serif)">
+        Finding what matters by comparing relatives.
+      </h3>
+
+      <p class={`${cite} mb-8`} style="font-family: var(--font-serif)">
+        Cliften P., Sudarsanam P., <strong class="text-[color:var(--color-paper)]">Desikan A.</strong>, Fulton L., Fulton B., Majors J., Waterston R., Cohen B. A., Johnston M. <em>Finding functional features in Saccharomyces genomes by phylogenetic footprinting.</em> Science 301 (5629), 71&ndash;76, 4 July 2003.
+        <a href="https://doi.org/10.1126/science.1084337" target="_blank" rel="noopener" class={inline}>DOI <span aria-hidden="true">&#8599;</span></a>
+        <span class="text-[color:var(--color-muted)]">&middot;</span>
+        <a href="https://scholar.google.com/citations?user=D4c_46oAAAAJ&hl=en" target="_blank" rel="noopener" class={inline}>Google Scholar <span aria-hidden="true">&#8599;</span></a>
+      </p>
+
+      <div class="space-y-5" style="font-family: var(--font-serif)">
+        <p class={body}>
+          Before AdTech I was a research technician in Barak Cohen's lab at Washington University School of Medicine. The paper sequenced the genomes of several yeast species related to baker's yeast and lined them up. Sequences that evolution had kept identical across all of them, over tens of millions of years, were the ones that did something. The method is called phylogenetic footprinting. It found regulatory elements that no amount of staring at one genome could have found.
+        </p>
+        <p class={body}>
+          It is old work and it is still cited, more than a thousand times at the last count, because the idea is general. You learn what is essential in a system by comparing it with its relatives and keeping what stays the same.
+        </p>
+      </div>
+
+      <h4 class={`${sectionLabel} mt-12 mb-6`} style="font-family: var(--font-display)">What transfers</h4>
+      <p class={body} style="font-family: var(--font-serif)">
+        I run the same move on fan data. One club's stack tells you very little. Thirty-two clubs on one harmonised model, or a hundred-point readiness rubric scored across a league, tells you which practices are conserved because they work and which are local accidents. The <a href="/readiness" class={inline}>First-Party Index</a> and the <a href="/federated" class={inline}>federated model</a> are both comparative instruments for that reason.
+      </p>
+    </section>
+
+    <!-- What this page does and does not claim -->
+    <section class="mb-24 md:mb-36">
+      <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[color:var(--color-line)]">
+        <h2 class={sectionLabel} style="font-family: var(--font-display)">What this page does and does not claim</h2>
+      </div>
+      <ul class="space-y-4 max-w-2xl">
+        {claims.map((t) => (
+          <li class="pl-5 relative text-base md:text-lg text-[color:var(--color-paper)]/80 leading-relaxed" style="font-family: var(--font-serif)">
+            <span class="absolute left-0 top-3 h-px w-3 bg-[color:var(--color-accent)]"></span>{t}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Closing band -->
+    <section class="mb-24 md:mb-32 border border-[color:var(--color-line)] p-8 md:p-12">
+      <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-8 max-w-2xl" style="font-family: var(--font-serif)">The record since then is on the work page. The proof is on the public record.</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-3" style="font-family: var(--font-display)">
+        <a href="/work" class={cta}>Read the work page <span aria-hidden="true">-&gt;</span></a>
+        <a href="/record" class={cta}>See the public record <span aria-hidden="true">-&gt;</span></a>
+        <a href="https://calendly.com/adesikan/15min" target="_blank" rel="noopener" class={cta}>Book a fifteen-minute call <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-10 border-t border-[color:var(--color-line)]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs md:text-sm text-[color:var(--color-muted)]" style="font-family: var(--font-display)">
+        <span>&copy; {new Date().getFullYear()} Citizen of Nowhere</span>
+        <span>the independent work of Ashwin Desikan</span>
+      </div>
+    </footer>
+  </main>
+</Layout>

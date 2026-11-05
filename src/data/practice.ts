@@ -17,24 +17,28 @@ export const pillars = [
     title: "Connected Identity & Data Foundations",
     desc: "The plumbing everything else depends on, built for a privacy-first world.",
     tags: ["Identity resolution", "CDP architecture", "Clean rooms", "Consent & governance"],
+    proof: { href: "https://rankings.citizenofnowhere.org/studio/identity", label: "See the identity graph" },
   },
   {
     num: "02",
     title: "Audience, Activation & Commerce Media",
     desc: "Turning first-party audiences into addressable, measurable revenue.",
     tags: ["Audience strategy", "Cross-channel activation", "Retail & commerce media", "Measurement"],
+    proof: { href: "https://rankings.citizenofnowhere.org/studio/audience-builder", label: "See the audience builder" },
   },
   {
     num: "03",
     title: "AI-Enabled Marketing & Operating Models",
     desc: "Where applied AI meets the commercial and org design to actually ship it.",
     tags: ["Applied AI", "Commercial model design", "Operating-model design", "Tier 1 client partnership"],
+    proof: { href: "https://rankings.citizenofnowhere.org/studio/agents", label: "See an agent governed" },
   },
   {
     num: "04",
     title: "Sports & Media Business",
     desc: "Rights-adjacent data strategy and stakeholder work, league to club.",
     tags: ["League & club strategy", "Partnership negotiation", "Live-event data"],
+    proof: { href: "https://rankings.citizenofnowhere.org/studio/club-blueprint", label: "See the club blueprint" },
   },
 ];
 
@@ -316,8 +320,9 @@ export const studioModules = [
 export const whyme = [
   { label: "Operator, not commentator", body: "I have run the desk inside the leagues and the platforms, owning the operating model, not advising from the outside." },
   { label: "Independent of every vendor", body: "I have written the requirements, run the RFP, negotiated the contract, and then owned the implementation. I resell nothing and take no referral fees. Where I advise a vendor on its product, I disclose it in writing, and I never advise a property on a choice where that vendor is in the running." },
-  { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and a working MarTech reference implementation are the studio behind the practice." },
+  { label: "Proof you can use", body: "I build in public. The Global Metro Power Rankings and the Studio, a working martech reference implementation with a governed agent gateway, are the studio behind the practice." },
   { label: "A network across the ecosystem", body: "A career spent across leagues, holding companies, and platforms shortens every introduction and every deal." },
   { label: "I write and I teach", body: "A public point of view on identity, data, and the AI era, carried through writing, keynotes, and board workshops." },
   { label: "Both sides of the trade", body: "Platforms like Genius FANHub and Elevate EPIC monetize fan identity. I built the side of the trade the rights holder owns, and the demand side at Amazon that buys from it." },
+  { label: "On the record since 2003", body: "A Science paper at twenty-two and a personalisation patent application at thirty-two, both public and both checkable. I have been writing down how systems work, and putting my name to it, for longer than most of the stacks I am asked to assess have existed." },
 ];
